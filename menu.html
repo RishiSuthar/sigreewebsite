@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Sigree Barbeque Menus — Explore our Food and Drinks menus at Auckland's premier Indian fine dining restaurant." />
+	<meta property="og:title" content="Menu | Sigree Barbeque" />
+	<meta property="og:description" content="Explore our Food and Drinks menus at Sigree Barbeque, Auckland." />
+	<meta property="og:type" content="website" />
+	<title>Menu | Sigree Barbeque</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="styles.css" />
+	<style>
+
+		/* ============================================
+		   Menu Page — Specific Styles
+		   ============================================ */
+
+		/* Hero */
+		.menu-hero {
+			padding: clamp(5.5rem, 14vw, 9rem) 0 clamp(2rem, 5vw, 3.5rem);
+			text-align: center;
+		}
+
+		.menu-hero h1 {
+			font-size: clamp(2.8rem, 7vw, 5rem);
+			margin: 0.4rem 0 0.8rem;
+		}
+
+		.menu-hero .hero-sub {
+			color: var(--color-text-secondary);
+			font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+			max-width: 36ch;
+			margin: 0 auto;
+			line-height: 1.7;
+		}
+
+		/* ---- Tab Switcher ---- */
+		.tab-row {
+			display: flex;
+			justify-content: center;
+			margin-top: clamp(2rem, 5vw, 3rem);
+		}
+
+		.tab-bar {
+			display: inline-flex;
+			border: 1px solid var(--color-border);
+			border-radius: 4px;
+			overflow: hidden;
+		}
+
+		.tab-btn {
+			position: relative;
+			padding: 0.85rem clamp(1.4rem, 5vw, 2.8rem);
+			font-family: var(--font-body);
+			font-size: 0.82rem;
+			font-weight: 500;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: var(--color-text-secondary);
+			background: var(--color-surface);
+			border: none;
+			cursor: pointer;
+			transition: color 0.3s var(--ease-out), background 0.3s var(--ease-out);
+			white-space: nowrap;
+		}
+
+		.tab-btn + .tab-btn {
+			border-left: 1px solid var(--color-border);
+		}
+
+		.tab-btn::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			width: 0;
+			height: 2px;
+			background: var(--color-accent);
+			transform: translateX(-50%);
+			transition: width 0.35s var(--ease-out);
+		}
+
+		.tab-btn.active {
+			color: var(--color-text);
+			background: var(--color-bg-elevated);
+		}
+
+		.tab-btn.active::after {
+			width: 100%;
+		}
+
+		.tab-btn:hover:not(.active) {
+			color: var(--color-text);
+			background: rgba(255, 255, 255, 0.04);
+		}
+
+		/* ---- Tab Panels ---- */
+		.tab-panels {
+			padding-bottom: clamp(4rem, 10vh, 6rem);
+		}
+
+		.tab-panel {
+			display: none;
+		}
+
+		.tab-panel.active {
+			display: block;
+		}
+
+		/* ---- Panel Intro ---- */
+		.panel-intro {
+			text-align: center;
+			padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+		}
+
+		.panel-intro h2 {
+			font-size: clamp(1.6rem, 4vw, 2.4rem);
+			font-weight: 400;
+			margin-bottom: 0.6rem;
+		}
+
+		.panel-intro p {
+			color: var(--color-text-secondary);
+			font-size: 0.88rem;
+			letter-spacing: 0.02em;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.4rem;
+		}
+
+		/* ---- Menu Images ---- */
+		.menu-images {
+			display: flex;
+			flex-direction: column;
+			gap: 1.25rem;
+		}
+
+		.menu-img-wrap {
+			position: relative;
+			border: 1px solid var(--color-border);
+			border-radius: 10px;
+			overflow: hidden;
+			background: var(--color-surface);
+			box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+		}
+
+		/* Scrollable so full A3/A4 width is accessible on mobile */
+		.menu-img-scroll {
+			overflow-x: auto;
+			overflow-y: hidden;
+			-webkit-overflow-scrolling: touch;
+			scroll-snap-type: x proximity;
+			cursor: grab;
+		}
+
+		.menu-img-scroll:active {
+			cursor: grabbing;
+		}
+
+		/* Ensure text stays legible: minimum 900 px for A3 landscape food,
+		   750 px for A4 landscape drinks. Users scroll/pinch to explore. */
+		.menu-img-scroll img {
+			display: block;
+			height: auto;
+			/* CSS: width 100% on tablets/desktop, min-width kicks in on phones */
+			width: 100%;
+			min-width: 900px;
+			max-width: none;
+		}
+
+		.menu-img-scroll.drinks-scroll img {
+			min-width: 750px;
+		}
+
+		/* Page badge top-left */
+		.page-badge {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			z-index: 2;
+			background: rgba(12, 10, 9, 0.82);
+			backdrop-filter: blur(6px);
+			-webkit-backdrop-filter: blur(6px);
+			color: var(--color-text-secondary);
+			font-size: 0.68rem;
+			font-weight: 500;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			padding: 4px 10px;
+			border-radius: 3px;
+			border: 1px solid var(--color-border-subtle);
+			pointer-events: none;
+		}
+
+		/* Scroll/zoom hint bar under each image */
+		.img-hint {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.45rem;
+			padding: 0.55rem 1rem;
+			background: rgba(28, 25, 23, 0.9);
+			border-top: 1px solid var(--color-border-subtle);
+			color: var(--color-text-muted);
+			font-size: 0.72rem;
+			letter-spacing: 0.07em;
+			text-transform: uppercase;
+		}
+
+		.img-hint svg {
+			opacity: 0.55;
+			flex-shrink: 0;
+		}
+
+		/* Scroll indicator on right edge */
+		.menu-img-wrap::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 32px;
+			height: calc(100% - 30px); /* above hint bar */
+			background: linear-gradient(to right, transparent, rgba(12, 10, 9, 0.55));
+			pointer-events: none;
+			border-radius: 0 10px 0 0;
+		}
+
+		/* ---- Share Section ---- */
+		.share-section {
+			padding: clamp(2.5rem, 6vw, 3.5rem) 0 clamp(3rem, 8vh, 5rem);
+			border-top: 1px solid var(--color-border);
+			text-align: center;
+		}
+
+		.share-section .section-label {
+			margin-bottom: 0.8rem;
+		}
+
+		.share-section p {
+			color: var(--color-text-secondary);
+			font-size: 0.9rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.btn-share {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.55rem;
+			padding: 1rem 2.2rem;
+			background: var(--color-surface);
+			border: 1px solid var(--color-border);
+			border-radius: 3px;
+			color: var(--color-text);
+			font-family: var(--font-body);
+			font-size: 0.82rem;
+			font-weight: 500;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			cursor: pointer;
+			transition: background 0.3s var(--ease-out), border-color 0.3s var(--ease-out), color 0.3s var(--ease-out);
+		}
+
+		.btn-share:hover {
+			background: var(--color-bg-elevated);
+			border-color: var(--color-accent);
+			color: var(--color-accent);
+		}
+
+		.btn-share svg {
+			width: 16px;
+			height: 16px;
+			flex-shrink: 0;
+			transition: color 0.3s var(--ease-out);
+		}
+
+		.share-feedback {
+			display: block;
+			margin-top: 0.85rem;
+			font-size: 0.8rem;
+			color: var(--color-accent-light);
+			min-height: 1.1em;
+			opacity: 0;
+			transform: translateY(4px);
+			transition: opacity 0.4s, transform 0.4s;
+		}
+
+		.share-feedback.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		/* ---- Responsive ---- */
+		@media (min-width: 900px) {
+			.menu-img-scroll img {
+				min-width: 0;
+				width: 100%;
+			}
+
+			.menu-img-scroll.drinks-scroll img {
+				min-width: 0;
+				width: 100%;
+			}
+
+			/* On desktop show both food pages side by side */
+			.food-pages-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1.25rem;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.tab-btn {
+				padding: 0.8rem 1.25rem;
+				font-size: 0.78rem;
+			}
+		}
+
+	</style>
+</head>
+<body>
+
+	<a class="skip-link" href="#main-content">Skip to content</a>
+
+	<!-- Ember particles (matches site theme) -->
+	<div class="page-embers" aria-hidden="true">
+		<span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span>
+	</div>
+
+	<header class="site-header" id="top">
+		<div class="container header-inner">
+			<a class="brand" href="index.html" aria-label="Sigree Barbeque home">
+				<img src="assets/SIGREELOGO1.png" alt="Sigree Barbeque" class="brand-logo" />
+			</a>
+
+			<nav class="nav" id="primary-nav" aria-label="Primary navigation">
+				<a href="about.html">About Us</a>
+				<a href="menu.html" aria-current="page">Menu</a>
+				<a href="index.html#experience">Experience</a>
+				<a href="index.html#contact">Visit</a>
+			</nav>
+
+			<a class="nav-cta" href="index.html#reserve">Reserve</a>
+
+			<button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav">
+				<span></span>
+				<span></span>
+			</button>
+		</div>
+	</header>
+
+	<main id="main-content">
+
+		<!-- Hero -->
+		<section class="menu-hero">
+			<div class="container">
+				<div class="section-label">Sigree Barbeque</div>
+				<h1>Our Menus</h1>
+				<p class="hero-sub">Explore our food and drinks offerings. Use the tabs below to switch between menus.</p>
+
+				<!-- Tab Switcher -->
+				<div class="tab-row" role="tablist" aria-label="Menu categories">
+					<div class="tab-bar">
+						<button class="tab-btn active" id="tab-food" role="tab" aria-selected="true" aria-controls="panel-food">
+							Food Menu
+						</button>
+						<button class="tab-btn" id="tab-drinks" role="tab" aria-selected="false" aria-controls="panel-drinks">
+							Drinks
+						</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Tab Panels -->
+		<div class="tab-panels" role="presentation">
+
+			<!-- Food Menu Panel -->
+			<div class="tab-panel active" id="panel-food" role="tabpanel" aria-labelledby="tab-food">
+				<div class="container">
+					<div class="panel-intro">
+						<h2>Food Menu</h2>
+						<p>
+							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+							Scroll within each page &mdash; pinch or double-tap to zoom
+						</p>
+					</div>
+
+					<div class="menu-images food-pages-grid">
+
+						<!-- Page 1 -->
+						<div class="menu-img-wrap">
+							<span class="page-badge">Page 1</span>
+							<div class="menu-img-scroll" tabindex="0" aria-label="Food menu page 1, scroll to view">
+								<img src="assets/menu1.png" alt="Sigree Barbeque food menu, page 1" loading="eager" />
+							</div>
+							<div class="img-hint" aria-hidden="true">
+								<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+								Swipe or scroll to pan &nbsp;&bull;&nbsp; Pinch to zoom
+							</div>
+						</div>
+
+						<!-- Page 2 -->
+						<div class="menu-img-wrap">
+							<span class="page-badge">Page 2</span>
+							<div class="menu-img-scroll" tabindex="0" aria-label="Food menu page 2, scroll to view">
+								<img src="assets/menu2.png" alt="Sigree Barbeque food menu, page 2" loading="lazy" />
+							</div>
+							<div class="img-hint" aria-hidden="true">
+								<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+								Swipe or scroll to pan &nbsp;&bull;&nbsp; Pinch to zoom
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- Drinks Panel -->
+			<div class="tab-panel" id="panel-drinks" role="tabpanel" aria-labelledby="tab-drinks" hidden>
+				<div class="container">
+					<div class="panel-intro">
+						<h2>Drinks Menu</h2>
+						<p>
+							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+							Scroll within the menu &mdash; pinch or double-tap to zoom
+						</p>
+					</div>
+
+					<div class="menu-images">
+						<div class="menu-img-wrap">
+							<span class="page-badge">Bar &amp; Drinks</span>
+							<div class="menu-img-scroll drinks-scroll" tabindex="0" aria-label="Drinks menu, scroll to view">
+								<img src="assets/drinks1.png" alt="Sigree Barbeque drinks menu" loading="lazy" />
+							</div>
+							<div class="img-hint" aria-hidden="true">
+								<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+								Swipe or scroll to pan &nbsp;&bull;&nbsp; Pinch to zoom
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Share Section -->
+		<section class="share-section" aria-label="Share this menu">
+			<div class="container">
+				<div class="section-label">Share</div>
+				<p>Send this menu to a friend or save it for later.</p>
+				<button class="btn-share" id="share-btn" type="button" aria-label="Share this menu page">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+						<line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+					</svg>
+					Share Menu
+				</button>
+				<span class="share-feedback" id="share-feedback" role="status" aria-live="polite"></span>
+			</div>
+		</section>
+
+	</main>
+
+	<footer class="site-footer">
+		<div class="container footer-inner">
+			<p>&copy; <span id="year"></span> Sigree Barbeque. All rights reserved.</p>
+			<nav class="footer-nav">
+				<a href="about.html">About Us</a>
+				<a href="index.html#reserve">Reserve a Table</a>
+				<a href="index.html">Home</a>
+			</nav>
+		</div>
+	</footer>
+
+	<script>
+		// Footer year
+		document.getElementById('year').textContent = new Date().getFullYear();
+
+		// ---- Activate tab from URL hash ----
+		function activateTabById(panelId) {
+			const matchTab = document.querySelector(`[aria-controls="${panelId}"]`);
+			const matchPanel = document.getElementById(panelId);
+			if (!matchTab || !matchPanel) return;
+			tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+			panels.forEach(p => { p.classList.remove('active'); p.hidden = true; });
+			matchTab.classList.add('active');
+			matchTab.setAttribute('aria-selected', 'true');
+			matchPanel.classList.add('active');
+			matchPanel.hidden = false;
+		}
+
+		const hash = window.location.hash.replace('#', '');
+		if (hash === 'panel-drinks') {
+			activateTabById('panel-drinks');
+		}
+
+		// ---- Tab switching ----
+		const tabs = document.querySelectorAll('.tab-btn');
+		const panels = document.querySelectorAll('.tab-panel');
+
+		tabs.forEach(tab => {
+			tab.addEventListener('click', () => {
+				const target = tab.getAttribute('aria-controls');
+
+				tabs.forEach(t => {
+					t.classList.remove('active');
+					t.setAttribute('aria-selected', 'false');
+				});
+				panels.forEach(p => {
+					p.classList.remove('active');
+					p.hidden = true;
+				});
+
+				tab.classList.add('active');
+				tab.setAttribute('aria-selected', 'true');
+
+				const activePanel = document.getElementById(target);
+				activePanel.classList.add('active');
+				activePanel.hidden = false;
+			});
+
+			// Keyboard nav: left/right arrow between tabs
+			tab.addEventListener('keydown', e => {
+				const tabList = [...tabs];
+				const idx = tabList.indexOf(tab);
+				if (e.key === 'ArrowRight') {
+					tabList[(idx + 1) % tabList.length].focus();
+				} else if (e.key === 'ArrowLeft') {
+					tabList[(idx - 1 + tabList.length) % tabList.length].focus();
+				}
+			});
+		});
+
+		// ---- Share button ----
+		const shareBtn = document.getElementById('share-btn');
+		const shareFeedback = document.getElementById('share-feedback');
+
+		function showFeedback(msg) {
+			shareFeedback.textContent = msg;
+			shareFeedback.classList.add('visible');
+			setTimeout(() => {
+				shareFeedback.classList.remove('visible');
+				setTimeout(() => { shareFeedback.textContent = ''; }, 400);
+			}, 3000);
+		}
+
+		shareBtn.addEventListener('click', async () => {
+			const shareData = {
+				title: 'Sigree Barbeque — Menu',
+				text: 'Check out the menu at Sigree Barbeque, Auckland.',
+				url: window.location.href
+			};
+
+			if (navigator.share) {
+				try {
+					await navigator.share(shareData);
+				} catch (err) {
+					if (err.name !== 'AbortError') {
+						// fallback to clipboard
+						copyToClipboard();
+					}
+				}
+			} else {
+				copyToClipboard();
+			}
+		});
+
+		function copyToClipboard() {
+			const url = window.location.href;
+			if (navigator.clipboard && navigator.clipboard.writeText) {
+				navigator.clipboard.writeText(url).then(() => {
+					showFeedback('Link copied to clipboard');
+				}).catch(() => {
+					fallbackCopy(url);
+				});
+			} else {
+				fallbackCopy(url);
+			}
+		}
+
+		function fallbackCopy(text) {
+			const ta = document.createElement('textarea');
+			ta.value = text;
+			ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
+			document.body.appendChild(ta);
+			ta.focus();
+			ta.select();
+			try {
+				document.execCommand('copy');
+				showFeedback('Link copied to clipboard');
+			} catch {
+				showFeedback('Copy this link: ' + text);
+			}
+			document.body.removeChild(ta);
+		}
+
+		// ---- Mobile nav toggle (reuse site behaviour) ----
+		const navToggle = document.querySelector('.nav-toggle');
+		const primaryNav = document.getElementById('primary-nav');
+
+		if (navToggle && primaryNav) {
+			navToggle.addEventListener('click', () => {
+				const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+				navToggle.setAttribute('aria-expanded', String(!isOpen));
+				primaryNav.classList.toggle('nav-open');
+			});
+
+			// Close nav when a link is clicked
+			primaryNav.querySelectorAll('a').forEach(link => {
+				link.addEventListener('click', () => {
+					navToggle.setAttribute('aria-expanded', 'false');
+					primaryNav.classList.remove('nav-open');
+				});
+			});
+		}
+	</script>
+
+</body>
+</html>
