@@ -692,6 +692,13 @@ p {
 	margin-bottom: 0.25rem;
 }
 
+.stat-star {
+	color: var(--color-accent);
+	font-size: 1.4rem;
+	vertical-align: middle;
+	line-height: 1;
+}
+
 .stat-label {
 	font-size: 0.6875rem;
 	letter-spacing: 0.15em;
