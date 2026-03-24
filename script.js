@@ -1,5 +1,5 @@
 /**
- * Sigree Barbeque — Website Scripts
+ * Sigree Indian Cuisine — Website Scripts
  * Clean, minimal JavaScript for essential functionality
  */
 
