@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sigreebbq.netlify.app/sitemap.xml
