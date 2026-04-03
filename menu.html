@@ -5,10 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="robots" content="index, follow" />
 	<link rel="canonical" href="https://sigreebbq.netlify.app/menu.html" />
-	<meta name="description" content="Sigree Indian Cuisine Menus — Explore our Food and Drinks menus at Auckland's premier Indian fine dining restaurant." />
-	<meta name="keywords" content="Indian menu Auckland, sigree menu, Indian drinks menu, Avondale restaurant menu" />
+	<meta name="description" content="Sigree Indian Cuisine Menu — Explore our full food and drinks menu at Auckland's premier Indian fine dining restaurant." />
+	<meta name="keywords" content="Indian menu Auckland, sigree menu, Indian food, Avondale restaurant menu, butter chicken, biryani" />
 	<meta property="og:title" content="Menu | Sigree Indian Cuisine" />
-	<meta property="og:description" content="Explore our Food and Drinks menus at Sigree Indian Cuisine, Auckland." />
+	<meta property="og:description" content="Explore our full menu at Sigree Indian Cuisine, Auckland." />
 	<meta property="og:type" content="website" />
 	<title>Menu | Sigree Indian Cuisine</title>
 	<link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -19,29 +19,30 @@
 	<style>
 
 		/* ============================================
-		   Menu Page — PDF Viewer Edition
+		   Menu Page — Inline Text Edition
 		   ============================================ */
 
-		/* Hero */
+		/* ----- Hero ----- */
 		.menu-hero {
-			padding: clamp(5.5rem, 14vw, 9rem) 0 clamp(2rem, 5vw, 3.5rem);
+			padding: clamp(6rem, 15vw, 9.5rem) 0 clamp(2.5rem, 6vw, 4rem);
 			text-align: center;
+			position: relative;
 		}
 
 		.menu-hero h1 {
 			font-size: clamp(2.8rem, 7vw, 5rem);
-			margin: 0.4rem 0 0.8rem;
+			margin: 0.4rem 0 0.9rem;
 		}
 
 		.menu-hero .hero-sub {
 			color: var(--color-text-secondary);
 			font-size: clamp(0.9rem, 2.5vw, 1.05rem);
-			max-width: 38ch;
+			max-width: 40ch;
 			margin: 0 auto;
-			line-height: 1.7;
+			line-height: 1.75;
 		}
 
-		/* ---- Tab Switcher ---- */
+		/* ----- Tab Switcher ----- */
 		.tab-row {
 			display: flex;
 			justify-content: center;
@@ -57,11 +58,11 @@
 
 		.tab-btn {
 			position: relative;
-			padding: 0.85rem clamp(1.6rem, 5vw, 3rem);
+			padding: 0.9rem clamp(1.5rem, 4vw, 2.8rem);
 			font-family: var(--font-body);
-			font-size: 0.82rem;
+			font-size: 0.8rem;
 			font-weight: 500;
-			letter-spacing: 0.1em;
+			letter-spacing: 0.12em;
 			text-transform: uppercase;
 			color: var(--color-text-secondary);
 			background: var(--color-surface);
@@ -92,195 +93,181 @@
 			background: var(--color-bg-elevated);
 		}
 
-		.tab-btn.active::after {
-			width: 100%;
-		}
+		.tab-btn.active::after { width: 100%; }
 
 		.tab-btn:hover:not(.active) {
 			color: var(--color-text);
-			background: rgba(255, 255, 255, 0.04);
+			background: rgba(255,255,255,0.04);
 		}
 
-		/* ---- Tab Panels ---- */
+		/* ----- Tab Panels ----- */
 		.tab-panels {
-			padding-bottom: clamp(4rem, 10vh, 6rem);
+			padding-bottom: clamp(4rem, 10vh, 7rem);
 		}
 
-		.tab-panel {
-			display: none;
+		.tab-panel { display: none; }
+		.tab-panel.active { display: block; }
+
+		/* ----- Menu Body ----- */
+		.menu-body {
+			padding-top: clamp(2rem, 5vw, 3.5rem);
 		}
 
-		.tab-panel.active {
-			display: block;
+		/* ----- Section block ----- */
+		.menu-section {
+			padding: clamp(2.5rem, 6vw, 3.5rem) 0;
+			border-top: 1px solid var(--color-border);
 		}
 
-		/* ---- Panel Intro ---- */
-		.panel-intro {
-			text-align: center;
-			padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(1.2rem, 3vw, 2rem);
+		.menu-section:first-child {
+			border-top: none;
+			padding-top: 0;
 		}
 
-		.panel-intro h2 {
-			font-size: clamp(1.6rem, 4vw, 2.4rem);
+		.menu-section-header {
+			display: flex;
+			align-items: baseline;
+			gap: 1.2rem;
+			margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+		}
+
+		.menu-section-title {
+			font-family: var(--font-display);
+			font-size: clamp(1.35rem, 3.5vw, 2rem);
 			font-weight: 400;
-			margin-bottom: 0.5rem;
-		}
-
-		.panel-intro p {
-			color: var(--color-text-secondary);
-			font-size: 0.88rem;
-			letter-spacing: 0.02em;
-			line-height: 1.6;
-		}
-
-		/* ---- PDF Card ---- */
-		.pdf-card {
-			border: 1px solid var(--color-border);
-			border-radius: 12px;
-			overflow: hidden;
-			background: var(--color-surface);
-			box-shadow: 0 12px 60px rgba(0, 0, 0, 0.55);
-		}
-
-		/* PDF action bar — sits above the viewer */
-		.pdf-action-bar {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			flex-wrap: wrap;
-			gap: 0.75rem;
-			padding: 0.9rem 1.4rem;
-			background: rgba(20, 17, 15, 0.95);
-			border-bottom: 1px solid var(--color-border);
-		}
-
-		.pdf-action-bar-label {
-			display: flex;
-			align-items: center;
-			gap: 0.55rem;
-			font-size: 0.78rem;
-			font-weight: 500;
-			letter-spacing: 0.1em;
-			text-transform: uppercase;
-			color: var(--color-text-secondary);
-		}
-
-		.pdf-action-bar-label svg {
-			color: var(--color-accent);
-			flex-shrink: 0;
-		}
-
-		.pdf-action-btns {
-			display: flex;
-			gap: 0.6rem;
-		}
-
-		.btn-pdf {
-			display: inline-flex;
-			align-items: center;
-			gap: 0.45rem;
-			padding: 0.6rem 1.2rem;
-			font-family: var(--font-body);
-			font-size: 0.75rem;
-			font-weight: 500;
-			letter-spacing: 0.09em;
-			text-transform: uppercase;
-			border-radius: 3px;
-			cursor: pointer;
-			transition: background 0.25s var(--ease-out), border-color 0.25s var(--ease-out), color 0.25s var(--ease-out);
-			text-decoration: none;
+			color: var(--color-text);
+			letter-spacing: -0.01em;
 			white-space: nowrap;
 		}
 
-		.btn-pdf-secondary {
-			background: transparent;
-			border: 1px solid var(--color-border);
-			color: var(--color-text-secondary);
+		.menu-section-rule {
+			flex: 1;
+			height: 1px;
+			background: var(--color-border);
+			min-width: 2rem;
 		}
 
-		.btn-pdf-secondary:hover {
-			background: rgba(255,255,255,0.05);
-			border-color: var(--color-accent);
+		/* ----- Item grid ----- */
+		.menu-items {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 0;
+		}
+
+		/* Breads section stays single-column tight list */
+		.menu-items.list-style {
+			grid-template-columns: 1fr;
+		}
+
+		/* ----- Individual item ----- */
+		.menu-item {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			gap: 1.5rem;
+			padding: 1.15rem 0;
+			border-bottom: 1px solid var(--color-border-subtle);
+		}
+
+		/* In a 2-column grid, remove bottom border from last two */
+		.menu-items:not(.list-style) .menu-item:nth-last-child(-n+2):not(:nth-last-child(-n+2) ~ .menu-item) {
+			border-bottom: none;
+		}
+
+		.list-style .menu-item:last-child {
+			border-bottom: none;
+		}
+
+		.menu-item-body {
+			flex: 1;
+			min-width: 0;
+		}
+
+		.menu-item-name {
+			font-family: var(--font-body);
+			font-size: 0.97rem;
+			font-weight: 600;
 			color: var(--color-text);
+			margin-bottom: 0.3rem;
+			letter-spacing: 0.01em;
+			line-height: 1.35;
 		}
 
-		.btn-pdf-primary {
-			background: var(--color-accent);
-			border: 1px solid var(--color-accent);
-			color: var(--color-bg);
+		.menu-item-desc {
+			font-size: 0.84rem;
+			color: var(--color-text-secondary);
+			line-height: 1.65;
+			margin: 0;
 		}
 
-		.btn-pdf-primary:hover {
-			background: var(--color-accent-light, #e8a050);
-			border-color: var(--color-accent-light, #e8a050);
+		.menu-item-price {
+			font-family: var(--font-body);
+			font-size: 0.95rem;
+			font-weight: 500;
+			color: var(--color-accent);
+			white-space: nowrap;
+			padding-top: 0.1rem;
+			flex-shrink: 0;
 		}
 
-		/* PDF viewer iframe */
-		.pdf-viewer {
-			display: block;
-			width: 100%;
-			height: clamp(520px, 76vh, 880px);
-			border: none;
-			background: #1a1714;
+		/* Breads list — compact horizontal layout */
+		.list-style .menu-item {
+			padding: 0.75rem 0;
 		}
 
-		/* Fallback for browsers that can't show PDF inline */
-		.pdf-fallback {
-			display: none;
+		/* On last item, clear border */
+		.menu-items:not(.list-style) .menu-item:last-child {
+			border-bottom: none;
+		}
+
+		/* ----- Drinks Panel ----- */
+		.drinks-intro {
+			text-align: center;
+			padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(1rem, 3vw, 1.5rem);
+			color: var(--color-text-secondary);
+			font-size: 0.92rem;
+			line-height: 1.7;
+		}
+
+		.drinks-coming-soon {
+			display: flex;
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
 			gap: 1.2rem;
-			padding: clamp(3rem, 8vh, 5rem) 1.5rem;
+			padding: clamp(4rem, 12vh, 6rem) 1.5rem;
 			text-align: center;
-			background: var(--color-surface);
 		}
 
-		.pdf-fallback-icon {
-			width: 56px;
-			height: 56px;
+		.drinks-icon {
+			width: 52px;
+			height: 52px;
 			color: var(--color-accent);
-			opacity: 0.8;
+			opacity: 0.7;
 		}
 
-		.pdf-fallback h3 {
-			font-size: 1.2rem;
+		.drinks-coming-soon h2 {
+			font-size: clamp(1.4rem, 3vw, 2rem);
 			font-weight: 400;
-			letter-spacing: 0.02em;
 			margin: 0;
 		}
 
-		.pdf-fallback p {
+		.drinks-coming-soon p {
 			color: var(--color-text-secondary);
-			font-size: 0.88rem;
-			max-width: 32ch;
-			line-height: 1.6;
+			font-size: 0.9rem;
+			max-width: 34ch;
+			line-height: 1.7;
 			margin: 0;
 		}
 
-		/* Mobile: collapse viewer height for comfort */
-		@media (max-width: 640px) {
-			.pdf-viewer {
-				height: 70vh;
-				min-height: 400px;
-			}
-
-			.pdf-action-bar {
-				flex-direction: column;
-				align-items: flex-start;
-			}
-		}
-
-		/* ---- Share Section ---- */
+		/* ----- Share section ----- */
 		.share-section {
 			padding: clamp(2.5rem, 6vw, 3.5rem) 0 clamp(3rem, 8vh, 5rem);
 			border-top: 1px solid var(--color-border);
 			text-align: center;
 		}
 
-		.share-section .section-label {
-			margin-bottom: 0.8rem;
-		}
+		.share-section .section-label { margin-bottom: 0.8rem; }
 
 		.share-section p {
 			color: var(--color-text-secondary);
@@ -312,11 +299,7 @@
 			color: var(--color-accent);
 		}
 
-		.btn-share svg {
-			width: 16px;
-			height: 16px;
-			flex-shrink: 0;
-		}
+		.btn-share svg { width: 16px; height: 16px; flex-shrink: 0; }
 
 		.share-feedback {
 			display: block;
@@ -329,16 +312,34 @@
 			transition: opacity 0.4s, transform 0.4s;
 		}
 
-		.share-feedback.visible {
-			opacity: 1;
-			transform: translateY(0);
+		.share-feedback.visible { opacity: 1; transform: translateY(0); }
+
+		/* ----- Desktop: 2-column gutter & divider ----- */
+		@media (min-width: 701px) {
+			.menu-items:not(.list-style) .menu-item {
+				padding-right: 2rem;
+			}
+
+			.menu-items:not(.list-style) .menu-item:nth-child(even) {
+				padding-right: 0;
+				padding-left: 2rem;
+				border-left: 1px solid var(--color-border-subtle);
+			}
+
+			.menu-items:not(.list-style) .menu-item:nth-last-child(2):nth-child(odd) {
+				border-bottom: none;
+			}
+		}
+
+		/* ----- Mobile: single column, no indent ----- */
+		@media (max-width: 700px) {
+			.menu-items:not(.list-style) {
+				grid-template-columns: 1fr;
+			}
 		}
 
 		@media (max-width: 480px) {
-			.tab-btn {
-				padding: 0.8rem 1.25rem;
-				font-size: 0.78rem;
-			}
+			.tab-btn { padding: 0.8rem 1.2rem; font-size: 0.76rem; }
 		}
 
 	</style>
@@ -347,7 +348,7 @@
 
 	<a class="skip-link" href="#main-content">Skip to content</a>
 
-	<!-- Ember particles (matches site theme) -->
+	<!-- Ember particles -->
 	<div class="page-embers" aria-hidden="true">
 		<span></span><span></span><span></span><span></span><span></span>
 		<span></span><span></span><span></span><span></span><span></span>
@@ -360,19 +361,15 @@
 			<a class="brand" href="index.html" aria-label="Sigree Indian Cuisine home">
 				<img src="assets/SIGREELOGO1.png" alt="Sigree Indian Cuisine" class="brand-logo" />
 			</a>
-
 			<nav class="nav" id="primary-nav" aria-label="Primary navigation">
 				<a href="about.html">About Us</a>
 				<a href="menu.html" aria-current="page">Menu</a>
 				<a href="index.html#experience">Experience</a>
 				<a href="index.html#contact">Visit</a>
 			</nav>
-
 			<a class="nav-cta" href="index.html#reserve">Reserve</a>
-
 			<button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav">
-				<span></span>
-				<span></span>
+				<span></span><span></span>
 			</button>
 		</div>
 	</header>
@@ -383,20 +380,14 @@
 		<section class="menu-hero">
 			<div class="container">
 				<div class="section-label">Sigree Indian Cuisine</div>
-				<h1>Our Menus</h1>
-				<p class="hero-sub">Browse our food and drinks menus below, or download a copy to keep.</p>
+				<h1>Our Menu</h1>
+				<p class="hero-sub">Crafted with care, inspired by India. Explore our food and drinks below.</p>
 
 				<!-- Tab Switcher -->
 				<div class="tab-row" role="tablist" aria-label="Menu categories">
 					<div class="tab-bar">
-						<button class="tab-btn active" id="tab-food" role="tab" aria-selected="true" aria-controls="panel-food">
-							<!-- fork & knife icon -->
-							Food Menu
-						</button>
-						<button class="tab-btn" id="tab-drinks" role="tab" aria-selected="false" aria-controls="panel-drinks">
-							<!-- glass icon -->
-							Drinks Menu
-						</button>
+						<button class="tab-btn active" id="tab-food" role="tab" aria-selected="true" aria-controls="panel-food">Food Menu</button>
+						<button class="tab-btn" id="tab-drinks" role="tab" aria-selected="false" aria-controls="panel-drinks">Drinks</button>
 					</div>
 				</div>
 			</div>
@@ -405,103 +396,625 @@
 		<!-- Tab Panels -->
 		<div class="tab-panels" role="presentation">
 
-			<!-- ===== Food Menu Panel ===== -->
+			<!-- =========================================
+			     FOOD MENU PANEL
+			     ========================================= -->
 			<div class="tab-panel active" id="panel-food" role="tabpanel" aria-labelledby="tab-food">
-				<div class="container">
+				<div class="container menu-body">
 
-					<div class="panel-intro">
-						<h2>Food Menu</h2>
-						<p>Our full food menu — scroll through below, or open it in a new tab for the best reading experience.</p>
-					</div>
+					<!-- Snacks & Sides -->
+					<section class="menu-section" aria-labelledby="section-snacks">
+						<div class="menu-section-header">
+							<h2 class="menu-section-title" id="section-snacks">Snacks &amp; Sides</h2>
+							<div class="menu-section-rule" aria-hidden="true"></div>
+						</div>
+						<div class="menu-items">
 
-					<div class="pdf-card">
-						<!-- Action bar -->
-						<div class="pdf-action-bar">
-							<span class="pdf-action-bar-label">
-								<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-								Sigree Food Menu
-							</span>
-							<div class="pdf-action-btns">
-								<a class="btn-pdf btn-pdf-secondary" href="assets/foodmenu.pdf" target="_blank" rel="noopener" aria-label="Open food menu in new tab">
-									<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-									Open
-								</a>
-								<a class="btn-pdf btn-pdf-primary" href="assets/foodmenu.pdf" download="Sigree-Food-Menu.pdf" aria-label="Download food menu PDF">
-									<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-									Download
-								</a>
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Masala Papad</div>
+									<p class="menu-item-desc">Crispy papad served with a spiced masala dip — light, crunchy, and perfect to start.</p>
+								</div>
+								<div class="menu-item-price">$9.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Samosa <span style="font-size:0.75rem;color:var(--color-text-muted);font-family:var(--font-body);font-style:italic;">2 pcs</span></div>
+									<p class="menu-item-desc">Classic crispy pastry filled with spiced potatoes and peas — simple, authentic, and timeless.</p>
+								</div>
+								<div class="menu-item-price">$7.99</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Samosa Chaat</div>
+									<p class="menu-item-desc">Veg samosa and chickpeas with onions, tomatoes, crunchy sev, and aromatic chaat masala — sweet, spicy, and tangy.</p>
+								</div>
+								<div class="menu-item-price">$11.99</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Cheese Loaded Fries</div>
+									<p class="menu-item-desc">Crispy fries smothered in rich butter chicken gravy, topped with melted cheese.</p>
+								</div>
+								<div class="menu-item-price">$9.90</div>
+							</div>
+
+						</div>
+					</section>
+
+					<!-- From the Garden -->
+					<section class="menu-section" aria-labelledby="section-garden">
+						<div class="menu-section-header">
+							<h2 class="menu-section-title" id="section-garden">From the Garden</h2>
+							<div class="menu-section-rule" aria-hidden="true"></div>
+						</div>
+						<div class="menu-items">
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Cheese Hariyali Bombs</div>
+									<p class="menu-item-desc">Golden-fried bites stuffed with melted cheese and fresh herb greens, served with house sweet chutney.</p>
+								</div>
+								<div class="menu-item-price">$20.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Manchurian</div>
+									<p class="menu-item-desc">Crunchy vegetable dumplings tossed in a tangy, mildly spiced soy-chilli glaze — a crowd favourite.</p>
+								</div>
+								<div class="menu-item-price">$20.90</div>
+							</div>
+
+						</div>
+					</section>
+
+					<!-- From the Tandoor -->
+					<section class="menu-section" aria-labelledby="section-tandoor">
+						<div class="menu-section-header">
+							<h2 class="menu-section-title" id="section-tandoor">From the Tandoor</h2>
+							<div class="menu-section-rule" aria-hidden="true"></div>
+						</div>
+						<div class="menu-items">
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Paneer Malai Tikka</div>
+									<p class="menu-item-desc">Melt-in-your-mouth paneer in fresh cream, yogurt and delicate spices, grilled for a light smoky finish. With mint chutney.</p>
+								</div>
+								<div class="menu-item-price">$23.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Paneer Tikka</div>
+									<p class="menu-item-desc">Marinated paneer grilled with fresh veges and pineapple — smoky, tangy, and lightly sweet. With green chutney.</p>
+								</div>
+								<div class="menu-item-price">$23.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Chicken Reshmi Kebab</div>
+									<p class="menu-item-desc">Silky-smooth chicken skewers marinated with cream and egg white, grilled to melt-in-your-mouth tenderness. With green chutney.</p>
+								</div>
+								<div class="menu-item-price">$23.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Chicken Tikka</div>
+									<p class="menu-item-desc">Juicy chicken in an aromatic spice blend, chargrilled over open flame for a signature smoky finish. With green chutney.</p>
+								</div>
+								<div class="menu-item-price">$19.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Samundari Jhinga</div>
+									<p class="menu-item-desc">Plump prawns in a spiced yogurt marinade, chargrilled in the tandoor and finished with a squeeze of fresh lemon. With green chutney.</p>
+								</div>
+								<div class="menu-item-price">$25.90</div>
+							</div>
+
+						</div>
+					</section>
+
+					<!-- Global Plates -->
+					<section class="menu-section" aria-labelledby="section-global">
+						<div class="menu-section-header">
+							<h2 class="menu-section-title" id="section-global">Global Plates</h2>
+							<div class="menu-section-rule" aria-hidden="true"></div>
+						</div>
+						<div class="menu-items">
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Sautéed Garlic Greens</div>
+									<p class="menu-item-desc">Pan-seared seasonal vegetables with a hint of garlic and melted cheese.</p>
+								</div>
+								<div class="menu-item-price">$12.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Mushroom Duplex <span style="font-size:0.75rem;color:var(--color-text-muted);font-family:var(--font-body);font-style:italic;">5 pcs</span></div>
+									<p class="menu-item-desc">Crispy fried mushrooms stuffed with spinach and nuts, spiced with cardamom and served with beetroot aioli.</p>
+								</div>
+								<div class="menu-item-price">$20.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Golden Cheese Bites <span style="font-size:0.75rem;color:var(--color-text-muted);font-family:var(--font-body);font-style:italic;">5 pcs</span></div>
+									<p class="menu-item-desc">Crispy golden-crusted bites with a molten cheese centre.</p>
+								</div>
+								<div class="menu-item-price">$19.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Sesame-Seared Tuna</div>
+									<p class="menu-item-desc">Pan-seared tuna coated in sesame seeds, served with guacamole and a bright mango-pineapple salsa.</p>
+								</div>
+								<div class="menu-item-price">$25.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Garlic Butter Tiger Prawns</div>
+									<p class="menu-item-desc">Tiger prawns sautéed in herb garlic butter, served with crisp coleslaw and warm bread.</p>
+								</div>
+								<div class="menu-item-price">$25.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Creamy Alfredo Chicken Pasta</div>
+									<p class="menu-item-desc">Tender chicken and spaghetti in a rich, velvety white cream sauce.</p>
+								</div>
+								<div class="menu-item-price">$27.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Basil Pesto Prawn Pasta</div>
+									<p class="menu-item-desc">Juicy prawns and shell pasta tossed in fresh basil pesto with lemon zest — light, fragrant, and satisfying.</p>
+								</div>
+								<div class="menu-item-price">$29.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Fish of the Day</div>
+									<p class="menu-item-desc">Chef's hand-selected catch, pan-fried golden, served with seasonal vegetables and house-made purée. Ask your server.</p>
+								</div>
+								<div class="menu-item-price">$37.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Braised Lamb Shank</div>
+									<p class="menu-item-desc">Slow-braised fall-off-the-bone tender, finished with a rich jus, buttery mash, and fresh greens.</p>
+								</div>
+								<div class="menu-item-price">$49.90</div>
+							</div>
+
+						</div>
+					</section>
+
+					<!-- Mains: Vegetarian -->
+					<section class="menu-section" aria-labelledby="section-veg">
+						<div class="menu-section-header">
+							<h2 class="menu-section-title" id="section-veg">Mains — Vegetarian</h2>
+							<div class="menu-section-rule" aria-hidden="true"></div>
+						</div>
+						<div class="menu-items">
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Veg Sabnam</div>
+									<p class="menu-item-desc">Mixed vegetables and mushrooms simmered in a flavourful, well-spiced Indian gravy.</p>
+								</div>
+								<div class="menu-item-price">$22.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Kofta Sham Savera</div>
+									<p class="menu-item-desc">Delicate vegetable koftas in a rich, aromatic gravy — quality ingredients, delicious taste.</p>
+								</div>
+								<div class="menu-item-price">$25.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Amritsari Chole Kulcha</div>
+									<p class="menu-item-desc">Classic Punjabi-style chickpeas in bold aromatic spices, served with 1 plain kulcha bread.</p>
+								</div>
+								<div class="menu-item-price">$24.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Paneer Kurchan</div>
+									<p class="menu-item-desc">Stir-fried cottage cheese with onions, capsicum and tomatoes, tossed in warming Indian spices.</p>
+								</div>
+								<div class="menu-item-price">$25.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Methi Malai Paneer</div>
+									<p class="menu-item-desc">Soft paneer in a rich, creamy sauce delicately flavoured with fenugreek leaves — subtly indulgent.</p>
+								</div>
+								<div class="menu-item-price">$25.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Dal Makhni</div>
+									<p class="menu-item-desc">Slow-cooked black lentils enriched overnight with butter and cream — a true North Indian classic.</p>
+								</div>
+								<div class="menu-item-price">$21.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Dal Fry / Dal Tadka</div>
+									<p class="menu-item-desc">Yellow lentils with tomatoes and spices, finished with a sizzling ghee tempering of cumin, garlic and chilli.</p>
+								</div>
+								<div class="menu-item-price">$21.90</div>
+							</div>
+
+						</div>
+					</section>
+
+					<!-- Mains: Non-Vegetarian -->
+					<section class="menu-section" aria-labelledby="section-nonveg">
+						<div class="menu-section-header">
+							<h2 class="menu-section-title" id="section-nonveg">Mains — Non-Vegetarian</h2>
+							<div class="menu-section-rule" aria-hidden="true"></div>
+						</div>
+						<div class="menu-items">
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Butter Chicken — Kiwi Style</div>
+									<p class="menu-item-desc">Tandoori chicken simmered in a smooth, mild tomato-butter sauce — crafted for the Kiwi palate.</p>
+								</div>
+								<div class="menu-item-price">$22.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Special Butter Chicken</div>
+									<p class="menu-item-desc">Chargrilled tandoori chicken slow-simmered in a velvety makhani gravy with butter, cream, and our secret house spice blend.</p>
+								</div>
+								<div class="menu-item-price">$27.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Awadhi Chicken Korma</div>
+									<p class="menu-item-desc">A Mughlai-inspired korma — tender chicken in a deeply fragrant gravy of yogurt, cream, nuts and slow-bloomed spices.</p>
+								</div>
+								<div class="menu-item-price">$24.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Murgh Lababdar</div>
+									<p class="menu-item-desc">Chicken with capsicum in a rich cashew and tomato gravy, layered with aromatic spices.</p>
+								</div>
+								<div class="menu-item-price">$24.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Hyderabad Chicken Curry</div>
+									<p class="menu-item-desc">A robust, aromatic curry rooted in South Indian tradition — bold spices, deep colour, full flavour.</p>
+								</div>
+								<div class="menu-item-price">$24.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Special Goat Bhuna</div>
+									<p class="menu-item-desc">Tender goat slow-cooked with onion, tomato and whole aromatic spices until the gravy is thick and deeply layered.</p>
+								</div>
+								<div class="menu-item-price">$24.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Kashmiri Lamb Rogan Josh</div>
+									<p class="menu-item-desc">Tender lamb slow-cooked in a rich, deeply aromatic Kashmiri gravy with whole spices and signature red hue.</p>
+								</div>
+								<div class="menu-item-price">$28.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Amritsari Fish Curry</div>
+									<p class="menu-item-desc">Fish marinated in traditional spices, fried golden, then simmered in a tangy onion-tomato gravy with ginger, garlic and aromatic spices.</p>
+								</div>
+								<div class="menu-item-price">$28.90</div>
+							</div>
+
+						</div>
+					</section>
+
+					<!-- Indo-Fusion: Pizza -->
+					<section class="menu-section" aria-labelledby="section-pizza">
+						<div class="menu-section-header">
+							<h2 class="menu-section-title" id="section-pizza">Indo-Fusion — Pizza</h2>
+							<div class="menu-section-rule" aria-hidden="true"></div>
+						</div>
+						<div class="menu-items">
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Margherita</div>
+									<p class="menu-item-desc">Classic tomato, mozzarella and fresh basil.</p>
+								</div>
+								<div class="menu-item-price">$21.99</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Cheesy Garlic</div>
+									<p class="menu-item-desc">Garlic butter base loaded with melted mozzarella and herbs.</p>
+								</div>
+								<div class="menu-item-price">$21.99</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Tandoori Paneer Tikka</div>
+									<p class="menu-item-desc">Spicy tandoori paneer, crisp veggies, and melted mozzarella on a rich, smoky base. Bold, cheesy, irresistible.</p>
+								</div>
+								<div class="menu-item-price">$24.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Peri Peri Chicken</div>
+									<p class="menu-item-desc">Spicy peri-peri marinated chicken with roasted peppers and melted cheese.</p>
+								</div>
+								<div class="menu-item-price">$24.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Special Butter Chicken</div>
+									<p class="menu-item-desc">Our house signature butter chicken sauce, layered generously with tender chicken and premium cheese. The full experience.</p>
+								</div>
+								<div class="menu-item-price">$24.90</div>
+							</div>
+
+						</div>
+					</section>
+
+					<!-- Indo-Fusion: Burgers -->
+					<section class="menu-section" aria-labelledby="section-burgers">
+						<div class="menu-section-header">
+							<h2 class="menu-section-title" id="section-burgers">Indo-Fusion — Burgers</h2>
+							<div class="menu-section-rule" aria-hidden="true"></div>
+						</div>
+						<p style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:1.5rem;">All burgers served with fries.</p>
+						<div class="menu-items">
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Samosa Burger</div>
+									<p class="menu-item-desc">A crispy spiced samosa patty with chutneys and fresh veggies in a soft bun. Crunchy, tangy, full of flavour.</p>
+								</div>
+								<div class="menu-item-price">$15.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Butter Chicken Burger</div>
+									<p class="menu-item-desc">Juicy chicken in a rich, creamy butter chicken sauce, tucked into a toasted bun.</p>
+								</div>
+								<div class="menu-item-price">$20.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Paneer Tikka Burger</div>
+									<p class="menu-item-desc">Grilled paneer tikka with fresh veggies and creamy sauce in a soft bun. Spicy and satisfying.</p>
+								</div>
+								<div class="menu-item-price">$20.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Chicken Tikka Burger</div>
+									<p class="menu-item-desc">Succulent chicken tikka with fresh toppings and zesty sauce in a soft bun.</p>
+								</div>
+								<div class="menu-item-price">$20.90</div>
+							</div>
+
+						</div>
+					</section>
+
+					<!-- Kids Menu -->
+					<section class="menu-section" aria-labelledby="section-kids">
+						<div class="menu-section-header">
+							<h2 class="menu-section-title" id="section-kids">Kids Menu</h2>
+							<div class="menu-section-rule" aria-hidden="true"></div>
+						</div>
+						<div class="menu-items">
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Chicken Nuggets and Fries</div>
+									<p class="menu-item-desc">Golden fried chicken nuggets with butter chicken dipping sauce.</p>
+								</div>
+								<div class="menu-item-price">$14.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Golden Cheese Bites <span style="font-size:0.75rem;color:var(--color-text-muted);font-family:var(--font-body);font-style:italic;">2 pcs</span></div>
+									<p class="menu-item-desc">House-made cheese balls fried till golden.</p>
+								</div>
+								<div class="menu-item-price">$9.99</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Butter Chicken Pasta</div>
+									<p class="menu-item-desc">Tender chicken and pasta in a mild, creamy butter chicken sauce.</p>
+								</div>
+								<div class="menu-item-price">$19.99</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Margherita Pizza</div>
+									<p class="menu-item-desc">Classic tomato and mozzarella on a soft base.</p>
+								</div>
+								<div class="menu-item-price">$19.99</div>
+							</div>
+
+						</div>
+					</section>
+
+					<!-- Breads -->
+					<section class="menu-section" aria-labelledby="section-breads">
+						<div class="menu-section-header">
+							<h2 class="menu-section-title" id="section-breads">Breads</h2>
+							<div class="menu-section-rule" aria-hidden="true"></div>
+						</div>
+						<div class="menu-items list-style">
+
+							<div class="menu-item">
+								<div class="menu-item-body"><div class="menu-item-name">Tandoori Roti — Plain</div></div>
+								<div class="menu-item-price">$4.00</div>
+							</div>
+							<div class="menu-item">
+								<div class="menu-item-body"><div class="menu-item-name">Tandoori Roti — Butter</div></div>
+								<div class="menu-item-price">$4.50</div>
+							</div>
+							<div class="menu-item">
+								<div class="menu-item-body"><div class="menu-item-name">Plain Naan</div></div>
+								<div class="menu-item-price">$4.00</div>
+							</div>
+							<div class="menu-item">
+								<div class="menu-item-body"><div class="menu-item-name">Butter Naan</div></div>
+								<div class="menu-item-price">$4.50</div>
+							</div>
+							<div class="menu-item">
+								<div class="menu-item-body"><div class="menu-item-name">Garlic Naan</div></div>
+								<div class="menu-item-price">$5.00</div>
+							</div>
+							<div class="menu-item">
+								<div class="menu-item-body"><div class="menu-item-name">Cheese &amp; Garlic Naan</div></div>
+								<div class="menu-item-price">$6.00</div>
+							</div>
+							<div class="menu-item">
+								<div class="menu-item-body"><div class="menu-item-name">Green Chilli Cheese Naan</div></div>
+								<div class="menu-item-price">$6.00</div>
+							</div>
+							<div class="menu-item">
+								<div class="menu-item-body"><div class="menu-item-name">Plain Kulcha</div></div>
+								<div class="menu-item-price">$6.00</div>
+							</div>
+							<div class="menu-item">
+								<div class="menu-item-body"><div class="menu-item-name">Lacha Paratha</div></div>
+								<div class="menu-item-price">$6.00</div>
+							</div>
+							<div class="menu-item">
+								<div class="menu-item-body"><div class="menu-item-name">Lacha Paratha with Butter</div></div>
+								<div class="menu-item-price">$7.00</div>
+							</div>
+							<div class="menu-item">
+								<div class="menu-item-body"><div class="menu-item-name">Chocolate Naan</div></div>
+								<div class="menu-item-price">$10.00</div>
+							</div>
+
+						</div>
+					</section>
+
+					<!-- Biryani & Rice -->
+					<section class="menu-section" aria-labelledby="section-rice">
+						<div class="menu-section-header">
+							<h2 class="menu-section-title" id="section-rice">Biryani &amp; Rice</h2>
+							<div class="menu-section-rule" aria-hidden="true"></div>
+						</div>
+						<div class="menu-items">
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Hyderabadi Veg Dum Biryani</div>
+									<p class="menu-item-desc">Fragrant basmati layered with seasonal vegetables and whole aromatic spices, slow-cooked dum style. With veg raita.</p>
+								</div>
+								<div class="menu-item-price">$24.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Lucknowi Chicken Dum Biryani</div>
+									<p class="menu-item-desc">Tender chicken slow-cooked with saffron-infused basmati in the Awadhi tradition — delicate, fragrant, and regal. With veg raita.</p>
+								</div>
+								<div class="menu-item-price">$26.90</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Goat Dum Biryani</div>
+									<p class="menu-item-desc">Succulent goat meat and fragrant rice sealed together with traditional spices. Served with veg raita.</p>
+								</div>
+								<div class="menu-item-price">$26.90</div>
+							</div>
+
+						</div>
+						<!-- Simple rice list -->
+						<div class="menu-items list-style" style="margin-top:1rem;border-top:1px solid var(--color-border-subtle);padding-top:0.5rem;">
+							<div class="menu-item">
+								<div class="menu-item-body"><div class="menu-item-name">Steam Rice</div></div>
+								<div class="menu-item-price">$4.99</div>
+							</div>
+							<div class="menu-item">
+								<div class="menu-item-body"><div class="menu-item-name">Jeera Rice</div></div>
+								<div class="menu-item-price">$6.99</div>
+							</div>
+							<div class="menu-item">
+								<div class="menu-item-body"><div class="menu-item-name">Green Peas Pulao</div></div>
+								<div class="menu-item-price">$9.99</div>
+							</div>
+							<div class="menu-item">
+								<div class="menu-item-body"><div class="menu-item-name">Dal Palak Khichdi</div></div>
+								<div class="menu-item-price">$11.90</div>
 							</div>
 						</div>
+					</section>
 
-						<!-- Inline viewer -->
-						<iframe
-							class="pdf-viewer"
-							src="assets/foodmenu.pdf#toolbar=0&navpanes=0&scrollbar=1"
-							title="Sigree Indian Cuisine Food Menu"
-							aria-label="Sigree Food Menu PDF viewer"
-							loading="lazy"
-						></iframe>
+				</div><!-- /.container -->
+			</div><!-- /#panel-food -->
 
-						<!-- Shown only if iframe fails (JS-driven) -->
-						<div class="pdf-fallback" id="food-fallback" aria-live="polite">
-							<svg class="pdf-fallback-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-							<h3>Your browser doesn't support inline PDFs</h3>
-							<p>No problem — use the buttons above to open or download the menu.</p>
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-			<!-- ===== Drinks Menu Panel ===== -->
+			<!-- =========================================
+			     DRINKS PANEL
+			     ========================================= -->
 			<div class="tab-panel" id="panel-drinks" role="tabpanel" aria-labelledby="tab-drinks" hidden>
 				<div class="container">
-
-					<div class="panel-intro">
+					<div class="drinks-coming-soon">
+						<svg class="drinks-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+							<path d="M8 22h8M12 11v11M3 3l4 9h10l4-9H3z"/>
+						</svg>
 						<h2>Drinks Menu</h2>
-						<p>Our full bar & drinks selection — scroll through below, or download for easier reading.</p>
+						<p>Ask your server for today's drinks selection — from craft cocktails and wine to lassi and mocktails.</p>
 					</div>
-
-					<div class="pdf-card">
-						<!-- Action bar -->
-						<div class="pdf-action-bar">
-							<span class="pdf-action-bar-label">
-								<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-								Sigree Drinks Menu
-							</span>
-							<div class="pdf-action-btns">
-								<a class="btn-pdf btn-pdf-secondary" href="assets/drinkmenu.pdf" target="_blank" rel="noopener" aria-label="Open drinks menu in new tab">
-									<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-									Open
-								</a>
-								<a class="btn-pdf btn-pdf-primary" href="assets/drinkmenu.pdf" download="Sigree-Drinks-Menu.pdf" aria-label="Download drinks menu PDF">
-									<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-									Download
-								</a>
-							</div>
-						</div>
-
-						<!-- Inline viewer -->
-						<iframe
-							class="pdf-viewer"
-							src="assets/drinkmenu.pdf#toolbar=0&navpanes=0&scrollbar=1"
-							title="Sigree Indian Cuisine Drinks Menu"
-							aria-label="Sigree Drinks Menu PDF viewer"
-							loading="lazy"
-						></iframe>
-
-						<!-- Shown only if iframe fails (JS-driven) -->
-						<div class="pdf-fallback" id="drinks-fallback" aria-live="polite">
-							<svg class="pdf-fallback-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-							<h3>Your browser doesn't support inline PDFs</h3>
-							<p>No problem — use the buttons above to open or download the menu.</p>
-						</div>
-					</div>
-
 				</div>
 			</div>
 
-		</div>
+		</div><!-- /.tab-panels -->
 
 		<!-- Share Section -->
 		<section class="share-section" aria-label="Share this menu">
@@ -533,14 +1046,13 @@
 	</footer>
 
 	<script>
-		// Footer year
 		document.getElementById('year').textContent = new Date().getFullYear();
 
-		// ---- Activate tab from URL hash ----
+		// ---- Tabs ----
 		const tabs   = document.querySelectorAll('.tab-btn');
 		const panels = document.querySelectorAll('.tab-panel');
 
-		function activateTabById(panelId) {
+		function activateTab(panelId) {
 			const matchTab   = document.querySelector(`[aria-controls="${panelId}"]`);
 			const matchPanel = document.getElementById(panelId);
 			if (!matchTab || !matchPanel) return;
@@ -553,31 +1065,18 @@
 		}
 
 		const hash = window.location.hash.replace('#', '');
-		if (hash === 'panel-drinks') activateTabById('panel-drinks');
+		if (hash === 'panel-drinks') activateTab('panel-drinks');
 
-		// ---- Tab switching ----
 		tabs.forEach(tab => {
-			tab.addEventListener('click', () => {
-				const target = tab.getAttribute('aria-controls');
-				tabs.forEach(t   => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
-				panels.forEach(p => { p.classList.remove('active'); p.hidden = true; });
-				tab.classList.add('active');
-				tab.setAttribute('aria-selected', 'true');
-				const activePanel = document.getElementById(target);
-				activePanel.classList.add('active');
-				activePanel.hidden = false;
-			});
-
-			// Keyboard nav: left/right arrow
+			tab.addEventListener('click', () => activateTab(tab.getAttribute('aria-controls')));
 			tab.addEventListener('keydown', e => {
-				const tabList = [...tabs];
-				const idx = tabList.indexOf(tab);
-				if (e.key === 'ArrowRight') tabList[(idx + 1) % tabList.length].focus();
-				else if (e.key === 'ArrowLeft') tabList[(idx - 1 + tabList.length) % tabList.length].focus();
+				const list = [...tabs], idx = list.indexOf(tab);
+				if (e.key === 'ArrowRight') list[(idx + 1) % list.length].focus();
+				if (e.key === 'ArrowLeft')  list[(idx - 1 + list.length) % list.length].focus();
 			});
 		});
 
-		// ---- Share button ----
+		// ---- Share ----
 		const shareBtn      = document.getElementById('share-btn');
 		const shareFeedback = document.getElementById('share-feedback');
 
@@ -591,29 +1090,20 @@
 		}
 
 		shareBtn.addEventListener('click', async () => {
-			const shareData = {
-				title: 'Sigree Indian Cuisine — Menu',
-				text: 'Check out the menu at Sigree Indian Cuisine, Auckland.',
-				url: window.location.href
-			};
+			const data = { title: 'Sigree Indian Cuisine — Menu', text: 'Check out the menu at Sigree Indian Cuisine, Auckland.', url: window.location.href };
 			if (navigator.share) {
-				try { await navigator.share(shareData); }
-				catch (err) { if (err.name !== 'AbortError') copyToClipboard(); }
-			} else {
-				copyToClipboard();
-			}
+				try { await navigator.share(data); } catch (e) { if (e.name !== 'AbortError') copyUrl(); }
+			} else { copyUrl(); }
 		});
 
-		function copyToClipboard() {
+		function copyUrl() {
 			const url = window.location.href;
-			if (navigator.clipboard && navigator.clipboard.writeText) {
-				navigator.clipboard.writeText(url).then(() => showFeedback('Link copied to clipboard')).catch(() => fallbackCopy(url));
-			} else {
-				fallbackCopy(url);
-			}
+			if (navigator.clipboard?.writeText) {
+				navigator.clipboard.writeText(url).then(() => showFeedback('Link copied to clipboard')).catch(() => fallback(url));
+			} else { fallback(url); }
 		}
 
-		function fallbackCopy(text) {
+		function fallback(text) {
 			const ta = document.createElement('textarea');
 			ta.value = text;
 			ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
@@ -623,22 +1113,8 @@
 			catch { showFeedback('Copy this link: ' + text); }
 			document.body.removeChild(ta);
 		}
-
-		// ---- PDF iframe fallback detection ----
-		// Some browsers (especially mobile Safari) can't render PDFs inline.
-		// If the iframe has no content height after a short delay, show fallback.
-		document.querySelectorAll('.pdf-viewer').forEach(iframe => {
-			iframe.addEventListener('error', () => {
-				const fallback = iframe.closest('.pdf-card').querySelector('.pdf-fallback');
-				if (fallback) {
-					iframe.style.display = 'none';
-					fallback.style.display = 'flex';
-				}
-			});
-		});
 	</script>
 
-	<!-- Mobile nav overlay (from main site) -->
 	<script src="script.js"></script>
 
 </body>
