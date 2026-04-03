@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="robots" content="index, follow" />
 	<link rel="canonical" href="https://sigreebbq.netlify.app/menu.html" />
-	<meta name="description" content="Sigree Indian Cuisine Menu — Explore our full food and drinks menu at Auckland's premier Indian fine dining restaurant." />
-	<meta name="keywords" content="Indian menu Auckland, sigree menu, Indian food, Avondale restaurant menu, butter chicken, biryani" />
+	<meta name="description"
+		content="Sigree Indian Cuisine Menu — Explore our full food and drinks menu at Auckland's premier Indian fine dining restaurant." />
+	<meta name="keywords"
+		content="Indian menu Auckland, sigree menu, Indian food, Avondale restaurant menu, butter chicken, biryani" />
 	<meta property="og:title" content="Menu | Sigree Indian Cuisine" />
 	<meta property="og:description" content="Explore our full menu at Sigree Indian Cuisine, Auckland." />
 	<meta property="og:type" content="website" />
@@ -14,10 +17,11 @@
 	<link rel="icon" href="favicon.ico" type="image/x-icon" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
+		rel="stylesheet" />
 	<link rel="stylesheet" href="styles.css" />
 	<style>
-
 		/* ============================================
 		   Menu Page — Inline Text Edition
 		   ============================================ */
@@ -72,29 +76,53 @@
 			white-space: nowrap;
 		}
 
-		.tab-btn + .tab-btn { border-left: 1px solid var(--color-border); }
+		.tab-btn+.tab-btn {
+			border-left: 1px solid var(--color-border);
+		}
 
 		.tab-btn::after {
 			content: '';
 			position: absolute;
-			bottom: 0; left: 50%;
-			width: 0; height: 2px;
+			bottom: 0;
+			left: 50%;
+			width: 0;
+			height: 2px;
 			background: var(--color-accent);
 			transform: translateX(-50%);
 			transition: width 0.35s var(--ease-out);
 		}
 
-		.tab-btn.active { color: var(--color-text); background: var(--color-bg-elevated); }
-		.tab-btn.active::after { width: 100%; }
-		.tab-btn:hover:not(.active) { color: var(--color-text); background: rgba(255,255,255,0.04); }
+		.tab-btn.active {
+			color: var(--color-text);
+			background: var(--color-bg-elevated);
+		}
+
+		.tab-btn.active::after {
+			width: 100%;
+		}
+
+		.tab-btn:hover:not(.active) {
+			color: var(--color-text);
+			background: rgba(255, 255, 255, 0.04);
+		}
 
 		/* ----- Tab Panels ----- */
-		.tab-panels { padding-bottom: clamp(4rem, 10vh, 7rem); }
-		.tab-panel { display: none; }
-		.tab-panel.active { display: block; }
+		.tab-panels {
+			padding-bottom: clamp(4rem, 10vh, 7rem);
+		}
+
+		.tab-panel {
+			display: none;
+		}
+
+		.tab-panel.active {
+			display: block;
+		}
 
 		/* ----- Menu Body ----- */
-		.menu-body { padding-top: clamp(2rem, 5vw, 3.5rem); }
+		.menu-body {
+			padding-top: clamp(2rem, 5vw, 3.5rem);
+		}
 
 		/* ============================================
 		   Floating Section Jump Nav
@@ -128,7 +156,9 @@
 			-webkit-mask-image: linear-gradient(to right, transparent, black 2rem, black calc(100% - 2rem), transparent);
 		}
 
-		.section-nav-inner::-webkit-scrollbar { display: none; }
+		.section-nav-inner::-webkit-scrollbar {
+			display: none;
+		}
 
 		.sec-pill {
 			display: inline-flex;
@@ -212,7 +242,9 @@
 			gap: 0;
 		}
 
-		.menu-items.list-style { grid-template-columns: 1fr; }
+		.menu-items.list-style {
+			grid-template-columns: 1fr;
+		}
 
 		/* ============================================
 		   Individual Menu Item
@@ -230,14 +262,22 @@
 
 		/* Hover: subtle bg tint only */
 		.menu-item:hover {
-			background: rgba(255,255,255,0.025);
+			background: rgba(255, 255, 255, 0.025);
 			border-radius: 6px;
 		}
 
-		.menu-items:not(.list-style) .menu-item:last-child { border-bottom: none; }
-		.list-style .menu-item:last-child { border-bottom: none; }
+		.menu-items:not(.list-style) .menu-item:last-child {
+			border-bottom: none;
+		}
 
-		.menu-item-body { flex: 1; min-width: 0; }
+		.list-style .menu-item:last-child {
+			border-bottom: none;
+		}
+
+		.menu-item-body {
+			flex: 1;
+			min-width: 0;
+		}
 
 		/* Item name row: holds name + badges */
 		.menu-item-name-row {
@@ -275,7 +315,9 @@
 		}
 
 		/* Breads compact */
-		.list-style .menu-item { padding: 0.75rem 0; }
+		.list-style .menu-item {
+			padding: 0.75rem 0;
+		}
 
 		/* ============================================
 		   Veg / Non-Veg Dot (Indian standard symbol)
@@ -299,10 +341,21 @@
 			border-radius: 50%;
 		}
 
-		.diet-dot.veg  { border-color: #4ade80; }
-		.diet-dot.veg::after  { background: #4ade80; }
-		.diet-dot.non-veg { border-color: #fb923c; }
-		.diet-dot.non-veg::after { background: #fb923c; }
+		.diet-dot.veg {
+			border-color: #4ade80;
+		}
+
+		.diet-dot.veg::after {
+			background: #4ade80;
+		}
+
+		.diet-dot.non-veg {
+			border-color: #fb923c;
+		}
+
+		.diet-dot.non-veg::after {
+			background: #fb923c;
+		}
 
 		/* ============================================
 		   Chef's Pick Badge
@@ -320,6 +373,22 @@
 			border-radius: 4px;
 			white-space: nowrap;
 			background: transparent;
+		}
+
+		/* Sigree logo badge inline with item name */
+		.sigree-name-wrap {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.35rem;
+		}
+
+		.sigree-name-logo {
+			height: 2em;
+			width: auto;
+			object-fit: contain;
+			vertical-align: middle;
+			opacity: 0.92;
+			flex-shrink: 0;
 		}
 
 		.drinks-intro {
@@ -368,7 +437,9 @@
 			text-align: center;
 		}
 
-		.share-section .section-label { margin-bottom: 0.8rem; }
+		.share-section .section-label {
+			margin-bottom: 0.8rem;
+		}
 
 		.share-section p {
 			color: var(--color-text-secondary);
@@ -400,7 +471,11 @@
 			color: var(--color-accent);
 		}
 
-		.btn-share svg { width: 16px; height: 16px; flex-shrink: 0; }
+		.btn-share svg {
+			width: 16px;
+			height: 16px;
+			flex-shrink: 0;
+		}
 
 		.share-feedback {
 			display: block;
@@ -413,7 +488,10 @@
 			transition: opacity 0.4s, transform 0.4s;
 		}
 
-		.share-feedback.visible { opacity: 1; transform: translateY(0); }
+		.share-feedback.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
 
 		/* ----- Desktop: 2-column gutter & divider ----- */
 		@media (min-width: 701px) {
@@ -440,11 +518,14 @@
 		}
 
 		@media (max-width: 480px) {
-			.tab-btn { padding: 0.8rem 1.2rem; font-size: 0.76rem; }
+			.tab-btn {
+				padding: 0.8rem 1.2rem;
+				font-size: 0.76rem;
+			}
 		}
-
 	</style>
 </head>
+
 <body>
 
 	<a class="skip-link" href="#main-content">Skip to content</a>
@@ -469,7 +550,8 @@
 				<a href="index.html#contact">Visit</a>
 			</nav>
 			<a class="nav-cta" href="index.html#reserve">Reserve</a>
-			<button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav">
+			<button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false"
+				aria-controls="primary-nav">
 				<span></span><span></span>
 			</button>
 		</div>
@@ -487,8 +569,10 @@
 				<!-- Tab Switcher -->
 				<div class="tab-row" role="tablist" aria-label="Menu categories">
 					<div class="tab-bar">
-						<button class="tab-btn active" id="tab-food" role="tab" aria-selected="true" aria-controls="panel-food">Food Menu</button>
-						<button class="tab-btn" id="tab-drinks" role="tab" aria-selected="false" aria-controls="panel-drinks">Drinks</button>
+						<button class="tab-btn active" id="tab-food" role="tab" aria-selected="true"
+							aria-controls="panel-food">Food Menu</button>
+						<button class="tab-btn" id="tab-drinks" role="tab" aria-selected="false"
+							aria-controls="panel-drinks">Drinks</button>
 					</div>
 				</div>
 			</div>
@@ -531,15 +615,19 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Masala Papad</div>
-									<p class="menu-item-desc">Crispy papad served with a spiced masala dip — light, crunchy, and perfect to start.</p>
+									<p class="menu-item-desc">Crispy papad served with a spiced masala dip — light,
+										crunchy, and perfect to start.</p>
 								</div>
 								<div class="menu-item-price">$9.90</div>
 							</div>
 
 							<div class="menu-item">
 								<div class="menu-item-body">
-									<div class="menu-item-name">Samosa <span style="font-size:0.75rem;color:var(--color-text-muted);font-family:var(--font-body);font-style:italic;">2 pcs</span></div>
-									<p class="menu-item-desc">Classic crispy pastry filled with spiced potatoes and peas — simple, authentic, and timeless.</p>
+									<div class="menu-item-name">Samosa <span
+											style="font-size:0.75rem;color:var(--color-text-muted);font-family:var(--font-body);font-style:italic;">2
+											pcs</span></div>
+									<p class="menu-item-desc">Classic crispy pastry filled with spiced potatoes and peas
+										— simple, authentic, and timeless.</p>
 								</div>
 								<div class="menu-item-price">$7.99</div>
 							</div>
@@ -547,7 +635,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Samosa Chaat</div>
-									<p class="menu-item-desc">Veg samosa and chickpeas with onions, tomatoes, crunchy sev, and aromatic chaat masala — sweet, spicy, and tangy.</p>
+									<p class="menu-item-desc">Veg samosa and chickpeas with onions, tomatoes, crunchy
+										sev, and aromatic chaat masala — sweet, spicy, and tangy.</p>
 								</div>
 								<div class="menu-item-price">$11.99</div>
 							</div>
@@ -555,7 +644,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Cheese Loaded Fries</div>
-									<p class="menu-item-desc">Crispy fries smothered in rich butter chicken gravy, topped with melted cheese.</p>
+									<p class="menu-item-desc">Crispy fries smothered in rich butter chicken gravy,
+										topped with melted cheese.</p>
 								</div>
 								<div class="menu-item-price">$9.90</div>
 							</div>
@@ -574,7 +664,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Cheese Hariyali Bombs</div>
-									<p class="menu-item-desc">Golden-fried bites stuffed with melted cheese and fresh herb greens, served with house sweet chutney.</p>
+									<p class="menu-item-desc">Golden-fried bites stuffed with melted cheese and fresh
+										herb greens, served with house sweet chutney.</p>
 								</div>
 								<div class="menu-item-price">$20.90</div>
 							</div>
@@ -582,7 +673,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Manchurian</div>
-									<p class="menu-item-desc">Crunchy vegetable dumplings tossed in a tangy, mildly spiced soy-chilli glaze — a crowd favourite.</p>
+									<p class="menu-item-desc">Crunchy vegetable dumplings tossed in a tangy, mildly
+										spiced soy-chilli glaze — a crowd favourite.</p>
 								</div>
 								<div class="menu-item-price">$20.90</div>
 							</div>
@@ -601,7 +693,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Paneer Malai Tikka</div>
-									<p class="menu-item-desc">Melt-in-your-mouth paneer in fresh cream, yogurt and delicate spices, grilled for a light smoky finish. With mint chutney.</p>
+									<p class="menu-item-desc">Melt-in-your-mouth paneer in fresh cream, yogurt and
+										delicate spices, grilled for a light smoky finish. With mint chutney.</p>
 								</div>
 								<div class="menu-item-price">$23.90</div>
 							</div>
@@ -609,7 +702,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Paneer Tikka</div>
-									<p class="menu-item-desc">Marinated paneer grilled with fresh veges and pineapple — smoky, tangy, and lightly sweet. With green chutney.</p>
+									<p class="menu-item-desc">Marinated paneer grilled with fresh veges and pineapple —
+										smoky, tangy, and lightly sweet. With green chutney.</p>
 								</div>
 								<div class="menu-item-price">$23.90</div>
 							</div>
@@ -617,7 +711,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Chicken Reshmi Kebab</div>
-									<p class="menu-item-desc">Silky-smooth chicken skewers marinated with cream and egg white, grilled to melt-in-your-mouth tenderness. With green chutney.</p>
+									<p class="menu-item-desc">Silky-smooth chicken skewers marinated with cream and egg
+										white, grilled to melt-in-your-mouth tenderness. With green chutney.</p>
 								</div>
 								<div class="menu-item-price">$23.90</div>
 							</div>
@@ -625,7 +720,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Chicken Tikka</div>
-									<p class="menu-item-desc">Juicy chicken in an aromatic spice blend, chargrilled over open flame for a signature smoky finish. With green chutney.</p>
+									<p class="menu-item-desc">Juicy chicken in an aromatic spice blend, chargrilled over
+										open flame for a signature smoky finish. With green chutney.</p>
 								</div>
 								<div class="menu-item-price">$19.90</div>
 							</div>
@@ -633,7 +729,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Samundari Jhinga</div>
-									<p class="menu-item-desc">Plump prawns in a spiced yogurt marinade, chargrilled in the tandoor and finished with a squeeze of fresh lemon. With green chutney.</p>
+									<p class="menu-item-desc">Plump prawns in a spiced yogurt marinade, chargrilled in
+										the tandoor and finished with a squeeze of fresh lemon. With green chutney.</p>
 								</div>
 								<div class="menu-item-price">$25.90</div>
 							</div>
@@ -652,23 +749,30 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Sautéed Garlic Greens</div>
-									<p class="menu-item-desc">Pan-seared seasonal vegetables with a hint of garlic and melted cheese.</p>
+									<p class="menu-item-desc">Pan-seared seasonal vegetables with a hint of garlic and
+										melted cheese.</p>
 								</div>
 								<div class="menu-item-price">$12.90</div>
 							</div>
 
 							<div class="menu-item">
 								<div class="menu-item-body">
-									<div class="menu-item-name">Mushroom Duplex <span style="font-size:0.75rem;color:var(--color-text-muted);font-family:var(--font-body);font-style:italic;">5 pcs</span></div>
-									<p class="menu-item-desc">Crispy fried mushrooms stuffed with spinach and nuts, spiced with cardamom and served with beetroot aioli.</p>
+									<div class="menu-item-name">Mushroom Duplex <span
+											style="font-size:0.75rem;color:var(--color-text-muted);font-family:var(--font-body);font-style:italic;">5
+											pcs</span></div>
+									<p class="menu-item-desc">Crispy fried mushrooms stuffed with spinach and nuts,
+										spiced with cardamom and served with beetroot aioli.</p>
 								</div>
 								<div class="menu-item-price">$20.90</div>
 							</div>
 
 							<div class="menu-item">
 								<div class="menu-item-body">
-									<div class="menu-item-name">Golden Cheese Bites <span style="font-size:0.75rem;color:var(--color-text-muted);font-family:var(--font-body);font-style:italic;">5 pcs</span></div>
-									<p class="menu-item-desc">Crispy golden-crusted bites with a molten cheese centre.</p>
+									<div class="menu-item-name">Golden Cheese Bites <span
+											style="font-size:0.75rem;color:var(--color-text-muted);font-family:var(--font-body);font-style:italic;">5
+											pcs</span></div>
+									<p class="menu-item-desc">Crispy golden-crusted bites with a molten cheese centre.
+									</p>
 								</div>
 								<div class="menu-item-price">$19.90</div>
 							</div>
@@ -676,7 +780,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Sesame-Seared Tuna</div>
-									<p class="menu-item-desc">Pan-seared tuna coated in sesame seeds, served with guacamole and a bright mango-pineapple salsa.</p>
+									<p class="menu-item-desc">Pan-seared tuna coated in sesame seeds, served with
+										guacamole and a bright mango-pineapple salsa.</p>
 								</div>
 								<div class="menu-item-price">$25.90</div>
 							</div>
@@ -684,7 +789,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Garlic Butter Tiger Prawns</div>
-									<p class="menu-item-desc">Tiger prawns sautéed in herb garlic butter, served with crisp coleslaw and warm bread.</p>
+									<p class="menu-item-desc">Tiger prawns sautéed in herb garlic butter, served with
+										crisp coleslaw and warm bread.</p>
 								</div>
 								<div class="menu-item-price">$25.90</div>
 							</div>
@@ -692,7 +798,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Creamy Alfredo Chicken Pasta</div>
-									<p class="menu-item-desc">Tender chicken and spaghetti in a rich, velvety white cream sauce.</p>
+									<p class="menu-item-desc">Tender chicken and spaghetti in a rich, velvety white
+										cream sauce.</p>
 								</div>
 								<div class="menu-item-price">$27.90</div>
 							</div>
@@ -700,7 +807,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Basil Pesto Prawn Pasta</div>
-									<p class="menu-item-desc">Juicy prawns and shell pasta tossed in fresh basil pesto with lemon zest — light, fragrant, and satisfying.</p>
+									<p class="menu-item-desc">Juicy prawns and shell pasta tossed in fresh basil pesto
+										with lemon zest — light, fragrant, and satisfying.</p>
 								</div>
 								<div class="menu-item-price">$29.90</div>
 							</div>
@@ -708,7 +816,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Fish of the Day</div>
-									<p class="menu-item-desc">Chef's hand-selected catch, pan-fried golden, served with seasonal vegetables and house-made purée. Ask your server.</p>
+									<p class="menu-item-desc">Chef's hand-selected catch, pan-fried golden, served with
+										seasonal vegetables and house-made purée. Ask your server.</p>
 								</div>
 								<div class="menu-item-price">$37.90</div>
 							</div>
@@ -716,7 +825,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Braised Lamb Shank</div>
-									<p class="menu-item-desc">Slow-braised fall-off-the-bone tender, finished with a rich jus, buttery mash, and fresh greens.</p>
+									<p class="menu-item-desc">Slow-braised fall-off-the-bone tender, finished with a
+										rich jus, buttery mash, and fresh greens.</p>
 								</div>
 								<div class="menu-item-price">$49.90</div>
 							</div>
@@ -735,7 +845,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Veg Sabnam</div>
-									<p class="menu-item-desc">Mixed vegetables and mushrooms simmered in a flavourful, well-spiced Indian gravy.</p>
+									<p class="menu-item-desc">Mixed vegetables and mushrooms simmered in a flavourful,
+										well-spiced Indian gravy.</p>
 								</div>
 								<div class="menu-item-price">$22.90</div>
 							</div>
@@ -743,7 +854,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Kofta Sham Savera</div>
-									<p class="menu-item-desc">Delicate vegetable koftas in a rich, aromatic gravy — quality ingredients, delicious taste.</p>
+									<p class="menu-item-desc">Delicate vegetable koftas in a rich, aromatic gravy —
+										quality ingredients, delicious taste.</p>
 								</div>
 								<div class="menu-item-price">$25.90</div>
 							</div>
@@ -751,7 +863,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Amritsari Chole Kulcha</div>
-									<p class="menu-item-desc">Classic Punjabi-style chickpeas in bold aromatic spices, served with 1 plain kulcha bread.</p>
+									<p class="menu-item-desc">Classic Punjabi-style chickpeas in bold aromatic spices,
+										served with 1 plain kulcha bread.</p>
 								</div>
 								<div class="menu-item-price">$24.90</div>
 							</div>
@@ -759,7 +872,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Paneer Kurchan</div>
-									<p class="menu-item-desc">Stir-fried cottage cheese with onions, capsicum and tomatoes, tossed in warming Indian spices.</p>
+									<p class="menu-item-desc">Stir-fried cottage cheese with onions, capsicum and
+										tomatoes, tossed in warming Indian spices.</p>
 								</div>
 								<div class="menu-item-price">$25.90</div>
 							</div>
@@ -767,7 +881,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Methi Malai Paneer</div>
-									<p class="menu-item-desc">Soft paneer in a rich, creamy sauce delicately flavoured with fenugreek leaves — subtly indulgent.</p>
+									<p class="menu-item-desc">Soft paneer in a rich, creamy sauce delicately flavoured
+										with fenugreek leaves — subtly indulgent.</p>
 								</div>
 								<div class="menu-item-price">$25.90</div>
 							</div>
@@ -775,7 +890,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Dal Makhni</div>
-									<p class="menu-item-desc">Slow-cooked black lentils enriched overnight with butter and cream — a true North Indian classic.</p>
+									<p class="menu-item-desc">Slow-cooked black lentils enriched overnight with butter
+										and cream — a true North Indian classic.</p>
 								</div>
 								<div class="menu-item-price">$21.90</div>
 							</div>
@@ -783,7 +899,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Dal Fry / Dal Tadka</div>
-									<p class="menu-item-desc">Yellow lentils with tomatoes and spices, finished with a sizzling ghee tempering of cumin, garlic and chilli.</p>
+									<p class="menu-item-desc">Yellow lentils with tomatoes and spices, finished with a
+										sizzling ghee tempering of cumin, garlic and chilli.</p>
 								</div>
 								<div class="menu-item-price">$21.90</div>
 							</div>
@@ -802,15 +919,19 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Butter Chicken — Kiwi Style</div>
-									<p class="menu-item-desc">Tandoori chicken simmered in a smooth, mild tomato-butter sauce — crafted for the Kiwi palate.</p>
+									<p class="menu-item-desc">Tandoori chicken simmered in a smooth, mild tomato-butter
+										sauce — crafted for the Kiwi palate.</p>
 								</div>
 								<div class="menu-item-price">$22.90</div>
 							</div>
 
 							<div class="menu-item">
 								<div class="menu-item-body">
-									<div class="menu-item-name">Special Butter Chicken</div>
-									<p class="menu-item-desc">Chargrilled tandoori chicken slow-simmered in a velvety makhani gravy with butter, cream, and our secret house spice blend.</p>
+									<div class="menu-item-name"><span class="sigree-name-wrap"><img
+												src="assets/SIGREELOGO1.png" alt="Sigree"
+												class="sigree-name-logo">Special Butter Chicken</span></div>
+									<p class="menu-item-desc">Chargrilled tandoori chicken slow-simmered in a velvety
+										makhani gravy with butter, cream, and our secret house spice blend.</p>
 								</div>
 								<div class="menu-item-price">$27.90</div>
 							</div>
@@ -818,7 +939,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Awadhi Chicken Korma</div>
-									<p class="menu-item-desc">A Mughlai-inspired korma — tender chicken in a deeply fragrant gravy of yogurt, cream, nuts and slow-bloomed spices.</p>
+									<p class="menu-item-desc">A Mughlai-inspired korma — tender chicken in a deeply
+										fragrant gravy of yogurt, cream, nuts and slow-bloomed spices.</p>
 								</div>
 								<div class="menu-item-price">$24.90</div>
 							</div>
@@ -826,7 +948,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Murgh Lababdar</div>
-									<p class="menu-item-desc">Chicken with capsicum in a rich cashew and tomato gravy, layered with aromatic spices.</p>
+									<p class="menu-item-desc">Chicken with capsicum in a rich cashew and tomato gravy,
+										layered with aromatic spices.</p>
 								</div>
 								<div class="menu-item-price">$24.90</div>
 							</div>
@@ -834,15 +957,19 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Hyderabad Chicken Curry</div>
-									<p class="menu-item-desc">A robust, aromatic curry rooted in South Indian tradition — bold spices, deep colour, full flavour.</p>
+									<p class="menu-item-desc">A robust, aromatic curry rooted in South Indian tradition
+										— bold spices, deep colour, full flavour.</p>
 								</div>
 								<div class="menu-item-price">$24.90</div>
 							</div>
 
 							<div class="menu-item">
 								<div class="menu-item-body">
-									<div class="menu-item-name">Special Goat Bhuna</div>
-									<p class="menu-item-desc">Tender goat slow-cooked with onion, tomato and whole aromatic spices until the gravy is thick and deeply layered.</p>
+									<div class="menu-item-name"><span class="sigree-name-wrap"><img
+												src="assets/SIGREELOGO1.png" alt="Sigree"
+												class="sigree-name-logo">Special Goat Bhuna</span></div>
+									<p class="menu-item-desc">Tender goat slow-cooked with onion, tomato and whole
+										aromatic spices until the gravy is thick and deeply layered.</p>
 								</div>
 								<div class="menu-item-price">$24.90</div>
 							</div>
@@ -850,7 +977,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Kashmiri Lamb Rogan Josh</div>
-									<p class="menu-item-desc">Tender lamb slow-cooked in a rich, deeply aromatic Kashmiri gravy with whole spices and signature red hue.</p>
+									<p class="menu-item-desc">Tender lamb slow-cooked in a rich, deeply aromatic
+										Kashmiri gravy with whole spices and signature red hue.</p>
 								</div>
 								<div class="menu-item-price">$28.90</div>
 							</div>
@@ -858,7 +986,9 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Amritsari Fish Curry</div>
-									<p class="menu-item-desc">Fish marinated in traditional spices, fried golden, then simmered in a tangy onion-tomato gravy with ginger, garlic and aromatic spices.</p>
+									<p class="menu-item-desc">Fish marinated in traditional spices, fried golden, then
+										simmered in a tangy onion-tomato gravy with ginger, garlic and aromatic spices.
+									</p>
 								</div>
 								<div class="menu-item-price">$28.90</div>
 							</div>
@@ -885,7 +1015,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Cheesy Garlic</div>
-									<p class="menu-item-desc">Garlic butter base loaded with melted mozzarella and herbs.</p>
+									<p class="menu-item-desc">Garlic butter base loaded with melted mozzarella and
+										herbs.</p>
 								</div>
 								<div class="menu-item-price">$21.99</div>
 							</div>
@@ -893,7 +1024,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Tandoori Paneer Tikka</div>
-									<p class="menu-item-desc">Spicy tandoori paneer, crisp veggies, and melted mozzarella on a rich, smoky base. Bold, cheesy, irresistible.</p>
+									<p class="menu-item-desc">Spicy tandoori paneer, crisp veggies, and melted
+										mozzarella on a rich, smoky base. Bold, cheesy, irresistible.</p>
 								</div>
 								<div class="menu-item-price">$24.90</div>
 							</div>
@@ -901,15 +1033,19 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Peri Peri Chicken</div>
-									<p class="menu-item-desc">Spicy peri-peri marinated chicken with roasted peppers and melted cheese.</p>
+									<p class="menu-item-desc">Spicy peri-peri marinated chicken with roasted peppers and
+										melted cheese.</p>
 								</div>
 								<div class="menu-item-price">$24.90</div>
 							</div>
 
 							<div class="menu-item">
 								<div class="menu-item-body">
-									<div class="menu-item-name">Special Butter Chicken</div>
-									<p class="menu-item-desc">Our house signature butter chicken sauce, layered generously with tender chicken and premium cheese. The full experience.</p>
+									<div class="menu-item-name"><span class="sigree-name-wrap"><img
+												src="assets/SIGREELOGO1.png" alt="Sigree"
+												class="sigree-name-logo">Special Butter Chicken</span></div>
+									<p class="menu-item-desc">Our house signature butter chicken sauce, layered
+										generously with tender chicken and premium cheese. The full experience.</p>
 								</div>
 								<div class="menu-item-price">$24.90</div>
 							</div>
@@ -923,13 +1059,15 @@
 							<h2 class="menu-section-title" id="section-burgers">Indo-Fusion — Burgers</h2>
 							<div class="menu-section-rule" aria-hidden="true"></div>
 						</div>
-						<p style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:1.5rem;">All burgers served with fries.</p>
+						<p style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:1.5rem;">All burgers
+							served with fries.</p>
 						<div class="menu-items">
 
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Samosa Burger</div>
-									<p class="menu-item-desc">A crispy spiced samosa patty with chutneys and fresh veggies in a soft bun. Crunchy, tangy, full of flavour.</p>
+									<p class="menu-item-desc">A crispy spiced samosa patty with chutneys and fresh
+										veggies in a soft bun. Crunchy, tangy, full of flavour.</p>
 								</div>
 								<div class="menu-item-price">$15.90</div>
 							</div>
@@ -937,7 +1075,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Butter Chicken Burger</div>
-									<p class="menu-item-desc">Juicy chicken in a rich, creamy butter chicken sauce, tucked into a toasted bun.</p>
+									<p class="menu-item-desc">Juicy chicken in a rich, creamy butter chicken sauce,
+										tucked into a toasted bun.</p>
 								</div>
 								<div class="menu-item-price">$20.90</div>
 							</div>
@@ -945,7 +1084,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Paneer Tikka Burger</div>
-									<p class="menu-item-desc">Grilled paneer tikka with fresh veggies and creamy sauce in a soft bun. Spicy and satisfying.</p>
+									<p class="menu-item-desc">Grilled paneer tikka with fresh veggies and creamy sauce
+										in a soft bun. Spicy and satisfying.</p>
 								</div>
 								<div class="menu-item-price">$20.90</div>
 							</div>
@@ -953,7 +1093,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Chicken Tikka Burger</div>
-									<p class="menu-item-desc">Succulent chicken tikka with fresh toppings and zesty sauce in a soft bun.</p>
+									<p class="menu-item-desc">Succulent chicken tikka with fresh toppings and zesty
+										sauce in a soft bun.</p>
 								</div>
 								<div class="menu-item-price">$20.90</div>
 							</div>
@@ -972,14 +1113,17 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Chicken Nuggets and Fries</div>
-									<p class="menu-item-desc">Golden fried chicken nuggets with butter chicken dipping sauce.</p>
+									<p class="menu-item-desc">Golden fried chicken nuggets with butter chicken dipping
+										sauce.</p>
 								</div>
 								<div class="menu-item-price">$14.90</div>
 							</div>
 
 							<div class="menu-item">
 								<div class="menu-item-body">
-									<div class="menu-item-name">Golden Cheese Bites <span style="font-size:0.75rem;color:var(--color-text-muted);font-family:var(--font-body);font-style:italic;">2 pcs</span></div>
+									<div class="menu-item-name">Golden Cheese Bites <span
+											style="font-size:0.75rem;color:var(--color-text-muted);font-family:var(--font-body);font-style:italic;">2
+											pcs</span></div>
 									<p class="menu-item-desc">House-made cheese balls fried till golden.</p>
 								</div>
 								<div class="menu-item-price">$9.99</div>
@@ -988,7 +1132,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Butter Chicken Pasta</div>
-									<p class="menu-item-desc">Tender chicken and pasta in a mild, creamy butter chicken sauce.</p>
+									<p class="menu-item-desc">Tender chicken and pasta in a mild, creamy butter chicken
+										sauce.</p>
 								</div>
 								<div class="menu-item-price">$19.99</div>
 							</div>
@@ -1013,47 +1158,69 @@
 						<div class="menu-items list-style">
 
 							<div class="menu-item">
-								<div class="menu-item-body"><div class="menu-item-name">Tandoori Roti — Plain</div></div>
+								<div class="menu-item-body">
+									<div class="menu-item-name">Tandoori Roti — Plain</div>
+								</div>
 								<div class="menu-item-price">$4.00</div>
 							</div>
 							<div class="menu-item">
-								<div class="menu-item-body"><div class="menu-item-name">Tandoori Roti — Butter</div></div>
+								<div class="menu-item-body">
+									<div class="menu-item-name">Tandoori Roti — Butter</div>
+								</div>
 								<div class="menu-item-price">$4.50</div>
 							</div>
 							<div class="menu-item">
-								<div class="menu-item-body"><div class="menu-item-name">Plain Naan</div></div>
+								<div class="menu-item-body">
+									<div class="menu-item-name">Plain Naan</div>
+								</div>
 								<div class="menu-item-price">$4.00</div>
 							</div>
 							<div class="menu-item">
-								<div class="menu-item-body"><div class="menu-item-name">Butter Naan</div></div>
+								<div class="menu-item-body">
+									<div class="menu-item-name">Butter Naan</div>
+								</div>
 								<div class="menu-item-price">$4.50</div>
 							</div>
 							<div class="menu-item">
-								<div class="menu-item-body"><div class="menu-item-name">Garlic Naan</div></div>
+								<div class="menu-item-body">
+									<div class="menu-item-name">Garlic Naan</div>
+								</div>
 								<div class="menu-item-price">$5.00</div>
 							</div>
 							<div class="menu-item">
-								<div class="menu-item-body"><div class="menu-item-name">Cheese &amp; Garlic Naan</div></div>
+								<div class="menu-item-body">
+									<div class="menu-item-name">Cheese &amp; Garlic Naan</div>
+								</div>
 								<div class="menu-item-price">$6.00</div>
 							</div>
 							<div class="menu-item">
-								<div class="menu-item-body"><div class="menu-item-name">Green Chilli Cheese Naan</div></div>
+								<div class="menu-item-body">
+									<div class="menu-item-name">Green Chilli Cheese Naan</div>
+								</div>
 								<div class="menu-item-price">$6.00</div>
 							</div>
 							<div class="menu-item">
-								<div class="menu-item-body"><div class="menu-item-name">Plain Kulcha</div></div>
+								<div class="menu-item-body">
+									<div class="menu-item-name">Plain Kulcha</div>
+								</div>
 								<div class="menu-item-price">$6.00</div>
 							</div>
 							<div class="menu-item">
-								<div class="menu-item-body"><div class="menu-item-name">Lacha Paratha</div></div>
+								<div class="menu-item-body">
+									<div class="menu-item-name">Lacha Paratha</div>
+								</div>
 								<div class="menu-item-price">$6.00</div>
 							</div>
 							<div class="menu-item">
-								<div class="menu-item-body"><div class="menu-item-name">Lacha Paratha with Butter</div></div>
+								<div class="menu-item-body">
+									<div class="menu-item-name">Lacha Paratha with Butter</div>
+								</div>
 								<div class="menu-item-price">$7.00</div>
 							</div>
 							<div class="menu-item">
-								<div class="menu-item-body"><div class="menu-item-name">Chocolate Naan</div></div>
+								<div class="menu-item-body">
+									<div class="menu-item-name">Chocolate Naan</div>
+								</div>
 								<div class="menu-item-price">$10.00</div>
 							</div>
 
@@ -1071,7 +1238,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Hyderabadi Veg Dum Biryani</div>
-									<p class="menu-item-desc">Fragrant basmati layered with seasonal vegetables and whole aromatic spices, slow-cooked dum style. With veg raita.</p>
+									<p class="menu-item-desc">Fragrant basmati layered with seasonal vegetables and
+										whole aromatic spices, slow-cooked dum style. With veg raita.</p>
 								</div>
 								<div class="menu-item-price">$24.90</div>
 							</div>
@@ -1079,7 +1247,8 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Lucknowi Chicken Dum Biryani</div>
-									<p class="menu-item-desc">Tender chicken slow-cooked with saffron-infused basmati in the Awadhi tradition — delicate, fragrant, and regal. With veg raita.</p>
+									<p class="menu-item-desc">Tender chicken slow-cooked with saffron-infused basmati in
+										the Awadhi tradition — delicate, fragrant, and regal. With veg raita.</p>
 								</div>
 								<div class="menu-item-price">$26.90</div>
 							</div>
@@ -1087,28 +1256,38 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name">Goat Dum Biryani</div>
-									<p class="menu-item-desc">Succulent goat meat and fragrant rice sealed together with traditional spices. Served with veg raita.</p>
+									<p class="menu-item-desc">Succulent goat meat and fragrant rice sealed together with
+										traditional spices. Served with veg raita.</p>
 								</div>
 								<div class="menu-item-price">$26.90</div>
 							</div>
 
 						</div>
 						<!-- Simple rice list -->
-						<div class="menu-items list-style" style="margin-top:1rem;border-top:1px solid var(--color-border-subtle);padding-top:0.5rem;">
+						<div class="menu-items list-style"
+							style="margin-top:1rem;border-top:1px solid var(--color-border-subtle);padding-top:0.5rem;">
 							<div class="menu-item">
-								<div class="menu-item-body"><div class="menu-item-name">Steam Rice</div></div>
+								<div class="menu-item-body">
+									<div class="menu-item-name">Steam Rice</div>
+								</div>
 								<div class="menu-item-price">$4.99</div>
 							</div>
 							<div class="menu-item">
-								<div class="menu-item-body"><div class="menu-item-name">Jeera Rice</div></div>
+								<div class="menu-item-body">
+									<div class="menu-item-name">Jeera Rice</div>
+								</div>
 								<div class="menu-item-price">$6.99</div>
 							</div>
 							<div class="menu-item">
-								<div class="menu-item-body"><div class="menu-item-name">Green Peas Pulao</div></div>
+								<div class="menu-item-body">
+									<div class="menu-item-name">Green Peas Pulao</div>
+								</div>
 								<div class="menu-item-price">$9.99</div>
 							</div>
 							<div class="menu-item">
-								<div class="menu-item-body"><div class="menu-item-name">Dal Palak Khichdi</div></div>
+								<div class="menu-item-body">
+									<div class="menu-item-name">Dal Palak Khichdi</div>
+								</div>
 								<div class="menu-item-price">$11.90</div>
 							</div>
 						</div>
@@ -1123,11 +1302,14 @@
 			<div class="tab-panel" id="panel-drinks" role="tabpanel" aria-labelledby="tab-drinks" hidden>
 				<div class="container">
 					<div class="drinks-coming-soon">
-						<svg class="drinks-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-							<path d="M8 22h8M12 11v11M3 3l4 9h10l4-9H3z"/>
+						<svg class="drinks-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+							stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"
+							aria-hidden="true">
+							<path d="M8 22h8M12 11v11M3 3l4 9h10l4-9H3z" />
 						</svg>
 						<h2>Drinks Menu</h2>
-						<p>Ask your server for today's drinks selection — from craft cocktails and wine to lassi and mocktails.</p>
+						<p>Ask your server for today's drinks selection — from craft cocktails and wine to lassi and
+							mocktails.</p>
 					</div>
 				</div>
 			</div>
@@ -1140,9 +1322,13 @@
 				<div class="section-label">Share</div>
 				<p>Send this menu to a friend or save it for later.</p>
 				<button class="btn-share" id="share-btn" type="button" aria-label="Share this menu page">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-						<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
-						<line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+						stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<circle cx="18" cy="5" r="3" />
+						<circle cx="6" cy="12" r="3" />
+						<circle cx="18" cy="19" r="3" />
+						<line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+						<line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
 					</svg>
 					Share Menu
 				</button>
@@ -1169,14 +1355,14 @@
 		// ============================================================
 		// Tabs
 		// ============================================================
-		const tabs   = document.querySelectorAll('.tab-btn');
+		const tabs = document.querySelectorAll('.tab-btn');
 		const panels = document.querySelectorAll('.tab-panel');
 
 		function activateTab(panelId) {
-			const matchTab   = document.querySelector(`[aria-controls="${panelId}"]`);
+			const matchTab = document.querySelector(`[aria-controls="${panelId}"]`);
 			const matchPanel = document.getElementById(panelId);
 			if (!matchTab || !matchPanel) return;
-			tabs.forEach(t   => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+			tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
 			panels.forEach(p => { p.classList.remove('active'); p.hidden = true; });
 			matchTab.classList.add('active');
 			matchTab.setAttribute('aria-selected', 'true');
@@ -1192,14 +1378,14 @@
 			tab.addEventListener('keydown', e => {
 				const list = [...tabs], idx = list.indexOf(tab);
 				if (e.key === 'ArrowRight') list[(idx + 1) % list.length].focus();
-				if (e.key === 'ArrowLeft')  list[(idx - 1 + list.length) % list.length].focus();
+				if (e.key === 'ArrowLeft') list[(idx - 1 + list.length) % list.length].focus();
 			});
 		});
 
 		// ============================================================
 		// Veg / Non-Veg dot injection
 		// ============================================================
-		const VEG  = '<span class="diet-dot veg" title="Vegetarian" aria-label="Vegetarian"></span>';
+		const VEG = '<span class="diet-dot veg" title="Vegetarian" aria-label="Vegetarian"></span>';
 		const NVEG = '<span class="diet-dot non-veg" title="Non-Vegetarian" aria-label="Non-Vegetarian"></span>';
 		const CHEF = '<span class="chef-badge">★ Chef\'s Pick</span>';
 
@@ -1207,64 +1393,64 @@
 		// We match by iterating .menu-item-name text content
 		const dietMap = {
 			// Snacks & Sides
-			'Masala Papad':                        { dot: VEG  },
-			'Samosa':                              { dot: VEG  },
-			'Samosa Chaat':                        { dot: VEG  },
-			'Cheese Loaded Fries':                 { dot: NVEG },
+			'Masala Papad': { dot: VEG },
+			'Samosa': { dot: VEG },
+			'Samosa Chaat': { dot: VEG },
+			'Cheese Loaded Fries': { dot: NVEG },
 			// Garden
-			'Cheese Hariyali Bombs':               { dot: VEG  },
-			'Manchurian':                          { dot: VEG  },
+			'Cheese Hariyali Bombs': { dot: VEG },
+			'Manchurian': { dot: VEG },
 			// Tandoor
-			'Paneer Malai Tikka':                  { dot: VEG  },
-			'Paneer Tikka':                        { dot: VEG  },
-			'Chicken Reshmi Kebab':                { dot: NVEG },
-			'Chicken Tikka':                       { dot: NVEG },
-			'Samundari Jhinga':                    { dot: NVEG },
+			'Paneer Malai Tikka': { dot: VEG },
+			'Paneer Tikka': { dot: VEG },
+			'Chicken Reshmi Kebab': { dot: NVEG },
+			'Chicken Tikka': { dot: NVEG },
+			'Samundari Jhinga': { dot: NVEG },
 			// Global
-			'Sautéed Garlic Greens':               { dot: VEG  },
-			'Mushroom Duplex':                     { dot: VEG  },
-			'Golden Cheese Bites':                 { dot: VEG  },
-			'Sesame-Seared Tuna':                  { dot: NVEG },
-			'Garlic Butter Tiger Prawns':          { dot: NVEG },
-			'Creamy Alfredo Chicken Pasta':        { dot: NVEG },
-			'Basil Pesto Prawn Pasta':             { dot: NVEG },
-			'Fish of the Day':                     { dot: NVEG },
-			'Braised Lamb Shank':                  { dot: NVEG, chef: true },
+			'Sautéed Garlic Greens': { dot: VEG },
+			'Mushroom Duplex': { dot: VEG },
+			'Golden Cheese Bites': { dot: VEG },
+			'Sesame-Seared Tuna': { dot: NVEG },
+			'Garlic Butter Tiger Prawns': { dot: NVEG },
+			'Creamy Alfredo Chicken Pasta': { dot: NVEG },
+			'Basil Pesto Prawn Pasta': { dot: NVEG },
+			'Fish of the Day': { dot: NVEG },
+			'Braised Lamb Shank': { dot: NVEG, chef: true },
 			// Veg Mains
-			'Veg Sabnam':                          { dot: VEG  },
-			'Kofta Sham Savera':                   { dot: VEG  },
-			'Amritsari Chole Kulcha':              { dot: VEG  },
-			'Paneer Kurchan':                      { dot: VEG  },
-			'Methi Malai Paneer':                  { dot: VEG  },
-			'Dal Makhni':                          { dot: VEG  },
-			'Dal Fry / Dal Tadka':                { dot: VEG  },
+			'Veg Sabnam': { dot: VEG },
+			'Kofta Sham Savera': { dot: VEG },
+			'Amritsari Chole Kulcha': { dot: VEG },
+			'Paneer Kurchan': { dot: VEG },
+			'Methi Malai Paneer': { dot: VEG },
+			'Dal Makhni': { dot: VEG },
+			'Dal Fry / Dal Tadka': { dot: VEG },
 			// Non-veg Mains
-			'Butter Chicken — Kiwi Style':         { dot: NVEG },
-			'Special Butter Chicken':              { dot: NVEG, chef: true },
-			'Awadhi Chicken Korma':                { dot: NVEG },
-			'Murgh Lababdar':                      { dot: NVEG },
-			'Hyderabad Chicken Curry':             { dot: NVEG },
-			'Special Goat Bhuna':                  { dot: NVEG },
-			'Kashmiri Lamb Rogan Josh':            { dot: NVEG, chef: true },
-			'Amritsari Fish Curry':                { dot: NVEG },
+			'Butter Chicken — Kiwi Style': { dot: NVEG },
+			'Special Butter Chicken': { dot: NVEG, chef: true },
+			'Awadhi Chicken Korma': { dot: NVEG },
+			'Murgh Lababdar': { dot: NVEG },
+			'Hyderabad Chicken Curry': { dot: NVEG },
+			'Special Goat Bhuna': { dot: NVEG },
+			'Kashmiri Lamb Rogan Josh': { dot: NVEG, chef: true },
+			'Amritsari Fish Curry': { dot: NVEG },
 			// Pizza
-			'Margherita':                          { dot: VEG  },
-			'Cheesy Garlic':                       { dot: VEG  },
-			'Tandoori Paneer Tikka':               { dot: VEG  },
-			'Peri Peri Chicken':                   { dot: NVEG },
+			'Margherita': { dot: VEG },
+			'Cheesy Garlic': { dot: VEG },
+			'Tandoori Paneer Tikka': { dot: VEG },
+			'Peri Peri Chicken': { dot: NVEG },
 			// Burgers
-			'Samosa Burger':                       { dot: VEG  },
-			'Butter Chicken Burger':               { dot: NVEG },
-			'Paneer Tikka Burger':                 { dot: VEG  },
-			'Chicken Tikka Burger':                { dot: NVEG },
+			'Samosa Burger': { dot: VEG },
+			'Butter Chicken Burger': { dot: NVEG },
+			'Paneer Tikka Burger': { dot: VEG },
+			'Chicken Tikka Burger': { dot: NVEG },
 			// Kids
-			'Chicken Nuggets and Fries':           { dot: NVEG },
-			'Butter Chicken Pasta':                { dot: NVEG },
-			'Margherita Pizza':                    { dot: VEG  },
+			'Chicken Nuggets and Fries': { dot: NVEG },
+			'Butter Chicken Pasta': { dot: NVEG },
+			'Margherita Pizza': { dot: VEG },
 			// Biryani
-			'Hyderabadi Veg Dum Biryani':          { dot: VEG  },
-			'Lucknowi Chicken Dum Biryani':        { dot: NVEG, chef: true },
-			'Goat Dum Biryani':                    { dot: NVEG },
+			'Hyderabadi Veg Dum Biryani': { dot: VEG },
+			'Lucknowi Chicken Dum Biryani': { dot: NVEG, chef: true },
+			'Goat Dum Biryani': { dot: NVEG },
 		};
 
 		// Inject dots & chef badges
@@ -1303,9 +1489,9 @@
 		// ============================================================
 		// Floating section nav — show on scroll, update active pill
 		// ============================================================
-		const sectionNav  = document.getElementById('section-nav');
-		const menuBody    = document.querySelector('.menu-body');
-		const pills       = document.querySelectorAll('.sec-pill');
+		const sectionNav = document.getElementById('section-nav');
+		const menuBody = document.querySelector('.menu-body');
+		const pills = document.querySelectorAll('.sec-pill');
 
 		// Show nav once user scrolls past the hero
 		const heroEl = document.querySelector('.menu-hero');
@@ -1351,7 +1537,7 @@
 		// ============================================================
 		// Share
 		// ============================================================
-		const shareBtn      = document.getElementById('share-btn');
+		const shareBtn = document.getElementById('share-btn');
 		const shareFeedback = document.getElementById('share-feedback');
 
 		function showFeedback(msg) {
@@ -1392,4 +1578,5 @@
 	<script src="script.js"></script>
 
 </body>
+
 </html>
