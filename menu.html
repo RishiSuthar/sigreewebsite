@@ -72,51 +72,109 @@
 			white-space: nowrap;
 		}
 
-		.tab-btn + .tab-btn {
-			border-left: 1px solid var(--color-border);
-		}
+		.tab-btn + .tab-btn { border-left: 1px solid var(--color-border); }
 
 		.tab-btn::after {
 			content: '';
 			position: absolute;
-			bottom: 0;
-			left: 50%;
-			width: 0;
-			height: 2px;
+			bottom: 0; left: 50%;
+			width: 0; height: 2px;
 			background: var(--color-accent);
 			transform: translateX(-50%);
 			transition: width 0.35s var(--ease-out);
 		}
 
-		.tab-btn.active {
-			color: var(--color-text);
-			background: var(--color-bg-elevated);
-		}
-
+		.tab-btn.active { color: var(--color-text); background: var(--color-bg-elevated); }
 		.tab-btn.active::after { width: 100%; }
-
-		.tab-btn:hover:not(.active) {
-			color: var(--color-text);
-			background: rgba(255,255,255,0.04);
-		}
+		.tab-btn:hover:not(.active) { color: var(--color-text); background: rgba(255,255,255,0.04); }
 
 		/* ----- Tab Panels ----- */
-		.tab-panels {
-			padding-bottom: clamp(4rem, 10vh, 7rem);
-		}
-
+		.tab-panels { padding-bottom: clamp(4rem, 10vh, 7rem); }
 		.tab-panel { display: none; }
 		.tab-panel.active { display: block; }
 
 		/* ----- Menu Body ----- */
-		.menu-body {
-			padding-top: clamp(2rem, 5vw, 3.5rem);
+		.menu-body { padding-top: clamp(2rem, 5vw, 3.5rem); }
+
+		/* ============================================
+		   Floating Section Jump Nav
+		   ============================================ */
+		.section-nav {
+			position: sticky;
+			top: 70px;
+			z-index: 100;
+			pointer-events: none;
+			opacity: 0;
+			transform: translateY(-8px);
+			transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+			margin-bottom: 0;
 		}
 
-		/* ----- Section block ----- */
+		.section-nav.visible {
+			opacity: 1;
+			transform: translateY(0);
+			pointer-events: auto;
+		}
+
+		.section-nav-inner {
+			display: flex;
+			gap: 0.4rem;
+			overflow-x: auto;
+			padding: 0.75rem 0 0.6rem;
+			scrollbar-width: none;
+			-webkit-overflow-scrolling: touch;
+			background: linear-gradient(to bottom, var(--color-bg) 70%, transparent);
+			mask-image: linear-gradient(to right, transparent, black 2rem, black calc(100% - 2rem), transparent);
+			-webkit-mask-image: linear-gradient(to right, transparent, black 2rem, black calc(100% - 2rem), transparent);
+		}
+
+		.section-nav-inner::-webkit-scrollbar { display: none; }
+
+		.sec-pill {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.35rem;
+			flex-shrink: 0;
+			padding: 0.4rem 0.85rem;
+			font-family: var(--font-body);
+			font-size: 0.72rem;
+			font-weight: 500;
+			letter-spacing: 0.07em;
+			text-transform: uppercase;
+			color: var(--color-text-muted);
+			background: var(--color-surface);
+			border: 1px solid var(--color-border);
+			border-radius: 20px;
+			cursor: pointer;
+			transition: color 0.22s, background 0.22s, border-color 0.22s;
+			white-space: nowrap;
+		}
+
+		.sec-pill:hover {
+			color: var(--color-text);
+			border-color: var(--color-text-muted);
+		}
+
+		.sec-pill.active-sec {
+			color: var(--color-accent);
+			background: rgba(249, 92, 8, 0.08);
+			border-color: rgba(249, 92, 8, 0.35);
+		}
+
+		/* ============================================
+		   Section Scroll Fade-In
+		   ============================================ */
 		.menu-section {
 			padding: clamp(2.5rem, 6vw, 3.5rem) 0;
 			border-top: 1px solid var(--color-border);
+			opacity: 0;
+			transform: translateY(22px);
+			transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
+		}
+
+		.menu-section.in-view {
+			opacity: 1;
+			transform: translateY(0);
 		}
 
 		.menu-section:first-child {
@@ -154,33 +212,40 @@
 			gap: 0;
 		}
 
-		/* Breads section stays single-column tight list */
-		.menu-items.list-style {
-			grid-template-columns: 1fr;
-		}
+		.menu-items.list-style { grid-template-columns: 1fr; }
 
-		/* ----- Individual item ----- */
+		/* ============================================
+		   Individual Menu Item
+		   ============================================ */
 		.menu-item {
+			position: relative;
 			display: flex;
 			justify-content: space-between;
 			align-items: flex-start;
 			gap: 1.5rem;
 			padding: 1.15rem 0;
 			border-bottom: 1px solid var(--color-border-subtle);
+			transition: background 0.2s;
 		}
 
-		/* In a 2-column grid, remove bottom border from last two */
-		.menu-items:not(.list-style) .menu-item:nth-last-child(-n+2):not(:nth-last-child(-n+2) ~ .menu-item) {
-			border-bottom: none;
+		/* Hover: subtle bg tint only */
+		.menu-item:hover {
+			background: rgba(255,255,255,0.025);
+			border-radius: 6px;
 		}
 
-		.list-style .menu-item:last-child {
-			border-bottom: none;
-		}
+		.menu-items:not(.list-style) .menu-item:last-child { border-bottom: none; }
+		.list-style .menu-item:last-child { border-bottom: none; }
 
-		.menu-item-body {
-			flex: 1;
-			min-width: 0;
+		.menu-item-body { flex: 1; min-width: 0; }
+
+		/* Item name row: holds name + badges */
+		.menu-item-name-row {
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: 0.45rem;
+			margin-bottom: 0.3rem;
 		}
 
 		.menu-item-name {
@@ -188,7 +253,6 @@
 			font-size: 0.97rem;
 			font-weight: 600;
 			color: var(--color-text);
-			margin-bottom: 0.3rem;
 			letter-spacing: 0.01em;
 			line-height: 1.35;
 		}
@@ -210,17 +274,54 @@
 			flex-shrink: 0;
 		}
 
-		/* Breads list — compact horizontal layout */
-		.list-style .menu-item {
-			padding: 0.75rem 0;
+		/* Breads compact */
+		.list-style .menu-item { padding: 0.75rem 0; }
+
+		/* ============================================
+		   Veg / Non-Veg Dot (Indian standard symbol)
+		   ============================================ */
+		.diet-dot {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+			width: 16px;
+			height: 16px;
+			border-radius: 3px;
+			border: 1.5px solid;
 		}
 
-		/* On last item, clear border */
-		.menu-items:not(.list-style) .menu-item:last-child {
-			border-bottom: none;
+		.diet-dot::after {
+			content: '';
+			display: block;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
 		}
 
-		/* ----- Drinks Panel ----- */
+		.diet-dot.veg  { border-color: #4ade80; }
+		.diet-dot.veg::after  { background: #4ade80; }
+		.diet-dot.non-veg { border-color: #fb923c; }
+		.diet-dot.non-veg::after { background: #fb923c; }
+
+		/* ============================================
+		   Chef's Pick Badge
+		   ============================================ */
+		.chef-badge {
+			display: inline-flex;
+			align-items: center;
+			padding: 0.15rem 0.5rem;
+			font-family: var(--font-body);
+			font-size: 0.64rem;
+			font-weight: 500;
+			letter-spacing: 0.04em;
+			color: #fbbf24;
+			border: 1px solid rgba(251, 191, 36, 0.4);
+			border-radius: 4px;
+			white-space: nowrap;
+			background: transparent;
+		}
+
 		.drinks-intro {
 			text-align: center;
 			padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(1rem, 3vw, 1.5rem);
@@ -401,6 +502,23 @@
 			     ========================================= -->
 			<div class="tab-panel active" id="panel-food" role="tabpanel" aria-labelledby="tab-food">
 				<div class="container menu-body">
+
+					<!-- Floating Section Nav (appears on scroll) -->
+					<nav class="section-nav" id="section-nav" aria-label="Jump to section">
+						<div class="section-nav-inner">
+							<button class="sec-pill" data-target="section-snacks">Snacks &amp; Sides</button>
+							<button class="sec-pill" data-target="section-garden">Garden</button>
+							<button class="sec-pill" data-target="section-tandoor">Tandoor</button>
+							<button class="sec-pill" data-target="section-global">Global Plates</button>
+							<button class="sec-pill" data-target="section-veg">Veg Mains</button>
+							<button class="sec-pill" data-target="section-nonveg">Non-Veg Mains</button>
+							<button class="sec-pill" data-target="section-pizza">Pizza</button>
+							<button class="sec-pill" data-target="section-burgers">Burgers</button>
+							<button class="sec-pill" data-target="section-kids">Kids</button>
+							<button class="sec-pill" data-target="section-breads">Breads</button>
+							<button class="sec-pill" data-target="section-rice">Biryani &amp; Rice</button>
+						</div>
+					</nav>
 
 					<!-- Snacks & Sides -->
 					<section class="menu-section" aria-labelledby="section-snacks">
@@ -1048,7 +1166,9 @@
 	<script>
 		document.getElementById('year').textContent = new Date().getFullYear();
 
-		// ---- Tabs ----
+		// ============================================================
+		// Tabs
+		// ============================================================
 		const tabs   = document.querySelectorAll('.tab-btn');
 		const panels = document.querySelectorAll('.tab-panel');
 
@@ -1076,7 +1196,161 @@
 			});
 		});
 
-		// ---- Share ----
+		// ============================================================
+		// Veg / Non-Veg dot injection
+		// ============================================================
+		const VEG  = '<span class="diet-dot veg" title="Vegetarian" aria-label="Vegetarian"></span>';
+		const NVEG = '<span class="diet-dot non-veg" title="Non-Vegetarian" aria-label="Non-Vegetarian"></span>';
+		const CHEF = '<span class="chef-badge">★ Chef\'s Pick</span>';
+
+		// Map: element id of the h2 title → { dot, chef }
+		// We match by iterating .menu-item-name text content
+		const dietMap = {
+			// Snacks & Sides
+			'Masala Papad':                        { dot: VEG  },
+			'Samosa':                              { dot: VEG  },
+			'Samosa Chaat':                        { dot: VEG  },
+			'Cheese Loaded Fries':                 { dot: NVEG },
+			// Garden
+			'Cheese Hariyali Bombs':               { dot: VEG  },
+			'Manchurian':                          { dot: VEG  },
+			// Tandoor
+			'Paneer Malai Tikka':                  { dot: VEG  },
+			'Paneer Tikka':                        { dot: VEG  },
+			'Chicken Reshmi Kebab':                { dot: NVEG },
+			'Chicken Tikka':                       { dot: NVEG },
+			'Samundari Jhinga':                    { dot: NVEG },
+			// Global
+			'Sautéed Garlic Greens':               { dot: VEG  },
+			'Mushroom Duplex':                     { dot: VEG  },
+			'Golden Cheese Bites':                 { dot: VEG  },
+			'Sesame-Seared Tuna':                  { dot: NVEG },
+			'Garlic Butter Tiger Prawns':          { dot: NVEG },
+			'Creamy Alfredo Chicken Pasta':        { dot: NVEG },
+			'Basil Pesto Prawn Pasta':             { dot: NVEG },
+			'Fish of the Day':                     { dot: NVEG },
+			'Braised Lamb Shank':                  { dot: NVEG, chef: true },
+			// Veg Mains
+			'Veg Sabnam':                          { dot: VEG  },
+			'Kofta Sham Savera':                   { dot: VEG  },
+			'Amritsari Chole Kulcha':              { dot: VEG  },
+			'Paneer Kurchan':                      { dot: VEG  },
+			'Methi Malai Paneer':                  { dot: VEG  },
+			'Dal Makhni':                          { dot: VEG  },
+			'Dal Fry / Dal Tadka':                { dot: VEG  },
+			// Non-veg Mains
+			'Butter Chicken — Kiwi Style':         { dot: NVEG },
+			'Special Butter Chicken':              { dot: NVEG, chef: true },
+			'Awadhi Chicken Korma':                { dot: NVEG },
+			'Murgh Lababdar':                      { dot: NVEG },
+			'Hyderabad Chicken Curry':             { dot: NVEG },
+			'Special Goat Bhuna':                  { dot: NVEG },
+			'Kashmiri Lamb Rogan Josh':            { dot: NVEG, chef: true },
+			'Amritsari Fish Curry':                { dot: NVEG },
+			// Pizza
+			'Margherita':                          { dot: VEG  },
+			'Cheesy Garlic':                       { dot: VEG  },
+			'Tandoori Paneer Tikka':               { dot: VEG  },
+			'Peri Peri Chicken':                   { dot: NVEG },
+			// Burgers
+			'Samosa Burger':                       { dot: VEG  },
+			'Butter Chicken Burger':               { dot: NVEG },
+			'Paneer Tikka Burger':                 { dot: VEG  },
+			'Chicken Tikka Burger':                { dot: NVEG },
+			// Kids
+			'Chicken Nuggets and Fries':           { dot: NVEG },
+			'Butter Chicken Pasta':                { dot: NVEG },
+			'Margherita Pizza':                    { dot: VEG  },
+			// Biryani
+			'Hyderabadi Veg Dum Biryani':          { dot: VEG  },
+			'Lucknowi Chicken Dum Biryani':        { dot: NVEG, chef: true },
+			'Goat Dum Biryani':                    { dot: NVEG },
+		};
+
+		// Inject dots & chef badges
+		document.querySelectorAll('.menu-item').forEach(item => {
+			const nameEl = item.querySelector('.menu-item-name');
+			if (!nameEl) return;
+			const rawText = nameEl.textContent.trim();
+
+			// Find best match (exact or starts-with)
+			const key = Object.keys(dietMap).find(k => rawText === k || rawText.startsWith(k));
+			if (!key) return;
+			const info = dietMap[key];
+
+			// Build a name-row wrapper if not already present
+			const body = item.querySelector('.menu-item-body');
+			const row = document.createElement('div');
+			row.className = 'menu-item-name-row';
+			row.innerHTML = info.dot + nameEl.outerHTML + (info.chef ? CHEF : '');
+			nameEl.replaceWith(row);
+		});
+
+		// ============================================================
+		// Section fade-in via IntersectionObserver
+		// ============================================================
+		const sectionObserver = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('in-view');
+					sectionObserver.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.06 });
+
+		document.querySelectorAll('.menu-section').forEach(sec => sectionObserver.observe(sec));
+
+		// ============================================================
+		// Floating section nav — show on scroll, update active pill
+		// ============================================================
+		const sectionNav  = document.getElementById('section-nav');
+		const menuBody    = document.querySelector('.menu-body');
+		const pills       = document.querySelectorAll('.sec-pill');
+
+		// Show nav once user scrolls past the hero
+		const heroEl = document.querySelector('.menu-hero');
+		const navObserver = new IntersectionObserver((entries) => {
+			if (!entries[0].isIntersecting) {
+				sectionNav.classList.add('visible');
+			} else {
+				sectionNav.classList.remove('visible');
+			}
+		}, { threshold: 0 });
+		navObserver.observe(heroEl);
+
+		// Smooth scroll on pill click
+		pills.forEach(pill => {
+			pill.addEventListener('click', () => {
+				const target = document.getElementById(pill.dataset.target);
+				if (target) {
+					const offset = 110;
+					const top = target.getBoundingClientRect().top + window.scrollY - offset;
+					window.scrollTo({ top, behavior: 'smooth' });
+				}
+			});
+		});
+
+		// Highlight active section pill on scroll
+		const activeObserver = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					const id = entry.target.querySelector('[id]')?.id;
+					if (!id) return;
+					pills.forEach(p => {
+						p.classList.toggle('active-sec', p.dataset.target === id);
+						if (p.dataset.target === id) {
+							p.scrollIntoView({ inline: 'nearest', block: 'nearest', behavior: 'smooth' });
+						}
+					});
+				}
+			});
+		}, { rootMargin: '-20% 0px -60% 0px' });
+
+		document.querySelectorAll('.menu-section').forEach(sec => activeObserver.observe(sec));
+
+		// ============================================================
+		// Share
+		// ============================================================
 		const shareBtn      = document.getElementById('share-btn');
 		const shareFeedback = document.getElementById('share-feedback');
 
