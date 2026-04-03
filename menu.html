@@ -19,7 +19,7 @@
 	<style>
 
 		/* ============================================
-		   Menu Page — Specific Styles
+		   Menu Page — PDF Viewer Edition
 		   ============================================ */
 
 		/* Hero */
@@ -36,7 +36,7 @@
 		.menu-hero .hero-sub {
 			color: var(--color-text-secondary);
 			font-size: clamp(0.9rem, 2.5vw, 1.05rem);
-			max-width: 36ch;
+			max-width: 38ch;
 			margin: 0 auto;
 			line-height: 1.7;
 		}
@@ -57,7 +57,7 @@
 
 		.tab-btn {
 			position: relative;
-			padding: 0.85rem clamp(1.4rem, 5vw, 2.8rem);
+			padding: 0.85rem clamp(1.6rem, 5vw, 3rem);
 			font-family: var(--font-body);
 			font-size: 0.82rem;
 			font-weight: 500;
@@ -117,118 +117,158 @@
 		/* ---- Panel Intro ---- */
 		.panel-intro {
 			text-align: center;
-			padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+			padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(1.2rem, 3vw, 2rem);
 		}
 
 		.panel-intro h2 {
 			font-size: clamp(1.6rem, 4vw, 2.4rem);
 			font-weight: 400;
-			margin-bottom: 0.6rem;
+			margin-bottom: 0.5rem;
 		}
 
 		.panel-intro p {
 			color: var(--color-text-secondary);
 			font-size: 0.88rem;
 			letter-spacing: 0.02em;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 0.4rem;
+			line-height: 1.6;
 		}
 
-		/* ---- Menu Images ---- */
-		.menu-images {
-			display: flex;
-			flex-direction: column;
-			gap: 1.25rem;
-		}
-
-		.menu-img-wrap {
-			position: relative;
+		/* ---- PDF Card ---- */
+		.pdf-card {
 			border: 1px solid var(--color-border);
-			border-radius: 10px;
+			border-radius: 12px;
 			overflow: hidden;
 			background: var(--color-surface);
-			box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+			box-shadow: 0 12px 60px rgba(0, 0, 0, 0.55);
 		}
 
-		/* Scrollable so full A3/A4 width is accessible on mobile */
-		.menu-img-scroll {
-			overflow-x: auto;
-			overflow-y: hidden;
-			-webkit-overflow-scrolling: touch;
-			scroll-snap-type: x proximity;
-			cursor: grab;
-		}
-
-		.menu-img-scroll:active {
-			cursor: grabbing;
-		}
-
-		/* Ensure text stays legible: minimum 900 px for A3 landscape food,
-		   750 px for A4 landscape drinks. Users scroll/pinch to explore. */
-		.menu-img-scroll img {
-			display: block;
-			height: auto;
-			width: 900px;
-			max-width: none;
-		}
-
-		.menu-img-scroll.drinks-scroll img {
-			width: 750px;
-		}
-
-		/* Page badge top-left */
-		.page-badge {
-			position: absolute;
-			top: 10px;
-			left: 10px;
-			z-index: 2;
-			background: rgba(12, 10, 9, 0.82);
-			backdrop-filter: blur(6px);
-			-webkit-backdrop-filter: blur(6px);
-			color: var(--color-text-secondary);
-			font-size: 0.68rem;
-			font-weight: 500;
-			letter-spacing: 0.12em;
-			text-transform: uppercase;
-			padding: 4px 10px;
-			border-radius: 3px;
-			border: 1px solid var(--color-border-subtle);
-			pointer-events: none;
-		}
-
-		/* Scroll/zoom hint bar under each image */
-		.img-hint {
+		/* PDF action bar — sits above the viewer */
+		.pdf-action-bar {
 			display: flex;
 			align-items: center;
-			justify-content: center;
-			gap: 0.45rem;
-			padding: 0.55rem 1rem;
-			background: rgba(28, 25, 23, 0.9);
-			border-top: 1px solid var(--color-border-subtle);
-			color: var(--color-text-muted);
-			font-size: 0.72rem;
-			letter-spacing: 0.07em;
-			text-transform: uppercase;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: 0.75rem;
+			padding: 0.9rem 1.4rem;
+			background: rgba(20, 17, 15, 0.95);
+			border-bottom: 1px solid var(--color-border);
 		}
 
-		.img-hint svg {
-			opacity: 0.55;
+		.pdf-action-bar-label {
+			display: flex;
+			align-items: center;
+			gap: 0.55rem;
+			font-size: 0.78rem;
+			font-weight: 500;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			color: var(--color-text-secondary);
+		}
+
+		.pdf-action-bar-label svg {
+			color: var(--color-accent);
 			flex-shrink: 0;
 		}
 
-		/* Scroll indicator on right edge */
-		.menu-img-wrap::after {
-			content: '';
-			position: absolute;
-			top: 0;
-			right: 0;
-			width: 32px;
-			height: calc(100% - 30px); /* above hint bar */
-			background: linear-gradient(to right, transparent, rgba(12, 10, 9, 0.55));
-			pointer-events: none;
-			border-radius: 0 10px 0 0;
+		.pdf-action-btns {
+			display: flex;
+			gap: 0.6rem;
+		}
+
+		.btn-pdf {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.45rem;
+			padding: 0.6rem 1.2rem;
+			font-family: var(--font-body);
+			font-size: 0.75rem;
+			font-weight: 500;
+			letter-spacing: 0.09em;
+			text-transform: uppercase;
+			border-radius: 3px;
+			cursor: pointer;
+			transition: background 0.25s var(--ease-out), border-color 0.25s var(--ease-out), color 0.25s var(--ease-out);
+			text-decoration: none;
+			white-space: nowrap;
+		}
+
+		.btn-pdf-secondary {
+			background: transparent;
+			border: 1px solid var(--color-border);
+			color: var(--color-text-secondary);
+		}
+
+		.btn-pdf-secondary:hover {
+			background: rgba(255,255,255,0.05);
+			border-color: var(--color-accent);
+			color: var(--color-text);
+		}
+
+		.btn-pdf-primary {
+			background: var(--color-accent);
+			border: 1px solid var(--color-accent);
+			color: var(--color-bg);
+		}
+
+		.btn-pdf-primary:hover {
+			background: var(--color-accent-light, #e8a050);
+			border-color: var(--color-accent-light, #e8a050);
+		}
+
+		/* PDF viewer iframe */
+		.pdf-viewer {
+			display: block;
+			width: 100%;
+			height: clamp(520px, 76vh, 880px);
+			border: none;
+			background: #1a1714;
+		}
+
+		/* Fallback for browsers that can't show PDF inline */
+		.pdf-fallback {
+			display: none;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 1.2rem;
+			padding: clamp(3rem, 8vh, 5rem) 1.5rem;
+			text-align: center;
+			background: var(--color-surface);
+		}
+
+		.pdf-fallback-icon {
+			width: 56px;
+			height: 56px;
+			color: var(--color-accent);
+			opacity: 0.8;
+		}
+
+		.pdf-fallback h3 {
+			font-size: 1.2rem;
+			font-weight: 400;
+			letter-spacing: 0.02em;
+			margin: 0;
+		}
+
+		.pdf-fallback p {
+			color: var(--color-text-secondary);
+			font-size: 0.88rem;
+			max-width: 32ch;
+			line-height: 1.6;
+			margin: 0;
+		}
+
+		/* Mobile: collapse viewer height for comfort */
+		@media (max-width: 640px) {
+			.pdf-viewer {
+				height: 70vh;
+				min-height: 400px;
+			}
+
+			.pdf-action-bar {
+				flex-direction: column;
+				align-items: flex-start;
+			}
 		}
 
 		/* ---- Share Section ---- */
@@ -276,7 +316,6 @@
 			width: 16px;
 			height: 16px;
 			flex-shrink: 0;
-			transition: color 0.3s var(--ease-out);
 		}
 
 		.share-feedback {
@@ -293,148 +332,6 @@
 		.share-feedback.visible {
 			opacity: 1;
 			transform: translateY(0);
-		}
-
-		/* ---- Desktop expand overlay ---- */
-		@media (min-width: 900px) {
-			.menu-img-scroll img {
-				width: 100%;
-			}
-
-			.menu-img-scroll.drinks-scroll img {
-				width: 100%;
-			}
-
-			/* On desktop show both food pages side by side */
-			.food-pages-grid {
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				gap: 1.25rem;
-			}
-
-			/* Clickable wrapper on desktop */
-			.menu-img-wrap {
-				cursor: pointer;
-			}
-
-			/* Hover overlay */
-			.expand-overlay {
-				display: flex;
-				position: absolute;
-				inset: 0;
-				bottom: 30px; /* above hint bar */
-				z-index: 3;
-				align-items: center;
-				justify-content: center;
-				background: rgba(12, 10, 9, 0);
-				transition: background 0.3s var(--ease-out);
-				border-radius: 10px 10px 0 0;
-				pointer-events: none;
-			}
-
-			.menu-img-wrap:hover .expand-overlay {
-				background: rgba(12, 10, 9, 0.45);
-			}
-
-			.expand-label {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.5rem;
-				padding: 0.65rem 1.4rem;
-				border: 1px solid rgba(255,255,255,0.25);
-				border-radius: 4px;
-				background: rgba(12, 10, 9, 0.7);
-				backdrop-filter: blur(8px);
-				-webkit-backdrop-filter: blur(8px);
-				color: var(--color-text);
-				font-family: var(--font-body);
-				font-size: 0.78rem;
-				font-weight: 500;
-				letter-spacing: 0.1em;
-				text-transform: uppercase;
-				opacity: 0;
-				transform: translateY(6px) scale(0.97);
-				transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
-			}
-
-			.menu-img-wrap:hover .expand-label {
-				opacity: 1;
-				transform: translateY(0) scale(1);
-			}
-		}
-
-		/* Hide overlay on mobile */
-		@media (max-width: 899px) {
-			.expand-overlay { display: none; }
-		}
-
-		/* ---- Lightbox ---- */
-		.lightbox {
-			display: none;
-			position: fixed;
-			inset: 0;
-			z-index: 9000;
-			background: rgba(10, 8, 7, 0.96);
-			align-items: center;
-			justify-content: center;
-			padding: 1.5rem;
-			animation: lb-in 0.3s var(--ease-out);
-		}
-
-		.lightbox.open {
-			display: flex;
-		}
-
-		@keyframes lb-in {
-			from { opacity: 0; }
-			to   { opacity: 1; }
-		}
-
-		.lightbox-inner {
-			position: relative;
-			max-width: 100%;
-			max-height: 100%;
-			animation: lb-scale 0.35s var(--ease-out);
-		}
-
-		@keyframes lb-scale {
-			from { transform: scale(0.96); }
-			to   { transform: scale(1); }
-		}
-
-		.lightbox-inner img {
-			display: block;
-			max-width: 94vw;
-			max-height: 90vh;
-			width: auto;
-			height: auto;
-			border-radius: 8px;
-			box-shadow: 0 24px 80px rgba(0,0,0,0.7);
-		}
-
-		.lightbox-close {
-			position: absolute;
-			top: -14px;
-			right: -14px;
-			width: 38px;
-			height: 38px;
-			border-radius: 50%;
-			background: var(--color-surface);
-			border: 1px solid var(--color-border);
-			color: var(--color-text);
-			font-size: 1.1rem;
-			cursor: pointer;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			transition: background 0.2s, color 0.2s;
-			z-index: 1;
-		}
-
-		.lightbox-close:hover {
-			background: var(--color-accent);
-			color: var(--color-bg);
-			border-color: var(--color-accent);
 		}
 
 		@media (max-width: 480px) {
@@ -487,16 +384,18 @@
 			<div class="container">
 				<div class="section-label">Sigree Indian Cuisine</div>
 				<h1>Our Menus</h1>
-				<p class="hero-sub">Explore our food and drinks offerings. Use the tabs below to switch between menus.</p>
+				<p class="hero-sub">Browse our food and drinks menus below, or download a copy to keep.</p>
 
 				<!-- Tab Switcher -->
 				<div class="tab-row" role="tablist" aria-label="Menu categories">
 					<div class="tab-bar">
 						<button class="tab-btn active" id="tab-food" role="tab" aria-selected="true" aria-controls="panel-food">
+							<!-- fork & knife icon -->
 							Food Menu
 						</button>
 						<button class="tab-btn" id="tab-drinks" role="tab" aria-selected="false" aria-controls="panel-drinks">
-							Drinks
+							<!-- glass icon -->
+							Drinks Menu
 						</button>
 					</div>
 				</div>
@@ -506,88 +405,99 @@
 		<!-- Tab Panels -->
 		<div class="tab-panels" role="presentation">
 
-			<!-- Food Menu Panel -->
+			<!-- ===== Food Menu Panel ===== -->
 			<div class="tab-panel active" id="panel-food" role="tabpanel" aria-labelledby="tab-food">
 				<div class="container">
+
 					<div class="panel-intro">
 						<h2>Food Menu</h2>
-						<p>
-							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-							Scroll within each page &mdash; pinch or double-tap to zoom
-						</p>
+						<p>Our full food menu — scroll through below, or open it in a new tab for the best reading experience.</p>
 					</div>
 
-					<div class="menu-images food-pages-grid">
-
-					<!-- Page 2 (shown first) -->
-					<div class="menu-img-wrap" data-expand="assets/menu2.png" data-expand-alt="Sigree Indian Cuisine food menu, page 2">
-						<span class="page-badge">Page 2</span>
-						<div class="expand-overlay" aria-hidden="true">
-							<span class="expand-label">
-								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-								Click to Expand
+					<div class="pdf-card">
+						<!-- Action bar -->
+						<div class="pdf-action-bar">
+							<span class="pdf-action-bar-label">
+								<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+								Sigree Food Menu
 							</span>
+							<div class="pdf-action-btns">
+								<a class="btn-pdf btn-pdf-secondary" href="assets/foodmenu.pdf" target="_blank" rel="noopener" aria-label="Open food menu in new tab">
+									<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+									Open
+								</a>
+								<a class="btn-pdf btn-pdf-primary" href="assets/foodmenu.pdf" download="Sigree-Food-Menu.pdf" aria-label="Download food menu PDF">
+									<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+									Download
+								</a>
+							</div>
 						</div>
-						<div class="menu-img-scroll" tabindex="0" aria-label="Food menu page 2, scroll to view">
-							<img src="assets/menu2.png" alt="Sigree Indian Cuisine food menu, page 2" loading="eager" />
-						</div>
-						<div class="img-hint" aria-hidden="true">
-							<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-							Swipe or scroll to pan &nbsp;&bull;&nbsp; Pinch to zoom
+
+						<!-- Inline viewer -->
+						<iframe
+							class="pdf-viewer"
+							src="assets/foodmenu.pdf#toolbar=0&navpanes=0&scrollbar=1"
+							title="Sigree Indian Cuisine Food Menu"
+							aria-label="Sigree Food Menu PDF viewer"
+							loading="lazy"
+						></iframe>
+
+						<!-- Shown only if iframe fails (JS-driven) -->
+						<div class="pdf-fallback" id="food-fallback" aria-live="polite">
+							<svg class="pdf-fallback-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+							<h3>Your browser doesn't support inline PDFs</h3>
+							<p>No problem — use the buttons above to open or download the menu.</p>
 						</div>
 					</div>
 
-					<!-- Page 1 (shown second) -->
-					<div class="menu-img-wrap" data-expand="assets/menu1.png" data-expand-alt="Sigree Indian Cuisine food menu, page 1">
-						<span class="page-badge">Page 1</span>
-						<div class="expand-overlay" aria-hidden="true">
-							<span class="expand-label">
-								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-								Click to Expand
-							</span>
-						</div>
-						<div class="menu-img-scroll" tabindex="0" aria-label="Food menu page 1, scroll to view">
-							<img src="assets/menu1.png" alt="Sigree Indian Cuisine food menu, page 1" loading="eager" />
-						</div>
-						<div class="img-hint" aria-hidden="true">
-							<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-							Swipe or scroll to pan &nbsp;&bull;&nbsp; Pinch to zoom
-						</div>
-					</div>
-
-				</div>
 				</div>
 			</div>
 
-			<!-- Drinks Panel -->
+			<!-- ===== Drinks Menu Panel ===== -->
 			<div class="tab-panel" id="panel-drinks" role="tabpanel" aria-labelledby="tab-drinks" hidden>
 				<div class="container">
+
 					<div class="panel-intro">
 						<h2>Drinks Menu</h2>
-						<p>
-							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-							Scroll within the menu &mdash; pinch or double-tap to zoom
-						</p>
+						<p>Our full bar & drinks selection — scroll through below, or download for easier reading.</p>
 					</div>
 
-					<div class="menu-images">
-					<div class="menu-img-wrap" data-expand="assets/drinks1.png" data-expand-alt="Sigree Indian Cuisine drinks menu">
-						<span class="page-badge">Bar &amp; Drinks</span>
-						<div class="expand-overlay" aria-hidden="true">
-							<span class="expand-label">
-								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-								Click to Expand
+					<div class="pdf-card">
+						<!-- Action bar -->
+						<div class="pdf-action-bar">
+							<span class="pdf-action-bar-label">
+								<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+								Sigree Drinks Menu
 							</span>
+							<div class="pdf-action-btns">
+								<a class="btn-pdf btn-pdf-secondary" href="assets/drinkmenu.pdf" target="_blank" rel="noopener" aria-label="Open drinks menu in new tab">
+									<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+									Open
+								</a>
+								<a class="btn-pdf btn-pdf-primary" href="assets/drinkmenu.pdf" download="Sigree-Drinks-Menu.pdf" aria-label="Download drinks menu PDF">
+									<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+									Download
+								</a>
+							</div>
 						</div>
-							<div class="menu-img-scroll drinks-scroll" tabindex="0" aria-label="Drinks menu, scroll to view">
-								<img src="assets/drinks1.png" alt="Sigree Indian Cuisine drinks menu" loading="lazy" />
-							</div>
-							<div class="img-hint" aria-hidden="true">
-								<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-								Swipe or scroll to pan &nbsp;&bull;&nbsp; Pinch to zoom
-							</div>
+
+						<!-- Inline viewer -->
+						<iframe
+							class="pdf-viewer"
+							src="assets/drinkmenu.pdf#toolbar=0&navpanes=0&scrollbar=1"
+							title="Sigree Indian Cuisine Drinks Menu"
+							aria-label="Sigree Drinks Menu PDF viewer"
+							loading="lazy"
+						></iframe>
+
+						<!-- Shown only if iframe fails (JS-driven) -->
+						<div class="pdf-fallback" id="drinks-fallback" aria-live="polite">
+							<svg class="pdf-fallback-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+							<h3>Your browser doesn't support inline PDFs</h3>
+							<p>No problem — use the buttons above to open or download the menu.</p>
 						</div>
 					</div>
+
 				</div>
 			</div>
 
@@ -611,16 +521,6 @@
 
 	</main>
 
-	<!-- Lightbox -->
-	<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Expanded menu image">
-		<div class="lightbox-inner" id="lightbox-inner">
-			<button class="lightbox-close" id="lightbox-close" aria-label="Close expanded view">
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-			</button>
-			<img id="lightbox-img" src="" alt="" />
-		</div>
-	</div>
-
 	<footer class="site-footer">
 		<div class="container footer-inner">
 			<p>&copy; <span id="year"></span> Sigree Indian Cuisine. All rights reserved.</p>
@@ -637,11 +537,14 @@
 		document.getElementById('year').textContent = new Date().getFullYear();
 
 		// ---- Activate tab from URL hash ----
+		const tabs   = document.querySelectorAll('.tab-btn');
+		const panels = document.querySelectorAll('.tab-panel');
+
 		function activateTabById(panelId) {
-			const matchTab = document.querySelector(`[aria-controls="${panelId}"]`);
+			const matchTab   = document.querySelector(`[aria-controls="${panelId}"]`);
 			const matchPanel = document.getElementById(panelId);
 			if (!matchTab || !matchPanel) return;
-			tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+			tabs.forEach(t   => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
 			panels.forEach(p => { p.classList.remove('active'); p.hidden = true; });
 			matchTab.classList.add('active');
 			matchTab.setAttribute('aria-selected', 'true');
@@ -650,49 +553,32 @@
 		}
 
 		const hash = window.location.hash.replace('#', '');
-		if (hash === 'panel-drinks') {
-			activateTabById('panel-drinks');
-		}
+		if (hash === 'panel-drinks') activateTabById('panel-drinks');
 
 		// ---- Tab switching ----
-		const tabs = document.querySelectorAll('.tab-btn');
-		const panels = document.querySelectorAll('.tab-panel');
-
 		tabs.forEach(tab => {
 			tab.addEventListener('click', () => {
 				const target = tab.getAttribute('aria-controls');
-
-				tabs.forEach(t => {
-					t.classList.remove('active');
-					t.setAttribute('aria-selected', 'false');
-				});
-				panels.forEach(p => {
-					p.classList.remove('active');
-					p.hidden = true;
-				});
-
+				tabs.forEach(t   => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+				panels.forEach(p => { p.classList.remove('active'); p.hidden = true; });
 				tab.classList.add('active');
 				tab.setAttribute('aria-selected', 'true');
-
 				const activePanel = document.getElementById(target);
 				activePanel.classList.add('active');
 				activePanel.hidden = false;
 			});
 
-			// Keyboard nav: left/right arrow between tabs
+			// Keyboard nav: left/right arrow
 			tab.addEventListener('keydown', e => {
 				const tabList = [...tabs];
 				const idx = tabList.indexOf(tab);
-				if (e.key === 'ArrowRight') {
-					tabList[(idx + 1) % tabList.length].focus();
-				} else if (e.key === 'ArrowLeft') {
-					tabList[(idx - 1 + tabList.length) % tabList.length].focus();
-				}
+				if (e.key === 'ArrowRight') tabList[(idx + 1) % tabList.length].focus();
+				else if (e.key === 'ArrowLeft') tabList[(idx - 1 + tabList.length) % tabList.length].focus();
 			});
 		});
 
 		// ---- Share button ----
-		const shareBtn = document.getElementById('share-btn');
+		const shareBtn      = document.getElementById('share-btn');
 		const shareFeedback = document.getElementById('share-feedback');
 
 		function showFeedback(msg) {
@@ -710,16 +596,9 @@
 				text: 'Check out the menu at Sigree Indian Cuisine, Auckland.',
 				url: window.location.href
 			};
-
 			if (navigator.share) {
-				try {
-					await navigator.share(shareData);
-				} catch (err) {
-					if (err.name !== 'AbortError') {
-						// fallback to clipboard
-						copyToClipboard();
-					}
-				}
+				try { await navigator.share(shareData); }
+				catch (err) { if (err.name !== 'AbortError') copyToClipboard(); }
 			} else {
 				copyToClipboard();
 			}
@@ -728,11 +607,7 @@
 		function copyToClipboard() {
 			const url = window.location.href;
 			if (navigator.clipboard && navigator.clipboard.writeText) {
-				navigator.clipboard.writeText(url).then(() => {
-					showFeedback('Link copied to clipboard');
-				}).catch(() => {
-					fallbackCopy(url);
-				});
+				navigator.clipboard.writeText(url).then(() => showFeedback('Link copied to clipboard')).catch(() => fallbackCopy(url));
 			} else {
 				fallbackCopy(url);
 			}
@@ -743,88 +618,28 @@
 			ta.value = text;
 			ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
 			document.body.appendChild(ta);
-			ta.focus();
-			ta.select();
-			try {
-				document.execCommand('copy');
-				showFeedback('Link copied to clipboard');
-			} catch {
-				showFeedback('Copy this link: ' + text);
-			}
+			ta.focus(); ta.select();
+			try { document.execCommand('copy'); showFeedback('Link copied to clipboard'); }
+			catch { showFeedback('Copy this link: ' + text); }
 			document.body.removeChild(ta);
 		}
 
-		// ---- Lightbox (desktop only) ----
-		const lightbox    = document.getElementById('lightbox');
-		const lightboxImg = document.getElementById('lightbox-img');
-		const lightboxClose = document.getElementById('lightbox-close');
-
-		function openLightbox(src, alt) {
-			lightboxImg.src = src;
-			lightboxImg.alt = alt;
-			lightbox.classList.add('open');
-			document.body.style.overflow = 'hidden';
-			lightboxClose.focus();
-		}
-
-		function closeLightbox() {
-			lightbox.classList.remove('open');
-			document.body.style.overflow = '';
-		}
-
-		// Only wire up on non-touch / desktop
-		document.querySelectorAll('.menu-img-wrap[data-expand]').forEach(wrap => {
-			wrap.addEventListener('click', e => {
-				// Skip on touch / small screens
-				if (window.matchMedia('(max-width: 899px)').matches) return;
-				openLightbox(wrap.dataset.expand, wrap.dataset.expandAlt || '');
-			});
-			// Keyboard: Enter / Space
-			wrap.setAttribute('tabindex', '0');
-			wrap.addEventListener('keydown', e => {
-				if (window.matchMedia('(max-width: 899px)').matches) return;
-				if (e.key === 'Enter' || e.key === ' ') {
-					e.preventDefault();
-					openLightbox(wrap.dataset.expand, wrap.dataset.expandAlt || '');
+		// ---- PDF iframe fallback detection ----
+		// Some browsers (especially mobile Safari) can't render PDFs inline.
+		// If the iframe has no content height after a short delay, show fallback.
+		document.querySelectorAll('.pdf-viewer').forEach(iframe => {
+			iframe.addEventListener('error', () => {
+				const fallback = iframe.closest('.pdf-card').querySelector('.pdf-fallback');
+				if (fallback) {
+					iframe.style.display = 'none';
+					fallback.style.display = 'flex';
 				}
 			});
 		});
-
-		lightboxClose.addEventListener('click', closeLightbox);
-
-		// Click backdrop to close
-		lightbox.addEventListener('click', e => {
-			if (e.target === lightbox) closeLightbox();
-		});
-
-		// Esc to close
-		document.addEventListener('keydown', e => {
-			if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
-		});
-
-		// ---- Mobile nav toggle (reuse site behaviour) ----
-		const navToggle = document.querySelector('.nav-toggle');
-		const primaryNav = document.getElementById('primary-nav');
-
-		if (navToggle && primaryNav) {
-			navToggle.addEventListener('click', () => {
-				const isOpen = primaryNav.classList.toggle('open');
-				navToggle.classList.toggle('active', isOpen);
-				navToggle.setAttribute('aria-expanded', String(isOpen));
-				document.body.style.overflow = isOpen ? 'hidden' : '';
-			});
-
-			// Close nav when a link is clicked
-			primaryNav.querySelectorAll('a').forEach(link => {
-				link.addEventListener('click', () => {
-					primaryNav.classList.remove('open');
-					navToggle.classList.remove('active');
-					navToggle.setAttribute('aria-expanded', 'false');
-					document.body.style.overflow = '';
-				});
-			});
-		}
 	</script>
+
+	<!-- Mobile nav overlay (from main site) -->
+	<script src="script.js"></script>
 
 </body>
 </html>
