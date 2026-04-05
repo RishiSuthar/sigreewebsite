@@ -15,15 +15,15 @@
 	// Testimonials data
 	const testimonials = [
 		{
-			text: '"This is not simply a meal—it\'s an experience. The attention to detail, from the first greeting to the final course, is remarkable."',
+			text: '"We came for a birthday dinner and every single dish was on point. The sigree grill stuff especially. Will definitely be back."',
 			author: '— Priya M., Google Reviews'
 		},
 		{
-			text: '"Best Indian dining evening we\'ve had in Auckland. Every course was polished, authentic, and beautifully executed."',
+			text: '"Honestly the best Indian food we\'ve had in Auckland. Everything tasted fresh and the lamb chops were incredible."',
 			author: '— Daniel R., TripAdvisor'
 		},
 		{
-			text: '"The sigree specials had unbelievable depth of flavour. The ambience and service matched the quality of the food perfectly."',
+			text: '"The sigree specials had unreal depth of flavour. Good vibes, good food, and the staff remembered us from last time."',
 			author: '— Asha K., Google Reviews'
 		}
 	];
@@ -145,6 +145,26 @@
 	const yearEl = document.getElementById('year');
 	if (yearEl) {
 		yearEl.textContent = new Date().getFullYear();
+	}
+
+	// Scroll reveal — IntersectionObserver
+	var revealElements = document.querySelectorAll('[data-reveal], [data-reveal-child]');
+	if (revealElements.length && 'IntersectionObserver' in window) {
+		var revealObserver = new IntersectionObserver(function(entries) {
+			entries.forEach(function(entry) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('revealed');
+					revealObserver.unobserve(entry.target);
+				}
+			});
+		}, {
+			threshold: 0.08,
+			rootMargin: '0px 0px -60px 0px'
+		});
+
+		revealElements.forEach(function(el) {
+			revealObserver.observe(el);
+		});
 	}
 
 })();

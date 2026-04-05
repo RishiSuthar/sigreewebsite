@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="robots" content="index, follow" />
+	<link rel="canonical" href="https://sigreebbq.netlify.app/experience.html" />
+	<meta name="description" content="The Sigree Experience. Private dining, celebrations, corporate events, and chef's table at Auckland's premier Indian restaurant." />
+	<meta property="og:title" content="The Experience | Sigree Indian Cuisine" />
+	<meta property="og:description" content="Discover private dining, celebrations, and chef's table experiences at Sigree Indian Cuisine, Auckland." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://sigreebbq.netlify.app/experience.html" />
+	<title>The Experience | Sigree Indian Cuisine</title>
+	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="styles.css" />
+	<script src="script.js" defer></script>
+	<style>
+
+		/* ============================================
+		   Experience Page — Page-specific Styles
+		   ============================================ */
+
+		/* ---- Hero ---- */
+		.exp-hero {
+			min-height: 62vh;
+			display: flex;
+			align-items: flex-end;
+			padding-top: 7rem;
+			padding-bottom: clamp(3rem, 8vw, 5rem);
+			position: relative;
+			overflow: hidden;
+			background:
+				linear-gradient(180deg, rgba(12,10,9,0.1) 0%, var(--color-bg) 100%),
+				radial-gradient(ellipse at 60% 40%, rgba(249, 92, 8, 0.10) 0%, transparent 55%),
+				radial-gradient(ellipse at 30% 60%, rgba(218, 1, 0, 0.07) 0%, transparent 50%),
+				var(--color-bg);
+		}
+
+		.exp-hero-inner {
+			max-width: 780px;
+		}
+
+		.exp-hero h1 {
+			font-size: clamp(3rem, 8vw, 5.5rem);
+			margin: 0.5rem 0 1.5rem;
+			line-height: 1.08;
+		}
+
+		.exp-hero h1 em {
+			font-style: italic;
+			color: var(--color-accent);
+		}
+
+		.exp-hero-sub {
+			font-size: clamp(1rem, 2.5vw, 1.2rem);
+			color: var(--color-text-secondary);
+			line-height: 1.75;
+			max-width: 54ch;
+		}
+
+		/* ---- The Evening ---- */
+		.evening-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: clamp(3rem, 8vw, 6rem);
+			align-items: start;
+		}
+
+		.evening-left h2 {
+			font-size: clamp(2rem, 4.5vw, 3rem);
+			line-height: 1.15;
+			margin-bottom: 1.75rem;
+		}
+
+		.evening-right {
+			padding-top: 0.5rem;
+		}
+
+		.evening-right p {
+			color: var(--color-text-secondary);
+			line-height: 1.85;
+			margin-bottom: 1.25rem;
+		}
+
+		.evening-right p:last-child {
+			margin-bottom: 0;
+		}
+
+		/* ---- Occasions Grid ---- */
+		.occasions-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 1.5rem;
+		}
+
+		.occasion-card {
+			background: var(--color-bg-elevated);
+			border: 1px solid var(--color-border);
+			border-radius: 6px;
+			padding: clamp(2rem, 3vw, 3rem);
+			transition: border-color 0.3s var(--ease-out);
+		}
+
+		.occasion-card:hover {
+			border-color: rgba(249, 92, 8, 0.35);
+		}
+
+		.occasion-number {
+			display: block;
+			font-size: 0.6875rem;
+			letter-spacing: 0.15em;
+			color: var(--color-accent);
+			margin-bottom: 1.25rem;
+		}
+
+		.occasion-card h3 {
+			font-size: 1.2rem;
+			font-weight: 400;
+			margin-bottom: 0.75rem;
+			color: var(--color-text);
+		}
+
+		.occasion-card p {
+			color: var(--color-text-secondary);
+			font-size: 0.9375rem;
+			line-height: 1.75;
+		}
+
+		/* ---- Enquiry pull-quote ---- */
+		.exp-enquiry {
+			border-top: 1px solid var(--color-border);
+			border-bottom: 1px solid var(--color-border);
+			padding: clamp(2.5rem, 6vw, 4rem) 0;
+			background: var(--color-bg-elevated);
+		}
+
+		.exp-enquiry-inner {
+			max-width: 680px;
+		}
+
+		.exp-enquiry h2 {
+			font-size: clamp(1.8rem, 4vw, 2.6rem);
+			line-height: 1.2;
+			margin-bottom: 1.25rem;
+		}
+
+		.exp-enquiry p {
+			color: var(--color-text-secondary);
+			line-height: 1.8;
+			margin-bottom: 2rem;
+		}
+
+		.exp-enquiry .btn-group {
+			display: flex;
+			gap: 1rem;
+			flex-wrap: wrap;
+		}
+
+		/* ---- CTA Banner ---- */
+		.exp-cta {
+			text-align: center;
+			border-top: 1px solid var(--color-border);
+		}
+
+		.exp-cta h2 {
+			font-size: clamp(2rem, 5vw, 3.5rem);
+			margin-bottom: 1rem;
+		}
+
+		.exp-cta p {
+			color: var(--color-text-secondary);
+			font-size: clamp(0.95rem, 2vw, 1.1rem);
+			max-width: 48ch;
+			margin: 0 auto 2.5rem;
+			line-height: 1.75;
+		}
+
+		/* ---- Responsive ---- */
+		@media (max-width: 900px) {
+			.evening-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.occasions-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<a class="skip-link" href="#main-content">Skip to content</a>
+	<div class="page-embers" aria-hidden="true">
+		<span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span>
+	</div>
+
+	<header class="site-header" id="top">
+		<div class="container header-inner">
+			<a class="brand" href="index.html" aria-label="Sigree Indian Cuisine home">
+				<img src="assets/SIGREELOGO1.png" alt="Sigree Indian Cuisine" class="brand-logo" />
+			</a>
+
+			<nav class="nav" id="primary-nav" aria-label="Primary navigation">
+				<a href="about.html">About Us</a>
+				<a href="menu.html">Menu</a>
+				<a href="experience.html" class="active">Experience</a>
+				<a href="visit.html">Visit</a>
+			</nav>
+
+			<a class="nav-cta" href="index.html#reserve">Reserve</a>
+
+			<button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav">
+				<span></span>
+				<span></span>
+			</button>
+		</div>
+	</header>
+
+	<main id="main-content">
+
+		<!-- ============================
+		     Hero
+		     ============================ -->
+		<section class="exp-hero">
+			<div class="container">
+				<div class="exp-hero-inner">
+					<div class="section-label">The Experience</div>
+					<h1>More Than a Meal,<br />It's an <em>Occasion</em></h1>
+					<p class="exp-hero-sub">At Sigree, the food is only part of it. The warmth of a real fire, unhurried service, and a room that actually feels good to be in. Whether it's lunch or a late sit-down, this is what eating out should be.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============================
+		     The Evening — What to Expect
+		     ============================ -->
+		<section class="section" data-reveal>
+			<div class="container">
+				<div class="evening-grid">
+					<div class="evening-left">
+					<div class="section-label">Your Visit</div>
+						<h2>From the Moment<br />You Walk In</h2>
+					</div>
+					<div class="evening-right">
+						<p>You'll be greeted by name if you've booked, and welcomed warmly either way. Our front-of-house team seats you, walks you through the menu, and gives honest recommendations. There's no rush. The kitchen works at its own pace, and the food arrives when it's ready.</p>
+						<p>Starters hit the table with the kind of aroma that makes the next table look over. Mains from the sigree carry a smokiness that no oven can replicate. And if you've got room, dessert is worth staying for. The whole thing just flows naturally. No performance, no fuss, just good food and a good time.</p>
+						<p>Whether you're in for a quick weekday lunch, a lazy Saturday with friends, or a proper sit-down celebration, the room works for all of it. That's the whole point.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============================
+		     Dining Occasions
+		     ============================ -->
+		<section class="section" data-reveal>
+			<div class="container">
+				<div class="section-label">How to Dine With Us</div>
+				<h2 style="font-size:clamp(1.8rem,4vw,2.8rem); margin-bottom:clamp(2rem,5vw,3rem); max-width:20ch;">Every Table Has<br />Its Own Story</h2>
+				<div class="occasions-grid">
+
+					<article class="occasion-card">
+						<span class="occasion-number">01</span>
+						<h3>Date Night</h3>
+						<p>Low lighting, warm tones, and food that gives you something to talk about. Book a corner table, order a couple of starters to share, and let it go from there. This is what Sigree does best.</p>
+					</article>
+
+					<article class="occasion-card">
+						<span class="occasion-number">02</span>
+						<h3>Family Gatherings</h3>
+						<p>Big tables, generous portions, and a menu that covers everyone, from the adventurous eaters to the kids who just want naan and butter chicken. Families are a big part of our regulars, and we take that seriously.</p>
+					</article>
+
+					<article class="occasion-card">
+						<span class="occasion-number">03</span>
+						<h3>Private Dining</h3>
+						<p>For groups of 8 to 40, we can set up a private or semi-private area with a tailored menu. Birthdays, engagements, anniversaries. Tell us what you need and we'll sort it.</p>
+					</article>
+
+					<article class="occasion-card">
+						<span class="occasion-number">04</span>
+						<h3>Corporate &amp; Business</h3>
+						<p>Team dinners, client entertaining, end-of-year functions. We offer set menus, dedicated service, and a room that makes a good impression without trying too hard.</p>
+					</article>
+
+					<article class="occasion-card">
+						<span class="occasion-number">05</span>
+						<h3>Chef's Table</h3>
+						<p>A multi-course set menu based on whatever the kitchen is most excited about that week. Available for small groups. Ask about drink matching when you book.</p>
+					</article>
+
+					<article class="occasion-card">
+						<span class="occasion-number">06</span>
+						<h3>Takeaway</h3>
+						<p>Can't make it in? Our full menu is available for collection. Same kitchen, same care, packed for the journey home. Call ahead or order when you arrive.</p>
+					</article>
+
+				</div>
+			</div>
+		</section>
+
+		<!-- ============================
+		     Enquiry Strip
+		     ============================ -->
+		<section class="exp-enquiry" data-reveal>
+			<div class="container">
+				<div class="exp-enquiry-inner">
+					<div class="section-label">Planning Something?</div>
+					<h2>Let's Sort It Out</h2>
+					<p>If you're planning something specific, like a private event, a big group, or a celebration that needs some extra thought, just get in touch. We'll work with you on the menu, seating, and everything else.</p>
+					<div class="btn-group">
+						<a href="mailto:sigreedine@gmail.com" class="btn btn-primary">Email Us</a>
+						<a href="tel:+6492431277" class="btn btn-secondary">Call +64 9 243 1277</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============================
+		     CTA
+		     ============================ -->
+		<section class="exp-cta section" data-reveal>
+			<div class="container">
+				<div class="section-label">Reserve</div>
+				<h2>Ready to Book?</h2>
+				<p>Weekends fill up quick. Lock in your table and we'll sort the rest.</p>
+				<a href="index.html#reserve" class="btn btn-primary">Reserve a Table</a>
+			</div>
+		</section>
+
+	</main>
+
+	<footer class="site-footer">
+		<div class="container">
+			<div class="footer-grid">
+				<div class="footer-brand">
+					<img src="assets/SIGREELOGO1.png" alt="Sigree Indian Cuisine" class="footer-logo" />
+					<p>Auckland's premier Indian fire-craft dining on Rosebank Road, Avondale.</p>
+				</div>
+				<div class="footer-col">
+					<h4>Navigate</h4>
+					<nav>
+						<a href="index.html">Home</a>
+						<a href="about.html">About Us</a>
+						<a href="menu.html">Menu</a>
+						<a href="visit.html">Visit</a>
+					</nav>
+				</div>
+				<div class="footer-col">
+					<h4>Contact</h4>
+					<address>
+						277 Rosebank Road<br />
+						Avondale, Auckland 1026
+					</address>
+					<a href="tel:+6492431277">+64 9 243 1277</a>
+					<a href="mailto:sigreedine@gmail.com">sigreedine@gmail.com</a>
+				</div>
+				<div class="footer-col">
+					<h4>Hours</h4>
+					<p>Open Daily<br />10:30 AM – 9:30 PM</p>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>&copy; <span id="year"></span> Sigree Indian Cuisine. All rights reserved.</p>
+				<div class="footer-social">
+					<a href="https://www.facebook.com/sigreebarbeque" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+					</a>
+					<a href="https://www.instagram.com/sigreebarbeque" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+					</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
