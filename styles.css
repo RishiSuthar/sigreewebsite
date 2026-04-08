@@ -228,6 +228,8 @@ p {
 	display: flex;
 	align-items: center;
 	gap: 2.5rem;
+	flex: 1;
+	justify-content: center;
 }
 
 .nav a {
@@ -253,11 +255,37 @@ p {
 	padding: 0.625rem 1.25rem;
 	border: 1px solid var(--color-accent);
 	transition: all 0.3s var(--ease-out);
+	white-space: nowrap;
+}
+
+.nav-cta + .nav-cta {
+	margin-left: 0.5rem;
 }
 
 .nav-cta:hover {
 	background: var(--color-accent);
 	color: var(--color-bg);
+}
+
+.nav-cta-order {
+	background: var(--color-accent);
+	color: var(--color-bg);
+}
+
+.nav-cta-order:hover {
+	background: transparent;
+	color: var(--color-accent);
+}
+
+.reserve-actions {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.nav-mobile-cta {
+	display: none;
 }
 
 .nav-toggle {
@@ -1331,6 +1359,37 @@ p {
 	
 	.nav-cta {
 		display: none;
+	}
+
+	.nav-cta-order {
+		display: none;
+	}
+
+	.nav-mobile-cta {
+		display: block;
+		color: var(--color-accent) !important;
+		font-weight: 500;
+		padding: 0.625rem 1.5rem;
+		border: 1px solid var(--color-accent);
+		text-align: center;
+		margin-top: 0.25rem;
+		transition: all 0.3s var(--ease-out);
+	}
+
+	.nav-mobile-cta:first-of-type {
+		margin-top: 1rem;
+		background: var(--color-accent);
+		color: var(--color-bg) !important;
+	}
+
+	.nav-mobile-cta:first-of-type:hover {
+		background: transparent;
+		color: var(--color-accent) !important;
+	}
+
+	.nav-mobile-cta:last-of-type:hover {
+		background: var(--color-accent);
+		color: var(--color-bg) !important;
 	}
 	
 	.nav-toggle {
