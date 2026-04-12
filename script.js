@@ -147,6 +147,22 @@
 		yearEl.textContent = new Date().getFullYear();
 	}
 
+	// Hero video playlist
+	const heroVideo = document.getElementById('hero-video');
+	const heroVideoSources = ['assets/vid1.mp4', 'assets/vid2.mp4'];
+	let heroVideoIndex = 0;
+
+	if (heroVideo) {
+		heroVideo.addEventListener('ended', function() {
+			heroVideoIndex = (heroVideoIndex + 1) % heroVideoSources.length;
+			heroVideo.src = heroVideoSources[heroVideoIndex];
+			heroVideo.load();
+			heroVideo.play().catch(function() {
+				// autoplay may be blocked on some browsers; no user action required.
+			});
+		});
+	}
+
 	// Scroll reveal — IntersectionObserver
 	var revealElements = document.querySelectorAll('[data-reveal], [data-reveal-child]');
 	if (revealElements.length && 'IntersectionObserver' in window) {
