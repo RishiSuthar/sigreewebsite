@@ -183,4 +183,51 @@
 		});
 	}
 
+	// Ad Modal Logic
+	const adModal = document.getElementById('ad-modal');
+	const adModalClose = document.getElementById('ad-modal-close');
+	const adModalOverlay = document.getElementById('ad-modal-overlay');
+	const adNextBtn = document.getElementById('ad-next-btn');
+	const adImg1 = document.getElementById('ad-img-1');
+	const adImg2 = document.getElementById('ad-img-2');
+	let adTimer;
+
+	if (adModal) {
+		// Show modal shortly after load
+		setTimeout(function() {
+			adModal.classList.add('open');
+			document.body.style.overflow = 'hidden';
+			
+			// Automatically show second ad after 4.5 seconds
+			adTimer = setTimeout(showSecondAd, 4500);
+		}, 800);
+
+		function closeAdModal() {
+			adModal.classList.remove('open');
+			document.body.style.overflow = '';
+			clearTimeout(adTimer);
+		}
+
+		function showSecondAd() {
+			if (!adImg1 || !adImg2 || !adImg1.classList.contains('active')) return;
+			adImg1.classList.remove('active');
+			adImg2.classList.add('active');
+			if (adNextBtn) adNextBtn.textContent = 'Continue to Website';
+			clearTimeout(adTimer);
+		}
+
+		if (adModalClose) adModalClose.addEventListener('click', closeAdModal);
+		if (adModalOverlay) adModalOverlay.addEventListener('click', closeAdModal);
+
+		if (adNextBtn) {
+			adNextBtn.addEventListener('click', function() {
+				if (adImg1 && adImg1.classList.contains('active')) {
+					showSecondAd();
+				} else {
+					closeAdModal();
+				}
+			});
+		}
+	}
+
 })();

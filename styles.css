@@ -1859,3 +1859,106 @@ p {
 		border-bottom: none;
 	}
 }
+
+/* ============================================
+   Ad Modal
+   ============================================ */
+.ad-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0.4s, opacity 0.4s;
+}
+
+.ad-modal.open {
+	visibility: visible;
+	opacity: 1;
+}
+
+.ad-modal-overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(12, 10, 9, 0.85);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+}
+
+.ad-modal-content {
+	position: relative;
+	z-index: 1;
+	width: 90%;
+	max-width: 460px;
+	background: var(--color-bg-elevated);
+	border: 1px solid var(--color-border-subtle);
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+	transform: translateY(20px) scale(0.95);
+	transition: transform 0.4s var(--ease-out);
+}
+
+.ad-modal.open .ad-modal-content {
+	transform: translateY(0) scale(1);
+}
+
+.ad-modal-close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 32px;
+	height: 32px;
+	background: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 24px;
+	line-height: 1;
+	z-index: 10;
+	cursor: pointer;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	transition: background 0.3s, transform 0.3s;
+}
+
+.ad-modal-close:hover {
+	background: var(--color-accent);
+	transform: scale(1.1);
+}
+
+.ad-modal-images {
+	position: relative;
+	width: 100%;
+	background: #000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ad-img {
+	width: 100%;
+	height: auto;
+	max-height: 70vh;
+	object-fit: contain;
+	display: none;
+}
+
+.ad-img.active {
+	display: block;
+	animation: fadeIn 0.4s ease-out;
+}
+
+.ad-modal-nav {
+	padding: 1rem;
+	background: var(--color-bg-elevated);
+}
+
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
