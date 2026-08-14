@@ -1892,7 +1892,7 @@ p {
 	position: relative;
 	z-index: 1;
 	width: 90%;
-	max-width: 460px;
+	max-width: 1000px;  /*original 460px*/
 	background: var(--color-bg-elevated);
 	border: 1px solid var(--color-border-subtle);
 	border-radius: 12px;
