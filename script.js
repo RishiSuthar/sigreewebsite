@@ -209,4 +209,21 @@
 		}
 	}
 
+	// EatSafe Certificate Modal Logic
+	const certModal = document.getElementById('cert-modal');
+	
+	window.openCertModal = function() {
+		if (certModal) {
+			certModal.classList.add('open');
+			document.body.style.overflow = 'hidden';
+		}
+	};
+	
+	window.closeCertModal = function() {
+		if (certModal) {
+			certModal.classList.remove('open');
+			document.body.style.overflow = '';
+		}
+	};
+
 })();

@@ -700,6 +700,9 @@
 				<div class="footer-brand">
 					<img src="assets/SIGREELOGO1.png" alt="Sigree Indian Cuisine" class="footer-logo" />
 					<p>Auckland's premier Indian fire-craft dining on Rosebank Road, Avondale.</p>
+					<button type="button" class="footer-cert-btn" aria-label="View EatSafe Certificate" onclick="openCertModal()">
+						<img src="assets/cert1.png" alt="EatSafe Rating" class="footer-cert-img" />
+					</button>
 				</div>
 				<div class="footer-col">
 					<h4>Navigate</h4>
@@ -737,5 +740,12 @@
 			</div>
 		</div>
 	</footer>
+	<!-- EatSafe Modal -->
+	<div id="cert-modal" class="cert-modal" aria-hidden="true" role="dialog" onclick="closeCertModal()">
+		<div class="cert-modal-content" onclick="event.stopPropagation()">
+			<button class="cert-modal-close" onclick="closeCertModal()" aria-label="Close certificate">&times;</button>
+			<img src="assets/cert1.png" alt="EatSafe Rating Certificate" class="cert-modal-img" />
+		</div>
+	</div>
 </body>
 </html>
