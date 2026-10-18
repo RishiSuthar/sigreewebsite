@@ -490,43 +490,32 @@
 			flex-shrink: 0;
 		}
 
-		.drinks-intro {
-			text-align: center;
-			padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(1rem, 3vw, 1.5rem);
+		/* ----- Drinks ----- */
+		.menu-section-note {
+			margin: calc(-1 * clamp(0.75rem, 2vw, 1.25rem)) 0 1.5rem;
+			font-size: 0.88rem;
 			color: var(--color-text-secondary);
-			font-size: 0.92rem;
-			line-height: 1.7;
 		}
 
-		.drinks-coming-soon {
+		.menu-section-note + .menu-subhead {
+			margin-top: 0;
+		}
+
+		/* Glass / bottle price pair */
+		.menu-item-price.split {
 			display: flex;
 			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			gap: 1.2rem;
-			padding: clamp(4rem, 12vh, 6rem) 1.5rem;
-			text-align: center;
+			align-items: flex-end;
+			gap: 0.2rem;
 		}
 
-		.drinks-icon {
-			width: 52px;
-			height: 52px;
-			color: var(--color-accent);
-			opacity: 0.7;
-		}
-
-		.drinks-coming-soon h2 {
-			font-size: clamp(1.4rem, 3vw, 2rem);
-			font-weight: 400;
-			margin: 0;
-		}
-
-		.drinks-coming-soon p {
-			color: var(--color-text-secondary);
-			font-size: 0.9rem;
-			max-width: 34ch;
-			line-height: 1.7;
-			margin: 0;
+		.price-label {
+			margin-right: 0.45rem;
+			font-size: 0.64rem;
+			font-weight: 500;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: var(--color-text-muted);
 		}
 
 		/* ----- Share section ----- */
@@ -1957,18 +1946,584 @@
 			     DRINKS PANEL
 			     ========================================= -->
 			<div class="tab-panel" id="panel-drinks" role="tabpanel" aria-labelledby="tab-drinks" hidden>
-				<div class="container">
-					<div class="drinks-coming-soon">
-						<svg class="drinks-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-							stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"
-							aria-hidden="true">
-							<path d="M8 22h8M12 11v11M3 3l4 9h10l4-9H3z" />
-						</svg>
-						<h2>Drinks Menu</h2>
-						<p>Ask your server for today's drinks selection — from craft cocktails and wine to lassi and
-							mocktails.</p>
-					</div>
-				</div>
+				<div class="container menu-body">
+
+					<!-- Floating Section Nav (appears on scroll) -->
+					<nav class="section-nav" aria-label="Jump to drinks section">
+						<div class="section-nav-inner">
+							<button class="sec-pill" data-target="drinks-beer">Beer</button>
+							<button class="sec-pill" data-target="drinks-wine">Wine</button>
+							<button class="sec-pill" data-target="drinks-cocktails">Cocktails</button>
+							<button class="sec-pill" data-target="drinks-non-alcoholic">Non-Alcoholic</button>
+						</div>
+					</nav>
+
+					<!-- Beer -->
+					<section class="menu-section" aria-labelledby="drinks-beer">
+						<div class="menu-section-header">
+							<h2 class="menu-section-title" id="drinks-beer">Beer</h2>
+							<div class="menu-section-rule" aria-hidden="true"></div>
+						</div>
+						<p class="menu-section-note">Refreshing beers from around the world.</p>
+						<h3 class="menu-subhead">Lager</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Heineken</div>
+									<p class="menu-item-desc">Crisp Dutch lager with a clean, refreshing finish.</p>
+								</div>
+								<div class="menu-item-price">$8.50</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Corona Extra</div>
+									<p class="menu-item-desc">Light Mexican lager, best with a squeeze of lime.</p>
+								</div>
+								<div class="menu-item-price">$9.00</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Asahi Super Dry</div>
+									<p class="menu-item-desc">Extra-dry Japanese lager with a sharp, clean bite.</p>
+								</div>
+								<div class="menu-item-price">$9.50</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Peroni Nastro Azzurro</div>
+									<p class="menu-item-desc">Italian pale lager, delicate and slightly floral.</p>
+								</div>
+								<div class="menu-item-price">$9.50</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Steinlager Classic</div>
+									<p class="menu-item-desc">New Zealand icon. Bold, hoppy and distinctly Kiwi.</p>
+								</div>
+								<div class="menu-item-price">$8.50</div>
+							</div>
+						</div>
+						<h3 class="menu-subhead">Ale</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Speight&#039;s Gold Medal Ale</div>
+									<p class="menu-item-desc">Southern gold ale with malt warmth and an easy drink.</p>
+								</div>
+								<div class="menu-item-price">$8.50</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Emerson&#039;s Bookbinder</div>
+									<p class="menu-item-desc">Dunedin bitter ale. Nutty malt and a dry finish.</p>
+								</div>
+								<div class="menu-item-price">$11.00</div>
+							</div>
+						</div>
+						<h3 class="menu-subhead">IPA</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Garage Project Pale Ale</div>
+									<p class="menu-item-desc">Wellington hops, citrus aroma and a bright bitterness.</p>
+								</div>
+								<div class="menu-item-price">$12.00</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Panhead Supercharger APA</div>
+									<p class="menu-item-desc">American pale ale with tropical hop character.</p>
+								</div>
+								<div class="menu-item-price">$12.00</div>
+							</div>
+						</div>
+						<h3 class="menu-subhead">Stout</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Guinness Draught</div>
+									<p class="menu-item-desc">Velvet nitro stout with coffee, cocoa and cream.</p>
+								</div>
+								<div class="menu-item-price">$10.00</div>
+							</div>
+						</div>
+						<h3 class="menu-subhead">Craft Beer</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Sawmill Pilsner</div>
+									<p class="menu-item-desc">Matakana craft pilsner. Crisp, floral and finely bitter.</p>
+								</div>
+								<div class="menu-item-price">$11.00</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Garage Project DFA</div>
+									<p class="menu-item-desc">Tropical IPA with mango, pineapple and a dry hop punch.</p>
+								</div>
+								<div class="menu-item-price">$13.00</div>
+							</div>
+						</div>
+					</section>
+
+					<!-- Wine -->
+					<section class="menu-section" aria-labelledby="drinks-wine">
+						<div class="menu-section-header">
+							<h2 class="menu-section-title" id="drinks-wine">Wine</h2>
+							<div class="menu-section-rule" aria-hidden="true"></div>
+						</div>
+						<p class="menu-section-note">A perfect pour for every occasion.</p>
+						<h3 class="menu-subhead">Red Wine</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Merlot</div>
+									<p class="menu-item-desc">Plum, cocoa and a soft, rounded finish.</p>
+								</div>
+								<div class="menu-item-price split">
+									<span><span class="price-label">Glass</span>$11.00</span>
+									<span><span class="price-label">Bottle</span>$49.00</span>
+								</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Cabernet Sauvignon</div>
+									<p class="menu-item-desc">Blackcurrant, cedar and fine tannin.</p>
+								</div>
+								<div class="menu-item-price split">
+									<span><span class="price-label">Glass</span>$12.00</span>
+									<span><span class="price-label">Bottle</span>$52.00</span>
+								</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Pinot Noir</div>
+									<p class="menu-item-desc">Cherry, spice and a silky Central Otago style.</p>
+								</div>
+								<div class="menu-item-price split">
+									<span><span class="price-label">Glass</span>$12.00</span>
+									<span><span class="price-label">Bottle</span>$55.00</span>
+								</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Shiraz</div>
+									<p class="menu-item-desc">Dark berry, pepper and a generous body.</p>
+								</div>
+								<div class="menu-item-price split">
+									<span><span class="price-label">Glass</span>$11.00</span>
+									<span><span class="price-label">Bottle</span>$49.00</span>
+								</div>
+							</div>
+						</div>
+						<h3 class="menu-subhead">White Wine</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Chardonnay</div>
+									<p class="menu-item-desc">Stone fruit, gentle oak and a creamy mid-palate.</p>
+								</div>
+								<div class="menu-item-price split">
+									<span><span class="price-label">Glass</span>$10.00</span>
+									<span><span class="price-label">Bottle</span>$45.00</span>
+								</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Sauvignon Blanc</div>
+									<p class="menu-item-desc">Marlborough classic. Gooseberry, citrus and zest.</p>
+								</div>
+								<div class="menu-item-price split">
+									<span><span class="price-label">Glass</span>$10.00</span>
+									<span><span class="price-label">Bottle</span>$44.00</span>
+								</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Riesling</div>
+									<p class="menu-item-desc">Lime, white florals and a precise, dry finish.</p>
+								</div>
+								<div class="menu-item-price split">
+									<span><span class="price-label">Glass</span>$10.00</span>
+									<span><span class="price-label">Bottle</span>$45.00</span>
+								</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Pinot Grigio</div>
+									<p class="menu-item-desc">Crisp pear and almond. Light and food-friendly.</p>
+								</div>
+								<div class="menu-item-price split">
+									<span><span class="price-label">Glass</span>$11.00</span>
+									<span><span class="price-label">Bottle</span>$48.00</span>
+								</div>
+							</div>
+						</div>
+						<h3 class="menu-subhead">Rosé Wine</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Provence Rosé</div>
+									<p class="menu-item-desc">Pale, dry and delicately berry-scented.</p>
+								</div>
+								<div class="menu-item-price split">
+									<span><span class="price-label">Glass</span>$12.00</span>
+									<span><span class="price-label">Bottle</span>$52.00</span>
+								</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">White Zinfandel</div>
+									<p class="menu-item-desc">Soft strawberry notes with a hint of sweetness.</p>
+								</div>
+								<div class="menu-item-price split">
+									<span><span class="price-label">Glass</span>$10.00</span>
+									<span><span class="price-label">Bottle</span>$42.00</span>
+								</div>
+							</div>
+						</div>
+						<h3 class="menu-subhead">Sparkling Wine</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Prosecco</div>
+									<p class="menu-item-desc">Fine bubbles, green apple and a festive lift.</p>
+								</div>
+								<div class="menu-item-price split">
+									<span><span class="price-label">Glass</span>$11.00</span>
+									<span><span class="price-label">Bottle</span>$48.00</span>
+								</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Champagne NV</div>
+									<p class="menu-item-desc">Toast, citrus and a long, elegant mousse.</p>
+								</div>
+								<div class="menu-item-price split">
+									<span><span class="price-label">Glass</span>$18.00</span>
+									<span><span class="price-label">Bottle</span>$89.00</span>
+								</div>
+							</div>
+						</div>
+						<h3 class="menu-subhead">Dessert Wine</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Late Harvest Riesling</div>
+									<p class="menu-item-desc">Honeyed citrus with a clean streak of acidity.</p>
+								</div>
+								<div class="menu-item-price split">
+									<span><span class="price-label">Glass</span>$12.00</span>
+									<span><span class="price-label">Bottle</span>$52.00</span>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<!-- Cocktails -->
+					<section class="menu-section" aria-labelledby="drinks-cocktails">
+						<div class="menu-section-header">
+							<h2 class="menu-section-title" id="drinks-cocktails">Cocktails</h2>
+							<div class="menu-section-rule" aria-hidden="true"></div>
+						</div>
+						<p class="menu-section-note">Classics and house signatures, stirred with intent.</p>
+						<h3 class="menu-subhead">Classic</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Espresso Martini</div>
+									<p class="menu-item-desc">Vodka, coffee liqueur and a fresh espresso shot.</p>
+								</div>
+								<div class="menu-item-price">$18.00</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Negroni</div>
+									<p class="menu-item-desc">Gin, Campari and sweet vermouth. Bitter and beautiful.</p>
+								</div>
+								<div class="menu-item-price">$18.00</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Mojito</div>
+									<p class="menu-item-desc">Rum, mint, lime and soda. Bright and cooling.</p>
+								</div>
+								<div class="menu-item-price">$17.00</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Old Fashioned</div>
+									<p class="menu-item-desc">Whisky, sugar and bitters. Slow, rich and timeless.</p>
+								</div>
+								<div class="menu-item-price">$18.00</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Margarita</div>
+									<p class="menu-item-desc">Tequila, triple sec and lime. Sharp and clean.</p>
+								</div>
+								<div class="menu-item-price">$18.00</div>
+							</div>
+						</div>
+						<h3 class="menu-subhead">Signature</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Sigree Sour</div>
+									<p class="menu-item-desc">House whisky sour with smoked spice and citrus.</p>
+								</div>
+								<div class="menu-item-price">$19.00</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Mango Martini</div>
+									<p class="menu-item-desc">Alphonso mango, vodka and a whisper of chilli.</p>
+								</div>
+								<div class="menu-item-price">$19.00</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Tamarind Margarita</div>
+									<p class="menu-item-desc">Tequila, tamarind and lime. Tangy, smoky, unforgettable.</p>
+								</div>
+								<div class="menu-item-price">$19.00</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Chai Old Fashioned</div>
+									<p class="menu-item-desc">Bourbon steeped with masala chai and orange oils.</p>
+								</div>
+								<div class="menu-item-price">$20.00</div>
+							</div>
+						</div>
+						<h3 class="menu-subhead">Gin Based</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Gin Garden</div>
+									<p class="menu-item-desc">Gin, cucumber, elderflower and a squeeze of lemon.</p>
+								</div>
+								<div class="menu-item-price">$18.00</div>
+							</div>
+						</div>
+						<h3 class="menu-subhead">Rum Based</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Dark &amp; Stormy</div>
+									<p class="menu-item-desc">Dark rum and ginger beer over ice.</p>
+								</div>
+								<div class="menu-item-price">$17.00</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Piña Colada</div>
+									<p class="menu-item-desc">Rum, coconut and pineapple. Unapologetically tropical.</p>
+								</div>
+								<div class="menu-item-price">$18.00</div>
+							</div>
+						</div>
+						<h3 class="menu-subhead">Tequila Based</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Paloma</div>
+									<p class="menu-item-desc">Tequila, grapefruit and a salted rim.</p>
+								</div>
+								<div class="menu-item-price">$18.00</div>
+							</div>
+						</div>
+						<h3 class="menu-subhead">Whisky Based</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Whisky Sour</div>
+									<p class="menu-item-desc">Whisky, lemon and a silk-smooth foam.</p>
+								</div>
+								<div class="menu-item-price">$18.00</div>
+							</div>
+						</div>
+					</section>
+
+					<!-- Non-Alcoholic -->
+					<section class="menu-section" aria-labelledby="drinks-non-alcoholic">
+						<div class="menu-section-header">
+							<h2 class="menu-section-title" id="drinks-non-alcoholic">Non-Alcoholic</h2>
+							<div class="menu-section-rule" aria-hidden="true"></div>
+						</div>
+						<p class="menu-section-note">Lassi, mocktails and something cold for the table.</p>
+						<h3 class="menu-subhead">Soft Drinks</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Coca-Cola</div>
+								</div>
+								<div class="menu-item-price">$4.50</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Coca-Cola Zero</div>
+								</div>
+								<div class="menu-item-price">$4.50</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Sprite</div>
+								</div>
+								<div class="menu-item-price">$4.50</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Sparkling Water</div>
+									<p class="menu-item-desc">Chilled and clean.</p>
+								</div>
+								<div class="menu-item-price">$4.50</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Ginger Beer</div>
+									<p class="menu-item-desc">Spicy, aromatic and served over ice.</p>
+								</div>
+								<div class="menu-item-price">$5.50</div>
+							</div>
+						</div>
+						<h3 class="menu-subhead">Juices &amp; Lassi</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Orange Juice</div>
+									<p class="menu-item-desc">Freshly poured.</p>
+								</div>
+								<div class="menu-item-price">$6.00</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Apple Juice</div>
+								</div>
+								<div class="menu-item-price">$6.00</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Mango Juice</div>
+									<p class="menu-item-desc">Ripe Alphonso mango.</p>
+								</div>
+								<div class="menu-item-price">$6.50</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Mango Lassi</div>
+									<p class="menu-item-desc">Creamy yoghurt blended with sweet mango.</p>
+								</div>
+								<div class="menu-item-price">$7.50</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Sweet Lassi</div>
+									<p class="menu-item-desc">Cool, lightly sweetened yoghurt drink.</p>
+								</div>
+								<div class="menu-item-price">$7.00</div>
+							</div>
+						</div>
+						<h3 class="menu-subhead">Mocktails</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Virgin Mojito</div>
+									<p class="menu-item-desc">Mint, lime and soda. All the sparkle, none of the spirit.</p>
+								</div>
+								<div class="menu-item-price">$12.00</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Mango Cooler</div>
+									<p class="menu-item-desc">Mango, citrus and a hint of chilli salt.</p>
+								</div>
+								<div class="menu-item-price">$12.00</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Cucumber Cooler</div>
+									<p class="menu-item-desc">Cucumber, lime and soda. Clean and cooling.</p>
+								</div>
+								<div class="menu-item-price">$12.00</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Rose Lemonade</div>
+									<p class="menu-item-desc">Rosewater, lemon and a touch of sweetness.</p>
+								</div>
+								<div class="menu-item-price">$12.00</div>
+							</div>
+						</div>
+						<h3 class="menu-subhead">Hot Drinks</h3>
+						<div class="menu-items">
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Masala Chai</div>
+									<p class="menu-item-desc">House-spiced tea, slow-brewed with milk.</p>
+								</div>
+								<div class="menu-item-price">$5.50</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Espresso</div>
+								</div>
+								<div class="menu-item-price">$4.50</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Flat White</div>
+								</div>
+								<div class="menu-item-price">$5.50</div>
+							</div>
+
+							<div class="menu-item">
+								<div class="menu-item-body">
+									<div class="menu-item-name">Hot Chocolate</div>
+									<p class="menu-item-desc">Rich cocoa, served steaming.</p>
+								</div>
+								<div class="menu-item-price">$5.50</div>
+							</div>
+						</div>
+					</section>
+
+				</div><!-- /.container -->
 			</div>
 
 		</div><!-- /.tab-panels -->
@@ -2119,18 +2674,13 @@
 		// ============================================================
 		// Floating section nav — show on scroll, update active pill
 		// ============================================================
-		const sectionNav = document.getElementById('section-nav');
-		const menuBody = document.querySelector('.menu-body');
+		const sectionNavs = document.querySelectorAll('.section-nav');
 		const pills = document.querySelectorAll('.sec-pill');
 
-		// Show nav once user scrolls past the hero
+		// Show nav (one per tab panel) once user scrolls past the hero
 		const heroEl = document.querySelector('.menu-hero');
 		const navObserver = new IntersectionObserver((entries) => {
-			if (!entries[0].isIntersecting) {
-				sectionNav.classList.add('visible');
-			} else {
-				sectionNav.classList.remove('visible');
-			}
+			sectionNavs.forEach(nav => nav.classList.toggle('visible', !entries[0].isIntersecting));
 		}, { threshold: 0 });
 		navObserver.observe(heroEl);
 
