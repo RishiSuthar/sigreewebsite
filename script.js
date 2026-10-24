@@ -12,22 +12,6 @@
 	const nav = document.querySelector('.nav');
 	const navLinks = document.querySelectorAll('.nav a');
 
-	// Testimonials data
-	const testimonials = [
-		{
-			text: '"We came for a birthday dinner and every single dish was on point. The sigree grill stuff especially. Will definitely be back."',
-			author: '— Priya M., Google Reviews'
-		},
-		{
-			text: '"Honestly the best Indian food we\'ve had in Auckland. Everything tasted fresh and the lamb chops were incredible."',
-			author: '— Daniel R., TripAdvisor'
-		},
-		{
-			text: '"The sigree specials had unreal depth of flavour. Good vibes, good food, and the staff remembered us from last time."',
-			author: '— Asha K., Google Reviews'
-		}
-	];
-
 	// Header scroll effect
 	function handleScroll() {
 		if (!header) return;
@@ -77,70 +61,6 @@
 
 	window.addEventListener('scroll', highlightNav, { passive: true });
 
-	// Testimonials slider
-	const testimonialText = document.getElementById('testimonial-text');
-	const testimonialAuthor = document.getElementById('testimonial-author');
-	const testimonialDots = document.querySelectorAll('.testimonial-dot');
-	let currentTestimonial = 0;
-	let testimonialTimer;
-
-	function showTestimonial(index) {
-		if (!testimonialText || !testimonialAuthor) return;
-		
-		currentTestimonial = index;
-		testimonialText.textContent = testimonials[index].text;
-		testimonialAuthor.textContent = testimonials[index].author;
-		
-		testimonialDots.forEach(function(dot, i) {
-			dot.classList.toggle('active', i === index);
-		});
-	}
-
-	function nextTestimonial() {
-		const next = (currentTestimonial + 1) % testimonials.length;
-		showTestimonial(next);
-	}
-
-	function startTestimonialTimer() {
-		testimonialTimer = setInterval(nextTestimonial, 6000);
-	}
-
-	if (testimonialDots.length) {
-		testimonialDots.forEach(function(dot) {
-			dot.addEventListener('click', function() {
-				const index = parseInt(dot.dataset.slide, 10);
-				if (!isNaN(index)) {
-					clearInterval(testimonialTimer);
-					showTestimonial(index);
-					startTestimonialTimer();
-				}
-			});
-		});
-		
-		startTestimonialTimer();
-	}
-
-	// Booking form
-	const bookingForm = document.getElementById('booking-form');
-	const formMessage = document.getElementById('form-message');
-
-	if (bookingForm && formMessage) {
-		bookingForm.addEventListener('submit', function(e) {
-			e.preventDefault();
-
-			if (!bookingForm.checkValidity()) {
-				formMessage.textContent = 'Please complete all required fields.';
-				return;
-			}
-
-			const name = document.getElementById('name');
-			const displayName = name && name.value.trim() ? name.value.trim().split(' ')[0] : 'Guest';
-			
-			formMessage.textContent = 'Thank you, ' + displayName + '. We will confirm your reservation shortly.';
-			bookingForm.reset();
-		});
-	}
-
 	// Year in footer
 	const yearEl = document.getElementById('year');
 	if (yearEl) {
@@ -149,7 +69,7 @@
 
 	// Hero video playlist
 	const heroVideo = document.getElementById('hero-video');
-	const heroVideoSources = ['assets/vid1.mp4', 'assets/vid2.mp4'];
+	const heroVideoSources = ['assets/vid1.MP4', 'assets/vid2.MP4'];
 	let heroVideoIndex = 0;
 
 	if (heroVideo) {
@@ -183,47 +103,91 @@
 		});
 	}
 
-	// Ad Modal Logic
+	// Modals — Esc closes, keyboard focus stays inside while open and returns afterwards
+	let activeModal = null;
+	let focusBeforeModal = null;
+
+	function openModal(modal, close) {
+		focusBeforeModal = document.activeElement;
+		activeModal = { el: modal, close: close };
+		modal.classList.add('open');
+		modal.setAttribute('aria-hidden', 'false');
+		document.body.style.overflow = 'hidden';
+		const first = modal.querySelector('button, a[href]');
+		if (first) first.focus();
+	}
+
+	function closeModal(modal) {
+		if (!activeModal || activeModal.el !== modal) return;
+		modal.classList.remove('open');
+		modal.setAttribute('aria-hidden', 'true');
+		document.body.style.overflow = '';
+		activeModal = null;
+		if (focusBeforeModal && focusBeforeModal.focus) focusBeforeModal.focus();
+	}
+
+	document.addEventListener('keydown', function(e) {
+		if (!activeModal) return;
+		if (e.key === 'Escape') {
+			activeModal.close();
+			return;
+		}
+		if (e.key === 'Tab') {
+			const items = activeModal.el.querySelectorAll('button, a[href]');
+			if (!items.length) return;
+			const first = items[0];
+			const last = items[items.length - 1];
+			if (e.shiftKey && document.activeElement === first) {
+				e.preventDefault();
+				last.focus();
+			} else if (!e.shiftKey && document.activeElement === last) {
+				e.preventDefault();
+				first.focus();
+			} else if (!activeModal.el.contains(document.activeElement)) {
+				e.preventDefault();
+				first.focus();
+			}
+		}
+	});
+
+	// Ad Modal — shown once per browser session
 	const adModal = document.getElementById('ad-modal');
 	const adModalClose = document.getElementById('ad-modal-close');
 	const adModalOverlay = document.getElementById('ad-modal-overlay');
 	const adNextBtn = document.getElementById('ad-next-btn');
 
 	if (adModal) {
-		// Show modal shortly after load
-		setTimeout(function() {
-			adModal.classList.add('open');
-			document.body.style.overflow = 'hidden';
-		}, 800);
+		const closeAdModal = function() { closeModal(adModal); };
+		let adSeen = false;
+		try {
+			adSeen = sessionStorage.getItem('sigree-ad-seen') === '1';
+		} catch (e) {
+			// storage blocked (private mode etc.) — just show the ad
+		}
 
-		function closeAdModal() {
-			adModal.classList.remove('open');
-			document.body.style.overflow = '';
+		if (!adSeen) {
+			setTimeout(function() {
+				openModal(adModal, closeAdModal);
+				try {
+					sessionStorage.setItem('sigree-ad-seen', '1');
+				} catch (e) {}
+			}, 800);
 		}
 
 		if (adModalClose) adModalClose.addEventListener('click', closeAdModal);
 		if (adModalOverlay) adModalOverlay.addEventListener('click', closeAdModal);
-
-		if (adNextBtn) {
-			adNextBtn.addEventListener('click', closeAdModal);
-		}
+		if (adNextBtn) adNextBtn.addEventListener('click', closeAdModal);
 	}
 
-	// EatSafe Certificate Modal Logic
+	// EatSafe Certificate Modal
 	const certModal = document.getElementById('cert-modal');
-	
+
 	window.openCertModal = function() {
-		if (certModal) {
-			certModal.classList.add('open');
-			document.body.style.overflow = 'hidden';
-		}
+		if (certModal) openModal(certModal, window.closeCertModal);
 	};
-	
+
 	window.closeCertModal = function() {
-		if (certModal) {
-			certModal.classList.remove('open');
-			document.body.style.overflow = '';
-		}
+		if (certModal) closeModal(certModal);
 	};
 
 })();

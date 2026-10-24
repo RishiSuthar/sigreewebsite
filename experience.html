@@ -10,12 +10,12 @@
 	<meta property="og:description" content="Discover private dining, celebrations, and chef's table experiences at Sigree Indian Cuisine, Auckland." />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://sigree.co.nz/experience.html" />
-	<meta property="og:image" content="https://sigree.co.nz/assets/SIGREELOGO1.png" />
+	<meta property="og:image" content="https://sigree.co.nz/assets/food/special-kofta-sham-savera.jpg" />
 	<meta property="og:site_name" content="Sigree Indian Cuisine" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="The Experience | Sigree Indian Cuisine" />
 	<meta name="twitter:description" content="Discover private dining, celebrations, and chef's table experiences at Sigree Indian Cuisine, Auckland." />
-	<meta name="twitter:image" content="https://sigree.co.nz/assets/SIGREELOGO1.png" />
+	<meta name="twitter:image" content="https://sigree.co.nz/assets/food/special-kofta-sham-savera.jpg" />
 	<title>The Experience | Sigree Indian Cuisine</title>
 	<link rel="icon" href="favicon.ico" type="image/x-icon" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -79,6 +79,20 @@
 			font-size: clamp(2rem, 4.5vw, 3rem);
 			line-height: 1.15;
 			margin-bottom: 1.75rem;
+		}
+
+		.evening-photo {
+			margin: 0;
+			border-radius: 6px;
+			overflow: hidden;
+			border: 1px solid var(--color-border);
+			aspect-ratio: 4 / 3;
+		}
+
+		.evening-photo img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
 		}
 
 		.evening-right {
@@ -209,7 +223,7 @@
 	<header class="site-header" id="top">
 		<div class="container header-inner">
 			<a class="brand" href="index.html" aria-label="Sigree Indian Cuisine home">
-				<img src="assets/SIGREELOGO1.png" alt="Sigree Indian Cuisine" class="brand-logo" />
+				<img src="assets/sigree-logo.png" alt="Sigree Indian Cuisine" class="brand-logo" />
 			</a>
 
 			<nav class="nav" id="primary-nav" aria-label="Primary navigation">
@@ -236,7 +250,8 @@
 		<!-- ============================
 		     Hero
 		     ============================ -->
-		<section class="exp-hero">
+		<section class="exp-hero photo-hero"
+			style="--hero-photo: url('assets/food/special-kofta-sham-savera.jpg'); --hero-photo-sm: url('assets/food/special-kofta-sham-savera-800.jpg');">
 			<div class="container">
 				<div class="exp-hero-inner">
 					<div class="section-label">The Experience</div>
@@ -255,6 +270,12 @@
 					<div class="evening-left">
 					<div class="section-label">Your Visit</div>
 						<h2>From the Moment<br />You Walk In</h2>
+						<figure class="evening-photo">
+							<img src="assets/food/table-spread-800.jpg"
+								srcset="assets/food/table-spread-800.jpg 800w, assets/food/table-spread.jpg 1600w"
+								sizes="(max-width: 640px) 92vw, 45vw" width="800" height="450" alt="A spread of Sigree dishes shared across the table"
+								loading="lazy" decoding="async" />
+						</figure>
 					</div>
 					<div class="evening-right">
 						<p>You'll be greeted by name if you've booked, and welcomed warmly either way. Our front-of-house team seats you, walks you through the menu, and gives honest recommendations. There's no rush. The kitchen works at its own pace, and the food arrives when it's ready.</p>
@@ -352,10 +373,10 @@
 		<div class="container">
 			<div class="footer-grid">
 				<div class="footer-brand">
-					<img src="assets/SIGREELOGO1.png" alt="Sigree Indian Cuisine" class="footer-logo" />
+					<img src="assets/sigree-logo.png" alt="Sigree Indian Cuisine" class="footer-logo" />
 					<p>Auckland's premier Indian fire-craft dining on Rosebank Road, Avondale.</p>
 					<button type="button" class="footer-cert-btn" aria-label="View EatSafe Certificate" onclick="openCertModal()">
-						<img src="assets/cert1.png" alt="EatSafe Rating" class="footer-cert-img" />
+						<img src="assets/cert1-thumb.jpg" alt="EatSafe Rating" class="footer-cert-img" width="65" height="90" />
 					</button>
 				</div>
 				<div class="footer-col">
@@ -395,10 +416,11 @@
 		</div>
 	</footer>
 	<!-- EatSafe Modal -->
-	<div id="cert-modal" class="cert-modal" aria-hidden="true" role="dialog" onclick="closeCertModal()">
+	<div id="cert-modal" class="cert-modal" aria-hidden="true" role="dialog" aria-modal="true"
+		aria-label="EatSafe certificate" onclick="closeCertModal()">
 		<div class="cert-modal-content" onclick="event.stopPropagation()">
-			<button class="cert-modal-close" onclick="closeCertModal()" aria-label="Close certificate">&times;</button>
-			<img src="assets/cert1.png" alt="EatSafe Rating Certificate" class="cert-modal-img" />
+			<button type="button" class="cert-modal-close" onclick="closeCertModal()" aria-label="Close certificate">&times;</button>
+			<img src="assets/cert1.jpg" alt="EatSafe Rating Certificate" class="cert-modal-img" />
 		</div>
 	</div>
 </body>

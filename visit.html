@@ -10,12 +10,12 @@
 	<meta property="og:description" content="Find directions, hours, and contact details for Sigree Indian Cuisine at 277 Rosebank Road, Avondale, Auckland." />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://sigree.co.nz/visit.html" />
-	<meta property="og:image" content="https://sigree.co.nz/assets/SIGREELOGO1.png" />
+	<meta property="og:image" content="https://sigree.co.nz/assets/food/murgh-lababdar.jpg" />
 	<meta property="og:site_name" content="Sigree Indian Cuisine" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="Visit Us | Sigree Indian Cuisine" />
 	<meta name="twitter:description" content="Find directions, hours, and contact details for Sigree Indian Cuisine at 277 Rosebank Road, Avondale, Auckland." />
-	<meta name="twitter:image" content="https://sigree.co.nz/assets/SIGREELOGO1.png" />
+	<meta name="twitter:image" content="https://sigree.co.nz/assets/food/murgh-lababdar.jpg" />
 	<title>Visit Us | Sigree Indian Cuisine</title>
 	<link rel="icon" href="favicon.ico" type="image/x-icon" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -213,7 +213,7 @@
 	<header class="site-header" id="top">
 		<div class="container header-inner">
 			<a class="brand" href="index.html" aria-label="Sigree Indian Cuisine home">
-				<img src="assets/SIGREELOGO1.png" alt="Sigree Indian Cuisine" class="brand-logo" />
+				<img src="assets/sigree-logo.png" alt="Sigree Indian Cuisine" class="brand-logo" />
 			</a>
 
 			<nav class="nav" id="primary-nav" aria-label="Primary navigation">
@@ -240,7 +240,8 @@
 		<!-- ============================
 		     Hero
 		     ============================ -->
-		<section class="visit-hero">
+		<section class="visit-hero photo-hero"
+			style="--hero-photo: url('assets/food/murgh-lababdar.jpg'); --hero-photo-sm: url('assets/food/murgh-lababdar-800.jpg');">
 			<div class="container">
 				<div class="visit-hero-inner">
 					<div class="section-label">Visit Us</div>
@@ -356,10 +357,10 @@
 		<div class="container">
 			<div class="footer-grid">
 				<div class="footer-brand">
-					<img src="assets/SIGREELOGO1.png" alt="Sigree Indian Cuisine" class="footer-logo" />
+					<img src="assets/sigree-logo.png" alt="Sigree Indian Cuisine" class="footer-logo" />
 					<p>Auckland's premier Indian fire-craft dining on Rosebank Road, Avondale.</p>
 					<button type="button" class="footer-cert-btn" aria-label="View EatSafe Certificate" onclick="openCertModal()">
-						<img src="assets/cert1.png" alt="EatSafe Rating" class="footer-cert-img" />
+						<img src="assets/cert1-thumb.jpg" alt="EatSafe Rating" class="footer-cert-img" width="65" height="90" />
 					</button>
 				</div>
 				<div class="footer-col">
@@ -399,10 +400,11 @@
 		</div>
 	</footer>
 	<!-- EatSafe Modal -->
-	<div id="cert-modal" class="cert-modal" aria-hidden="true" role="dialog" onclick="closeCertModal()">
+	<div id="cert-modal" class="cert-modal" aria-hidden="true" role="dialog" aria-modal="true"
+		aria-label="EatSafe certificate" onclick="closeCertModal()">
 		<div class="cert-modal-content" onclick="event.stopPropagation()">
-			<button class="cert-modal-close" onclick="closeCertModal()" aria-label="Close certificate">&times;</button>
-			<img src="assets/cert1.png" alt="EatSafe Rating Certificate" class="cert-modal-img" />
+			<button type="button" class="cert-modal-close" onclick="closeCertModal()" aria-label="Close certificate">&times;</button>
+			<img src="assets/cert1.jpg" alt="EatSafe Rating Certificate" class="cert-modal-img" />
 		</div>
 	</div>
 </body>
