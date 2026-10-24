@@ -5,7 +5,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="robots" content="index, follow" />
-	<link rel="canonical" href="https://sigree.co.nz/menu" />
+	<link rel="canonical" href="https://sigree.co.nz/menu.html" />
 	<meta name="description"
 		content="Sigree Indian Cuisine Menu — Explore our full food and drinks menu at Auckland's premier Indian fine dining restaurant." />
 	<meta name="keywords"
@@ -671,6 +671,11 @@
 		}
 
 		@media (max-width: 480px) {
+			/* long headings like "Family Pack Menu (Preorder Only)" wrap instead of overflowing */
+			.menu-section-title {
+				white-space: normal;
+			}
+
 			.tab-btn {
 				padding: 0.8rem 1.2rem;
 				font-size: 0.76rem;
@@ -694,7 +699,7 @@
 	<header class="site-header" id="top">
 		<div class="container header-inner">
 			<a class="brand" href="index.html" aria-label="Sigree Indian Cuisine home">
-				<img src="assets/SIGREELOGO1.png" alt="Sigree Indian Cuisine" class="brand-logo" />
+				<img src="assets/sigree-logo.png" alt="Sigree Indian Cuisine" class="brand-logo" />
 			</a>
 			<nav class="nav" id="primary-nav" aria-label="Primary navigation">
 				<a href="about.html">About Us</a>
@@ -1127,7 +1132,7 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name"><span class="sigree-name-wrap"><img
-												src="assets/SIGREELOGO1.png" alt="Sigree"
+												src="assets/sigree-logo.png" alt="Sigree"
 												class="sigree-name-logo">Special Butter Chicken</span></div>
 									<p class="menu-item-desc">Chargrilled tandoori chicken slow-simmered in a velvety
 										makhani gravy with butter, cream, and our secret house spice blend.</p>
@@ -1170,7 +1175,7 @@
 							<div class="menu-item">
 								<div class="menu-item-body">
 									<div class="menu-item-name"><span class="sigree-name-wrap"><img
-												src="assets/SIGREELOGO1.png" alt="Sigree"
+												src="assets/sigree-logo.png" alt="Sigree"
 												class="sigree-name-logo">Special Goat Bhuna</span></div>
 									<p class="menu-item-desc">Tender goat slow-cooked with onion, tomato and whole
 										aromatic spices until the gravy is thick and deeply layered.</p>
@@ -1256,7 +1261,7 @@
 								</button>
 								<div class="menu-item-body">
 									<div class="menu-item-name"><span class="sigree-name-wrap"><img
-												src="assets/SIGREELOGO1.png" alt="Sigree"
+												src="assets/sigree-logo.png" alt="Sigree"
 												class="sigree-name-logo">Special Butter Chicken</span></div>
 									<p class="menu-item-desc">Our house signature butter chicken sauce, layered
 										generously with tender chicken and premium cheese. The full experience.</p>
@@ -1739,10 +1744,10 @@
 		<div class="container">
 			<div class="footer-grid">
 				<div class="footer-brand">
-					<img src="assets/SIGREELOGO1.png" alt="Sigree Indian Cuisine" class="footer-logo" />
+					<img src="assets/sigree-logo.png" alt="Sigree Indian Cuisine" class="footer-logo" />
 					<p>Auckland's premier Indian fire-craft dining on Rosebank Road, Avondale.</p>
 					<button type="button" class="footer-cert-btn" aria-label="View EatSafe Certificate" onclick="openCertModal()">
-						<img src="assets/cert1.png" alt="EatSafe Rating" class="footer-cert-img" />
+						<img src="assets/cert1-thumb.jpg" alt="EatSafe Rating" class="footer-cert-img" width="65" height="90" />
 					</button>
 				</div>
 				<div class="footer-col">
@@ -2048,10 +2053,11 @@
 	<script src="script.js"></script>
 
 	<!-- EatSafe Modal -->
-	<div id="cert-modal" class="cert-modal" aria-hidden="true" role="dialog" onclick="closeCertModal()">
+	<div id="cert-modal" class="cert-modal" aria-hidden="true" role="dialog" aria-modal="true"
+		aria-label="EatSafe certificate" onclick="closeCertModal()">
 		<div class="cert-modal-content" onclick="event.stopPropagation()">
-			<button class="cert-modal-close" onclick="closeCertModal()" aria-label="Close certificate">&times;</button>
-			<img src="assets/cert1.png" alt="EatSafe Rating Certificate" class="cert-modal-img" />
+			<button type="button" class="cert-modal-close" onclick="closeCertModal()" aria-label="Close certificate">&times;</button>
+			<img src="assets/cert1.jpg" alt="EatSafe Rating Certificate" class="cert-modal-img" />
 		</div>
 	</div>
 </body>

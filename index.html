@@ -45,6 +45,8 @@
 			"addressCountry": "New Zealand"
 		},
 		"servesCuisine": "Indian",
+		"hasMenu": "https://sigree.co.nz/menu.html",
+		"acceptsReservations": "https://www.ordermeal.co.nz/booking/sigree-indian-cuisine/",
 		"openingHours": ["Mo-Su 10:30-21:30"],
 		"priceRange": "$$",
 		"sameAs": [
@@ -91,7 +93,7 @@
 	<header class="site-header" id="top">
 		<div class="container header-inner">
 			<a class="brand" href="#top" aria-label="Sigree Indian Cuisine home">
-				<img src="assets/SIGREELOGO1.png" alt="Sigree Indian Cuisine" class="brand-logo" />
+				<img src="assets/sigree-logo.png" alt="Sigree Indian Cuisine" class="brand-logo" />
 			</a>
 
 			<nav class="nav" id="primary-nav" aria-label="Primary navigation">
@@ -135,7 +137,8 @@
 				</div>
 				<div class="hero-media">
 					<div class="hero-video-wrap">
-						<video id="hero-video" class="hero-video" playsinline muted autoplay preload="metadata">
+						<video id="hero-video" class="hero-video" playsinline muted autoplay preload="metadata"
+							poster="assets/hero-poster.jpg">
 							<source src="assets/vid1.MP4" type="video/mp4" />
 							Your browser does not support the video tag.
 						</video>
@@ -216,7 +219,7 @@
 				<div class="section-label">The Menu</div>
 				<div class="menu-header">
 					<h2>Explore Our Menus</h2>
-					<p>Choose between our food and bar menus. Each opens as a PDF in a new tab.</p>
+					<p>Browse our full food menu and drinks, all in one place.</p>
 				</div>
 
 				<div class="menu-grid">
@@ -322,11 +325,11 @@
 		<div class="container">
 			<div class="footer-grid">
 				<div class="footer-brand">
-					<img src="assets/SIGREELOGO1.png" alt="Sigree Indian Cuisine" class="footer-logo" />
+					<img src="assets/sigree-logo.png" alt="Sigree Indian Cuisine" class="footer-logo" />
 					<p>Auckland's premier Indian fire-craft dining on Rosebank Road, Avondale.</p>
 					<button type="button" class="footer-cert-btn" aria-label="View EatSafe Certificate"
 						onclick="openCertModal()">
-						<img src="assets/cert1.png" alt="EatSafe Rating" class="footer-cert-img" />
+						<img src="assets/cert1-thumb.jpg" alt="EatSafe Rating" class="footer-cert-img" width="65" height="90" />
 					</button>
 				</div>
 				<div class="footer-col">
@@ -373,23 +376,29 @@
 			</div>
 		</div>
 	</footer>
-	<div id="ad-modal" class="ad-modal" aria-hidden="true" role="dialog">
+	<div id="ad-modal" class="ad-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Current specials">
 		<div class="ad-modal-overlay" id="ad-modal-overlay"></div>
 		<div class="ad-modal-content">
-			<button class="ad-modal-close" id="ad-modal-close" aria-label="Close ads">&times;</button>
+			<button type="button" class="ad-modal-close" id="ad-modal-close" aria-label="Close specials">&times;</button>
+			<!-- To change the specials, replace BOTH images: ad1.jpg (computers) and ad1-mobile.jpg (phones, stacked) -->
 			<div class="ad-modal-images">
-				<img src="assets/ad1.jpg" alt="Special Offer 2" class="ad-img active" id="ad-img-2" />
+				<picture>
+					<source media="(max-width: 640px)" srcset="assets/ad1-mobile.jpg" />
+					<img src="assets/ad1.jpg" class="ad-img active" id="ad-img-2" width="1200" height="848"
+						alt="Sigree specials: Kathi rolls from $10, vegetable samosas $2.99 each or 2 for $5 (takeaway only), and the chicken tikka burger for $18.90" />
+				</picture>
 			</div>
 			<div class="ad-modal-nav">
-				<button class="btn btn-primary btn-full" id="ad-next-btn">Continue to Website</button>
+				<button type="button" class="btn btn-primary btn-full" id="ad-next-btn">Continue to Website</button>
 			</div>
 		</div>
 	</div>
 	<!-- EatSafe Modal -->
-	<div id="cert-modal" class="cert-modal" aria-hidden="true" role="dialog" onclick="closeCertModal()">
+	<div id="cert-modal" class="cert-modal" aria-hidden="true" role="dialog" aria-modal="true"
+		aria-label="EatSafe certificate" onclick="closeCertModal()">
 		<div class="cert-modal-content" onclick="event.stopPropagation()">
-			<button class="cert-modal-close" onclick="closeCertModal()" aria-label="Close certificate">&times;</button>
-			<img src="assets/cert1.png" alt="EatSafe Rating Certificate" class="cert-modal-img" />
+			<button type="button" class="cert-modal-close" onclick="closeCertModal()" aria-label="Close certificate">&times;</button>
+			<img src="assets/cert1.jpg" alt="EatSafe Rating Certificate" class="cert-modal-img" />
 		</div>
 	</div>
 </body>

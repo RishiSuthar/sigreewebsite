@@ -238,6 +238,7 @@ p {
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	color: var(--color-text-secondary);
+	white-space: nowrap;
 	transition: color 0.2s ease;
 }
 
@@ -593,14 +594,15 @@ p {
 	flex: 0 0 54%;
 	min-width: 360px;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: center;
 }
 
+/* The hero clips are vertical phone videos (9:16). A portrait frame shows
+   more of each shot and doesn't blow the footage up past its resolution. */
 .hero-video-wrap {
-	width: 100%;
-	max-width: 860px;
-	min-height: 520px;
-	aspect-ratio: 16 / 10;
+	height: min(70vh, 620px);
+	max-width: 100%;
+	aspect-ratio: 3 / 4;
 	overflow: hidden;
 	border: 1px solid rgba(255, 255, 255, 0.14);
 	border-radius: 1.75rem;
@@ -634,10 +636,9 @@ p {
 	}
 
 	.hero-video-wrap {
-		max-width: 100%;
-		width: 100%;
-		min-height: 0;
-		aspect-ratio: 16 / 9;
+		width: min(100%, 420px);
+		height: auto;
+		aspect-ratio: 4 / 5;
 	}
 }
 
@@ -1514,9 +1515,9 @@ p {
 	}
 
 	.hero-video-wrap {
-		max-width: 100%;
-		min-height: 0;
-		aspect-ratio: 16 / 9;
+		width: min(100%, 420px);
+		height: auto;
+		aspect-ratio: 4 / 5;
 	}
 
 	.page-embers span {
@@ -1825,6 +1826,8 @@ p {
 .ad-modal.open {
 	visibility: visible;
 	opacity: 1;
+	/* become visible instantly so focus can move into the modal */
+	transition: visibility 0s, opacity 0.4s;
 }
 
 .ad-modal-overlay {
@@ -1900,6 +1903,30 @@ p {
 	animation: fadeIn 0.4s ease-out;
 }
 
+.ad-modal-images picture {
+	display: block;
+	width: 100%;
+}
+
+/* Phones get the stacked ad image; let it scroll inside the modal */
+@media (max-width: 640px) {
+	.ad-modal-content {
+		width: 92%;
+	}
+
+	.ad-modal-images {
+		display: block;
+		max-height: calc(100vh - 9rem);
+		max-height: calc(100dvh - 9rem);
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.ad-img {
+		max-height: none;
+	}
+}
+
 .ad-modal-nav {
 	padding: 1rem;
 	background: var(--color-bg-elevated);
@@ -1951,6 +1978,7 @@ p {
 .cert-modal.open {
 	opacity: 1;
 	visibility: visible;
+	transition: opacity 0.3s, visibility 0s;
 }
 
 .cert-modal-content {
