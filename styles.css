@@ -1647,91 +1647,6 @@ p {
 }
 
 /* ============================================
-   From the Kitchen — Signature Dish Gallery
-   ============================================ */
-.kitchen {
-	background: var(--color-bg-elevated);
-	border-top: 1px solid var(--color-border-subtle);
-	border-bottom: 1px solid var(--color-border-subtle);
-}
-
-.kitchen-header {
-	max-width: 600px;
-	margin-bottom: 3rem;
-}
-
-.kitchen-header h2 {
-	margin-bottom: 1rem;
-}
-
-.kitchen-grid {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 1.5rem;
-	margin-bottom: 3rem;
-}
-
-.dish-card {
-	display: flex;
-	flex-direction: column;
-	background: var(--color-bg);
-	border: 1px solid var(--color-border);
-	border-radius: 6px;
-	overflow: hidden;
-	transition: border-color 0.3s var(--ease-out), transform 0.3s var(--ease-out);
-}
-
-.dish-card:hover {
-	border-color: rgba(249, 92, 8, 0.45);
-	transform: translateY(-3px);
-}
-
-.dish-card-media {
-	aspect-ratio: 4 / 3;
-	overflow: hidden;
-	background: var(--color-surface);
-}
-
-.dish-card-media img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	transition: transform 0.8s var(--ease-out);
-}
-
-.dish-card:hover .dish-card-media img {
-	transform: scale(1.05);
-}
-
-.dish-card-body {
-	padding: 1.5rem 1.5rem 1.75rem;
-}
-
-.dish-card-tag {
-	display: block;
-	font-size: 0.6875rem;
-	letter-spacing: 0.15em;
-	text-transform: uppercase;
-	color: var(--color-accent);
-	margin-bottom: 0.6rem;
-}
-
-.dish-card h3 {
-	color: var(--color-text);
-	font-size: clamp(1.15rem, 2vw, 1.35rem);
-	margin-bottom: 0.5rem;
-}
-
-.dish-card p {
-	font-size: 0.9rem;
-	line-height: 1.65;
-}
-
-.kitchen-cta {
-	text-align: center;
-}
-
-/* ============================================
    Photo-backed page heroes
    Set --hero-photo (and optionally --hero-photo-sm) inline.
    ============================================ */
@@ -1889,35 +1804,6 @@ p {
 		flex-direction: column;
 		gap: 1rem;
 		text-align: center;
-	}
-}
-
-/* Kitchen responsive */
-@media (max-width: 1024px) {
-	.kitchen-grid {
-		grid-template-columns: repeat(2, 1fr);
-	}
-}
-
-@media (max-width: 640px) {
-	.kitchen-grid {
-		display: flex;
-		gap: 1rem;
-		overflow-x: auto;
-		scroll-snap-type: x mandatory;
-		scrollbar-width: none;
-		margin: 0 calc(var(--container-padding) * -1) 2.5rem;
-		padding: 0 var(--container-padding);
-		scroll-padding: 0 var(--container-padding);
-	}
-
-	.kitchen-grid::-webkit-scrollbar {
-		display: none;
-	}
-
-	.dish-card {
-		flex: 0 0 82%;
-		scroll-snap-align: start;
 	}
 }
 
