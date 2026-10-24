@@ -927,8 +927,8 @@ p {
 }
 
 .menu-card-food {
-	background-image: url('https://www.saveur.com/uploads/2019/10/Photo-Murray-Hall-Food-Styling-Jessie-YuChen_240606-murrayhall-saveur-07-grilled-swordfish-kebabs-072-scaled.jpg?auto=webp');
-	background-position: center 58%;
+	background-image: url('assets/food/table-spread-800.jpg');
+	background-position: center;
 }
 
 .menu-card-bar {
@@ -1647,7 +1647,7 @@ p {
 }
 
 /* ============================================
-   From the Kitchen — Signature Dishes
+   From the Kitchen — Signature Dish Gallery
    ============================================ */
 .kitchen {
 	background: var(--color-bg-elevated);
@@ -1667,42 +1667,92 @@ p {
 .kitchen-grid {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 1px;
-	background: var(--color-border);
+	gap: 1.5rem;
 	margin-bottom: 3rem;
 }
 
-.kitchen-card {
-	background: var(--color-bg-elevated);
-	padding: 3rem 2.5rem;
-	transition: background 0.3s var(--ease-out);
+.dish-card {
+	display: flex;
+	flex-direction: column;
+	background: var(--color-bg);
+	border: 1px solid var(--color-border);
+	border-radius: 6px;
+	overflow: hidden;
+	transition: border-color 0.3s var(--ease-out), transform 0.3s var(--ease-out);
 }
 
-.kitchen-card:hover {
+.dish-card:hover {
+	border-color: rgba(249, 92, 8, 0.45);
+	transform: translateY(-3px);
+}
+
+.dish-card-media {
+	aspect-ratio: 4 / 3;
+	overflow: hidden;
 	background: var(--color-surface);
 }
 
-.kitchen-number {
+.dish-card-media img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.8s var(--ease-out);
+}
+
+.dish-card:hover .dish-card-media img {
+	transform: scale(1.05);
+}
+
+.dish-card-body {
+	padding: 1.5rem 1.5rem 1.75rem;
+}
+
+.dish-card-tag {
 	display: block;
 	font-size: 0.6875rem;
 	letter-spacing: 0.15em;
+	text-transform: uppercase;
 	color: var(--color-accent);
-	margin-bottom: 1.5rem;
+	margin-bottom: 0.6rem;
 }
 
-.kitchen-card h3 {
+.dish-card h3 {
 	color: var(--color-text);
-	margin-bottom: 1rem;
 	font-size: clamp(1.15rem, 2vw, 1.35rem);
+	margin-bottom: 0.5rem;
 }
 
-.kitchen-card p {
-	font-size: 0.9375rem;
-	line-height: 1.75;
+.dish-card p {
+	font-size: 0.9rem;
+	line-height: 1.65;
 }
 
 .kitchen-cta {
 	text-align: center;
+}
+
+/* ============================================
+   Photo-backed page heroes
+   Set --hero-photo (and optionally --hero-photo-sm) inline.
+   ============================================ */
+.photo-hero {
+	--hero-shade: linear-gradient(180deg, rgba(12, 10, 9, 0.7) 0%, rgba(12, 10, 9, 0.8) 55%, var(--color-bg) 100%);
+	position: relative;
+	isolation: isolate;
+}
+
+.photo-hero::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background: var(--hero-shade), var(--hero-photo) center / cover no-repeat;
+}
+
+@media (max-width: 768px) {
+	.photo-hero::before {
+		background: var(--hero-shade), var(--hero-photo-sm, var(--hero-photo)) center / cover no-repeat;
+	}
 }
 
 /* ============================================
@@ -1843,20 +1893,31 @@ p {
 }
 
 /* Kitchen responsive */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
 	.kitchen-grid {
-		grid-template-columns: 1fr;
-		gap: 0;
-		background: transparent;
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 640px) {
+	.kitchen-grid {
+		display: flex;
+		gap: 1rem;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: none;
+		margin: 0 calc(var(--container-padding) * -1) 2.5rem;
+		padding: 0 var(--container-padding);
+		scroll-padding: 0 var(--container-padding);
 	}
 
-	.kitchen-card {
-		border-bottom: 1px solid var(--color-border);
-		padding: 2rem 1.5rem;
+	.kitchen-grid::-webkit-scrollbar {
+		display: none;
 	}
 
-	.kitchen-card:last-child {
-		border-bottom: none;
+	.dish-card {
+		flex: 0 0 82%;
+		scroll-snap-align: start;
 	}
 }
 
